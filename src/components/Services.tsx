@@ -1,4 +1,4 @@
-import { Apple, Carrot, Citrus, Leaf, Package, Truck, ArrowRight } from 'lucide-react';
+import { Apple, Carrot, Leaf, Package, ArrowRight } from 'lucide-react';
 
 const services = [
   {
@@ -58,7 +58,7 @@ export default function Services() {
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 gap-8">
-          {services.map((service, index) => (
+          {services.map((service) => (
             <div
               key={service.title}
               className="group bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-large transition-all duration-500 hover:-translate-y-2"

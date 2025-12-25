@@ -1,4 +1,4 @@
-import { Truck, Shield, Users, Clock, Globe2, HeartHandshake, Zap, Award } from 'lucide-react';
+import { Truck, Shield, Users, Globe2, HeartHandshake, Zap, Award } from 'lucide-react';
 
 const reasons = [
   {
@@ -94,7 +94,7 @@ export default function WhyChoose() {
 
             {/* Features Grid */}
             <div className="grid sm:grid-cols-2 gap-6">
-              {reasons.map((reason, index) => (
+              {reasons.map((reason) => (
                 <div
                   key={reason.title}
                   className="group flex items-start gap-4 p-4 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300"

@@ -45,7 +45,7 @@ export default function Founders() {
 
         {/* Founders Grid */}
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
-          {founders.map((founder, index) => (
+          {founders.map((founder) => (
             <div
               key={founder.name}
               className="group bg-gradient-to-b from-cream to-white rounded-3xl p-8 border border-gray-100 hover:border-primary-200 transition-all duration-500 hover:shadow-large"

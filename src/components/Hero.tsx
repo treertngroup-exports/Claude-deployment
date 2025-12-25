@@ -1,4 +1,4 @@
-import { ArrowRight, Play, Star, Globe2, Leaf, Award } from 'lucide-react';
+import { ArrowRight, Star, Globe2, Leaf, Award } from 'lucide-react';
 
 export default function Hero() {
   return (

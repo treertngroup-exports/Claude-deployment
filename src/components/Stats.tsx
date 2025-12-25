@@ -1,4 +1,4 @@
-import { Globe2, Users, Truck, Award, TrendingUp, Leaf } from 'lucide-react';
+import { Globe2, Users, Truck, Award } from 'lucide-react';
 
 const stats = [
   {

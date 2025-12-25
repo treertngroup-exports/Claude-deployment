@@ -1,4 +1,4 @@
-import { CheckCircle2, Leaf, Shield, Truck, ThermometerSun, Package, ArrowRight } from 'lucide-react';
+import { CheckCircle2, Leaf, Shield, ThermometerSun, Package, ArrowRight } from 'lucide-react';
 
 const qualityFeatures = [
   {
