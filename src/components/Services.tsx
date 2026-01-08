@@ -26,7 +26,7 @@ const services = [
     icon: Package,
     title: 'Value Added Products',
     description: 'Processed and packaged agricultural products meeting international food safety standards for retail and wholesale markets.',
-    image: 'https://images.unsplash.com/photo-1509358271058-aedd22b2e4e6?w=600&q=80',
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJU8V4LxQqMwDCCntRFG40VQvR-X3_2K3Mhw&s",
     items: ['Dried Fruits', 'Pickles', 'Preserves', 'Ready Mixes'],
   },
 ];
