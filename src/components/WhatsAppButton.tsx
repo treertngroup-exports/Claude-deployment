@@ -1,7 +1,7 @@
 export default function WhatsAppButton() {
   return (
     <a
-      href="https://wa.me/919994498426?text=Hello! I'm interested in your agricultural products."
+      href="https://wa.me/+91 84389 06166?text=Hello! I'm interested in your agricultural products."
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 group"
