@@ -178,7 +178,7 @@ export default function Navbar() {
                 className="flex items-center gap-2 text-sm font-medium text-primary-800"
               >
                 <Phone className="w-4 h-4" />
-                +91 99944 98426
+                +91 84389 06166
               </a>
               <a
                 href="mailto:treertngroup@gmail.com"
