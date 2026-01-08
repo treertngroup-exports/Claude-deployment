@@ -1,146 +1,148 @@
-import { Shield, CheckCircle2, Award } from 'lucide-react';
+import { useState } from 'react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const certificates = [
-  {
-    id: 1,
-    name: 'CDB India',
-    fullName: 'Coconut Development Board',
-    description: 'Ministry of Agriculture, Govt. of India',
-    color: 'from-green-500 to-green-700',
-  },
-  {
-    id: 2,
-    name: 'FSSAI',
-    fullName: 'Food Safety & Standards',
-    description: 'Authority of India',
-    color: 'from-orange-500 to-green-600',
-  },
-  {
-    id: 3,
-    name: 'MSME',
-    fullName: 'Micro, Small & Medium',
-    description: 'Enterprises, Govt. of India',
-    color: 'from-amber-500 to-amber-700',
-  },
-  {
-    id: 4,
-    name: 'Spices Board',
-    fullName: 'Spices Board India',
-    description: 'Ministry of Commerce',
-    color: 'from-blue-600 to-blue-800',
-  },
-  {
-    id: 5,
-    name: 'APEDA',
-    fullName: 'Agricultural & Processed Food',
-    description: 'Products Export Development',
-    color: 'from-green-600 to-green-800',
-  },
-];
+const Certificates = () => {
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
-export default function Certificates() {
+  const images = [
+    {
+      id: 1,
+      src: 'https://drive.google.com/thumbnail?id=1XCfemS3R0p4LC_YQ4dvldc5fHrXeHIU3&auto=compress&cs=tinysrgb&w=600',
+      thumb: 'https://drive.google.com/thumbnail?id=1XCfemS3R0p4LC_YQ4dvldc5fHrXeHIU3&auto=compress&cs=tinysrgb&w=400',
+      title: 'Coconut Development Board State Centre Kolkata',
+    },
+    {
+      id: 2,
+      src: 'https://drive.google.com/thumbnail?id=1nzF3cJdx5uWVn_UDxfV-Hq0I_8UmmCgK&auto=compress&cs=tinysrgb&w=600',
+      thumb: 'https://drive.google.com/thumbnail?id=1nzF3cJdx5uWVn_UDxfV-Hq0I_8UmmCgK&auto=compress&cs=tinysrgb&w=400',
+      title: 'Spices Board India',
+    },
+    {
+      id: 3,
+      src: 'https://drive.google.com/thumbnail?id=1Ig6V80TNYFUVghhOdi_Im_20U3LK-wUj&auto=compress&cs=tinysrgb&w=600',
+      thumb: 'https://drive.google.com/thumbnail?id=1Ig6V80TNYFUVghhOdi_Im_20U3LK-wUj&auto=compress&cs=tinysrgb&w=400',
+      title: 'FSSAI',
+    },
+    {
+      id: 4,
+      src: 'https://drive.google.com/thumbnail?id=1Bic6LAdejJ2WP29T_-SsNntdKvN5uZZ7&auto=compress&cs=tinysrgb&w=600',
+      thumb: 'https://drive.google.com/thumbnail?id=1Bic6LAdejJ2WP29T_-SsNntdKvN5uZZ7&auto=compress&cs=tinysrgb&w=400',
+      title: 'MSME',
+    },
+    {
+      id: 5,
+      src: 'https://drive.google.com/thumbnail?id=16tUIOxiwW6-GoSxBACyrS2IFbbvg_KVs&auto=compress&cs=tinysrgb&w=600',
+      thumb: 'https://drive.google.com/thumbnail?id=16tUIOxiwW6-GoSxBACyrS2IFbbvg_KVs&auto=compress&cs=tinysrgb&w=400',
+      title: 'APEDA',
+    },
+  ];
+
+  const handlePrevious = () => {
+    if (selectedImageIndex === null) return;
+    setSelectedImageIndex(
+      selectedImageIndex === 0 ? images.length - 1 : selectedImageIndex - 1
+    );
+  };
+
+  const handleNext = () => {
+    if (selectedImageIndex === null) return;
+    setSelectedImageIndex(
+      selectedImageIndex === images.length - 1 ? 0 : selectedImageIndex + 1
+    );
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (selectedImageIndex === null) return;
+    if (e.key === 'ArrowLeft') handlePrevious();
+    if (e.key === 'ArrowRight') handleNext();
+    if (e.key === 'Escape') setSelectedImageIndex(null);
+  };
+
   return (
-    <section id="certificates" className="section-padding bg-gradient-to-b from-white to-cream relative overflow-hidden">
-      {/* Background Decorations */}
-      <div className="absolute top-20 right-0 w-96 h-96 bg-gradient-radial from-accent-100/30 via-transparent to-transparent rounded-full translate-x-1/2" />
-      <div className="absolute bottom-20 left-0 w-80 h-80 bg-gradient-radial from-primary-100/20 via-transparent to-transparent rounded-full -translate-x-1/2" />
+    <section id="Certificates" className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-50 to-accent-50 rounded-full border border-primary-100 mb-6">
-            <Shield className="w-4 h-4 text-accent-600" />
-            <span className="text-xs font-bold tracking-widest uppercase text-primary-700">
-              Verified & Certified
-            </span>
-          </div>
-          <h2 className="section-title mb-4">
+        {/* ✅ Heading & Paragraph from Image 1 (unchanged) */}
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Legal <span className="text-primary-700">Certifications</span>
           </h2>
-          <p className="section-subtitle mx-auto">
-            We proudly hold registrations and authorizations from India's most recognized 
-            regulatory authorities, ensuring the highest standards of quality and compliance.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            We proudly hold registrations and authorizations from India's most recognized regulatory authorities, ensuring the highest standards of quality and compliance.
           </p>
         </div>
 
-        {/* Certificates Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {certificates.map((cert, index) => (
+        {/* Certificates Grid (Image 2 UI retained) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
+          {images.map((image, index) => (
             <div
-              key={cert.id}
-              className="group bg-white rounded-2xl p-6 text-center border border-gray-100 hover:border-primary-200 transition-all duration-500 hover:shadow-large hover:-translate-y-3 relative overflow-hidden"
-              style={{ animationDelay: `${index * 100}ms` }}
+              key={image.id}
+              onClick={() => setSelectedImageIndex(index)}
+              className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
             >
-              {/* Top Accent Line */}
-              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${cert.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300`} />
-
-              {/* Logo Container */}
-              <div className="w-24 h-24 mx-auto mb-5 bg-gradient-to-br from-gray-50 to-gray-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 relative">
-                <div className={`absolute inset-0 rounded-full border-2 border-dashed border-gray-200 group-hover:border-accent-300 transition-colors duration-300`} style={{ margin: '-4px' }} />
-                <Award className={`w-10 h-10 text-gray-400 group-hover:text-primary-600 transition-colors duration-300`} />
-              </div>
-
-              {/* Name */}
-              <h3 className="font-display text-xl font-bold text-primary-800 mb-2 group-hover:text-primary-900 transition-colors">
-                {cert.name}
-              </h3>
-
-              {/* Full Name */}
-              <p className="text-sm text-gray-600 mb-1">{cert.fullName}</p>
-              <p className="text-xs text-gray-400">{cert.description}</p>
-
-              {/* Verified Badge */}
-              <div className="mt-5 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary-50 rounded-full text-xs font-semibold text-primary-700">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
-                  Verified
-                </span>
-              </div>
+              <img
+                src={image.thumb}
+                alt={image.title}
+                className="w-full h-64 sm:h-48 object-contain transition-transform duration-300 group-hover:scale-110"
+              />
             </div>
           ))}
         </div>
+      </div>
 
-        {/* Trust Banner */}
-        <div className="mt-16 bg-gradient-to-r from-primary-900 via-primary-800 to-primary-900 rounded-3xl p-8 lg:p-12 relative overflow-hidden">
-          {/* Pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.5" />
-              </pattern>
-              <rect width="100%" height="100%" fill="url(#grid)" />
-            </svg>
-          </div>
+      {/* Image Modal */}
+      {selectedImageIndex !== null && (
+        <div
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 backdrop-blur-md"
+          onClick={() => setSelectedImageIndex(null)}
+          onKeyDown={handleKeyDown}
+          role="dialog"
+          tabIndex={0}
+        >
+          <button
+            onClick={() => setSelectedImageIndex(null)}
+            className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full transition-all duration-300 backdrop-blur-sm"
+            aria-label="Close"
+          >
+            <X size={24} />
+          </button>
 
-          <div className="relative flex flex-col lg:flex-row items-center justify-between gap-8">
-            <div className="text-center lg:text-left">
-              <h3 className="font-display text-2xl lg:text-3xl font-semibold text-white mb-3">
-                Committed to Excellence & Compliance
-              </h3>
-              <p className="text-primary-100 text-lg max-w-xl">
-                Meeting international standards for food safety, quality assurance, and export compliance.
-              </p>
-            </div>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              handlePrevious();
+            }}
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm hidden sm:flex"
+            aria-label="Previous image"
+          >
+            <ChevronLeft size={24} />
+          </button>
 
-            <div className="flex items-center gap-8 lg:gap-12">
-              <div className="text-center">
-                <p className="font-display text-4xl lg:text-5xl font-bold text-accent-400">100%</p>
-                <p className="text-sm text-primary-200 mt-1">Compliance Rate</p>
-              </div>
-              <div className="w-px h-16 bg-primary-700" />
-              <div className="text-center">
-                <p className="font-display text-4xl lg:text-5xl font-bold text-accent-400">5+</p>
-                <p className="text-sm text-primary-200 mt-1">Certifications</p>
-              </div>
-              <div className="w-px h-16 bg-primary-700 hidden md:block" />
-              <div className="text-center hidden md:block">
-                <p className="font-display text-4xl lg:text-5xl font-bold text-accent-400">0</p>
-                <p className="text-sm text-primary-200 mt-1">Quality Issues</p>
-              </div>
-            </div>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              handleNext();
+            }}
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm hidden sm:flex"
+            aria-label="Next image"
+          >
+            <ChevronRight size={24} />
+          </button>
+
+          <div className="max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={images[selectedImageIndex].src}
+              alt={images[selectedImageIndex].title}
+              className="w-full h-auto rounded-lg shadow-2xl"
+            />
+            <p className="mt-6 text-center text-gray-500 text-xs md:text-sm">
+              {selectedImageIndex + 1} / {images.length}
+            </p>
           </div>
         </div>
-      </div>
+      )}
     </section>
   );
-}
+};
+
+export default Certificates;
