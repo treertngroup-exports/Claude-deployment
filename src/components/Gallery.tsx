@@ -11,9 +11,9 @@ const galleryImages = [
   },
   {
     id: 2,
-    src: 'https://images.unsplash.com/photo-1518977676601-b53f82ber49e?w=800&q=80',
+    src: 'https://drive.google.com/thumbnail?id=1zCIqXqk9EOC9fUhn69PJB4u1Z4GTIDkH',
     alt: 'Organic vegetables',
-    category: 'Vegetables',
+    category: 'Packing',
   },
   {
     id: 3,
@@ -23,9 +23,9 @@ const galleryImages = [
   },
   {
     id: 4,
-    src: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&q=80',
+    src: 'https://drive.google.com/thumbnail?id=1SiOVMnHr3qFS2z4Cun2ufojqRpW0Ri4q',
     alt: 'Fresh produce',
-    category: 'Vegetables',
+    category: 'Farms',
   },
   {
     id: 5,
@@ -35,7 +35,7 @@ const galleryImages = [
   },
   {
     id: 6,
-    src: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=800&q=80',
+    src: 'https://drive.google.com/thumbnail?id=1psEXW1PznIzAczfCEQg3_ZYKp4lCG5g3',
     alt: 'Vegetable variety',
     category: 'Vegetables',
   },
