@@ -2,7 +2,7 @@ import { ArrowRight, Star, Globe2, Leaf, Award } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-cream via-white to-green-50">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-transparent">
       {/* Background Decorations */}
       <div className="absolute inset-0 bg-hero-pattern opacity-50" />
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-radial from-primary-100/40 via-transparent to-transparent rounded-full translate-x-1/3 -translate-y-1/3" />
