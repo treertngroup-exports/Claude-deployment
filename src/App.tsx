@@ -43,11 +43,21 @@ function App() {
 
         {/* Main Content */}
         <main className="flex-grow relative z-0">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/gallery" element={<GalleryPage />} />
-          </Routes>
+          <div className="max-w-7xl mx-auto flex gap-12 px-4">
+            
+            {/* Main content column */}
+            <div className="flex-1">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/gallery" element={<GalleryPage />} />
+              </Routes>
+            </div>
+        
+            {/* Right visual spacer for floating cards */}
+            <div className="hidden lg:block w-[420px]" />
+          </div>
         </main>
+
 
         {/* Footer & Floating WhatsApp */}
         <Footer />
