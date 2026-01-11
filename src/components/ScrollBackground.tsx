@@ -3,13 +3,13 @@ import { motion, useScroll, useTransform } from "framer-motion";
 export default function ScrollBackground() {
   const { scrollYProgress } = useScroll();
 
-  // 🌾 Harvest → 📦 Packing → 🚢 Ship → ✈️ Plane
-
+  // Opacity transitions
   const harvestOpacity = useTransform(scrollYProgress, [0, 0.22], [1, 0]);
   const packingOpacity = useTransform(scrollYProgress, [0.2, 0.45], [0, 1]);
   const shipOpacity = useTransform(scrollYProgress, [0.45, 0.7], [0, 1]);
   const planeOpacity = useTransform(scrollYProgress, [0.7, 1], [0, 1]);
 
+  // Slow zoom for cinematic feel
   const harvestScale = useTransform(scrollYProgress, [0, 0.25], [1, 1.1]);
   const packingScale = useTransform(scrollYProgress, [0.25, 0.5], [1, 1.1]);
   const shipScale = useTransform(scrollYProgress, [0.5, 0.75], [1, 1.1]);
@@ -49,7 +49,7 @@ export default function ScrollBackground() {
       />
 
       {/* Dark overlay for readability */}
-      <div className="fixed inset-0 bg-black/30 z-0 pointer-events-none" />
+      <div className="fixed inset-0 bg-black/40 z-0 pointer-events-none" />
     </>
   );
 }
