@@ -15,7 +15,7 @@ import Contact from "./components/Contact";
 import WhatsAppButton from "./components/WhatsAppButton";
 import GalleryPage from "./pages/GalleryPage";
 
-// Home Page Composition
+// Home Page
 function Home() {
   return (
     <div className="min-h-screen">
@@ -52,7 +52,7 @@ export default function App() {
         {/* Cinematic Background */}
         <ScrollBackground />
 
-        {/* Main Content (MUST be above background) */}
+        {/* Main Content MUST be above background */}
         <main className="flex-grow relative z-10">
           <Routes>
             <Route path="/" element={<Home />} />
