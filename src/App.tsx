@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect } from "react";
+import ExportJourney from "./components/ExportJourney";
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
@@ -18,6 +19,7 @@ import GalleryPage from './pages/GalleryPage';
 function Home() {
   return (
     <div className="min-h-screen overflow-hidden">
+      <ExportJourney />
       <Hero />
       <Stats />
       <Services />
