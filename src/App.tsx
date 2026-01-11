@@ -1,27 +1,24 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
-import ExportJourney from "./components/ExportJourney";
 import ScrollBackground from "./components/ScrollBackground";
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Hero from './components/Hero';
-import Stats from './components/Stats';
-import Services from './components/Services';
-import Gallery from './components/Gallery';
-import Certificates from './components/Certificates';
-import Quality from './components/Quality';
-import WhyChoose from './components/WhyChoose';
-import Founders from './components/Founders';
-import Contact from './components/Contact';
-import WhatsAppButton from './components/WhatsAppButton';
-import GalleryPage from './pages/GalleryPage';
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Hero from "./components/Hero";
+import Stats from "./components/Stats";
+import Services from "./components/Services";
+import Gallery from "./components/Gallery";
+import Certificates from "./components/Certificates";
+import Quality from "./components/Quality";
+import WhyChoose from "./components/WhyChoose";
+import Founders from "./components/Founders";
+import Contact from "./components/Contact";
+import WhatsAppButton from "./components/WhatsAppButton";
+import GalleryPage from "./pages/GalleryPage";
 
 // Home Page Composition
 function Home() {
   return (
-    <div className="min-h-screen overflow-hidden">
-      <ExportJourney />
-      <ScrollBackground />
+    <div className="min-h-screen">
       <Hero />
       <Stats />
       <Services />
@@ -35,12 +32,11 @@ function Home() {
   );
 }
 
-// Scroll to top on route change (important for /gallery)
+// Scroll to top on route change
 function ScrollToTop() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   }, []);
-
   return null;
 }
 
@@ -53,8 +49,11 @@ export default function App() {
         {/* Navbar */}
         <Navbar />
 
-        {/* Main Content */}
-        <main className="flex-grow">
+        {/* Cinematic Background */}
+        <ScrollBackground />
+
+        {/* Main Content (MUST be above background) */}
+        <main className="flex-grow relative z-10">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/gallery" element={<GalleryPage />} />
