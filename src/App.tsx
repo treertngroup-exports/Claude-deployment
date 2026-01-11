@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -14,18 +14,14 @@ import Contact from "./components/Contact";
 import WhatsAppButton from "./components/WhatsAppButton";
 import GalleryPage from "./pages/GalleryPage";
 
-// 🆕 Sticky scrollytelling section (KNP-style)
-import ExportJourneySection from "./components/ExportJourneySection";
+import ExportScrollImage from "./components/ExportScrollImage";
 
+// Home Page Layout
 function Home() {
   return (
     <div className="min-h-screen">
       <Hero />
       <Stats />
-
-      {/* 🧭 Export Journey Storytelling Section */}
-      <ExportJourneySection />
-
       <Services />
       <Gallery />
       <Certificates />
@@ -37,22 +33,35 @@ function Home() {
   );
 }
 
+// Wrapper to control route-based effects
+function AppLayout() {
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  return (
+    <div className="min-h-screen flex flex-col relative">
+      <Navbar />
+
+      {/* ✅ Only show scroll animation on HOME PAGE */}
+      {isHome && <ExportScrollImage />}
+
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+        </Routes>
+      </main>
+
+      <Footer />
+      <WhatsAppButton />
+    </div>
+  );
+}
+
 function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col relative">
-        <Navbar />
-
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/gallery" element={<GalleryPage />} />
-          </Routes>
-        </main>
-
-        <Footer />
-        <WhatsAppButton />
-      </div>
+      <AppLayout />
     </Router>
   );
 }
