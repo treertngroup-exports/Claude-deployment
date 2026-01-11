@@ -21,7 +21,7 @@ const founders = [
 
 export default function Founders() {
   return (
-    <section id="founders" className="section-padding bg-white relative overflow-hidden">
+    <section id="founders" className="section-padding bg-white/70 backdrop-blur-lg relative overflow-hidden">
       {/* Background */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-primary-50/50 via-transparent to-transparent rounded-full translate-x-1/3 -translate-y-1/3" />
 
