@@ -3,42 +3,62 @@ import { motion, useScroll, useTransform } from "framer-motion";
 export default function ExportJourney() {
   const { scrollYProgress } = useScroll();
 
-  // Which image is visible at which scroll range
-  const harvestOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const packingOpacity = useTransform(scrollYProgress, [0.2, 0.4], [0, 1]);
-  const shipOpacity = useTransform(scrollYProgress, [0.4, 0.6], [0, 1]);
-  const planeOpacity = useTransform(scrollYProgress, [0.6, 0.8], [0, 1]);
+  // 🌾 Harvest
+  const hX = useTransform(scrollYProgress, [0, 0.25], [300, 0]);
+  const hY = useTransform(scrollYProgress, [0, 0.25], [300, 0]);
+  const hScale = useTransform(scrollYProgress, [0, 0.25], [0.7, 1]);
+  const hOpacity = useTransform(scrollYProgress, [0.2, 0.3], [1, 0]);
+
+  // 📦 Packing
+  const pX = useTransform(scrollYProgress, [0.25, 0.5], [-300, 0]);
+  const pY = useTransform(scrollYProgress, [0.25, 0.5], [-300, 0]);
+  const pScale = useTransform(scrollYProgress, [0.25, 0.5], [0.7, 1]);
+  const pOpacity = useTransform(scrollYProgress, [0.25, 0.5], [1, 1]);
+
+  // 🚢 Ship
+  const sX = useTransform(scrollYProgress, [0.5, 0.75], [-300, 0]);
+  const sY = useTransform(scrollYProgress, [0.5, 0.75], [300, 0]);
+  const sScale = useTransform(scrollYProgress, [0.5, 0.75], [0.7, 1]);
+  const sOpacity = useTransform(scrollYProgress, [0.5, 0.75], [1, 1]);
+
+  // ✈️ Plane
+  const aX = useTransform(scrollYProgress, [0.75, 1], [300, 0]);
+  const aY = useTransform(scrollYProgress, [0.75, 1], [-300, 0]);
+  const aScale = useTransform(scrollYProgress, [0.75, 1], [0.7, 1]);
+  const aOpacity = useTransform(scrollYProgress, [0.75, 1], [1, 1]);
+
+  const baseStyle =
+    "fixed left-1/2 top-1/2 w-[320px] h-[320px] -translate-x-1/2 -translate-y-1/2 rounded-3xl shadow-2xl object-cover z-10 pointer-events-none";
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-10">
-      
+    <>
       {/* 🌾 Harvest */}
       <motion.img
         src="https://images.unsplash.com/photo-1594058573823-d8edf1ad3380?w=800"
-        style={{ opacity: harvestOpacity }}
-        className="w-72 h-72 object-cover rounded-2xl shadow-2xl fixed bottom-10 right-10"
+        style={{ x: hX, y: hY, scale: hScale, opacity: hOpacity }}
+        className={baseStyle}
       />
 
       {/* 📦 Packing */}
       <motion.img
         src="https://images.unsplash.com/photo-1595855759920-86582396756a?w=800"
-        style={{ opacity: packingOpacity }}
-        className="w-72 h-72 object-cover rounded-2xl shadow-2xl fixed top-20 left-10"
+        style={{ x: pX, y: pY, scale: pScale, opacity: pOpacity }}
+        className={baseStyle}
       />
 
       {/* 🚢 Ship */}
       <motion.img
         src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?w=800"
-        style={{ opacity: shipOpacity }}
-        className="w-72 h-72 object-cover rounded-2xl shadow-2xl fixed bottom-20 left-10"
+        style={{ x: sX, y: sY, scale: sScale, opacity: sOpacity }}
+        className={baseStyle}
       />
 
       {/* ✈️ Plane */}
       <motion.img
         src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800"
-        style={{ opacity: planeOpacity }}
-        className="w-72 h-72 object-cover rounded-2xl shadow-2xl fixed top-24 right-10"
+        style={{ x: aX, y: aY, scale: aScale, opacity: aOpacity }}
+        className={baseStyle}
       />
-    </div>
+    </>
   );
 }
