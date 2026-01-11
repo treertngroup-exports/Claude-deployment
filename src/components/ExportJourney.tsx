@@ -28,8 +28,7 @@ export default function ExportJourney() {
   const aOpacity = useTransform(scrollYProgress, [0.75, 1], [1, 1]);
 
   const base =
-    "fixed left-1/2 top-1/2 w-[340px] h-[340px] -translate-x-1/2 -translate-y-1/2 object-cover rounded-3xl shadow-2xl z-50 pointer-events-none";
-
+  "fixed right-12 top-1/2 w-[340px] h-[340px] -translate-y-1/2 object-cover rounded-3xl shadow-2xl z-30 pointer-events-none";
   return (
     <>
       {/* 🌾 Harvest */}
