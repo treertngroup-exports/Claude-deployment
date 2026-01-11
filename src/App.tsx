@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ProcessParallax from "./components/ProcessParallax";
+import ExportProcess from "./components/ExportProcess";
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
@@ -19,7 +19,7 @@ function Home() {
     <div className="min-h-screen">
       <Hero />
       <Stats />
-      <ProcessParallax />
+      <ExportProcess />
       <Services />
       <Gallery />
       <Certificates />
