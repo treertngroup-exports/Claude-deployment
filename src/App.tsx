@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
-import ScrollBackground from "./components/ScrollBackground";
+
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
@@ -14,8 +13,8 @@ import Founders from "./components/Founders";
 import Contact from "./components/Contact";
 import WhatsAppButton from "./components/WhatsAppButton";
 import GalleryPage from "./pages/GalleryPage";
+import ExportJourney from "./components/ExportJourney"; // 👈 NEW
 
-// Home Page
 function Home() {
   return (
     <div className="min-h-screen">
@@ -32,40 +31,30 @@ function Home() {
   );
 }
 
-// Scroll to top on route change
-function ScrollToTop() {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
-  }, []);
-  return null;
-}
-
-export default function App() {
+function App() {
   return (
     <Router>
-      <ScrollToTop />
-
       <div className="min-h-screen flex flex-col relative">
-        {/* Navbar */}
+        {/* Floating Cinematic Export Journey */}
+        <ExportJourney />
+
+        {/* Navbar always on top */}
         <Navbar />
 
-        {/* Cinematic Background */}
-        <ScrollBackground />
-
-        {/* Main Content MUST be above background */}
-        <main className="flex-grow relative z-10">
+        {/* Main Content */}
+        <main className="flex-grow relative z-0">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/gallery" element={<GalleryPage />} />
           </Routes>
         </main>
 
-        {/* Footer */}
+        {/* Footer & Floating WhatsApp */}
         <Footer />
-
-        {/* Floating WhatsApp Button */}
         <WhatsAppButton />
       </div>
     </Router>
   );
 }
+
+export default App;
