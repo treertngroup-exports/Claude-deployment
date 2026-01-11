@@ -50,7 +50,7 @@ export default function Gallery() {
   const prevImage = () => setSelectedImage((prev) => (prev !== null ? (prev - 1 + galleryImages.length) % galleryImages.length : null));
 
   return (
-    <section id="gallery" className="section-padding bg-white relative overflow-hidden">
+    <section id="gallery" className="section-padding bg-white/70 backdrop-blur-lg relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
