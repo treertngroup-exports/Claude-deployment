@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 
 export default function ExportScrollImage() {
   const { scrollYProgress } = useScroll();
@@ -47,8 +47,8 @@ export default function ExportScrollImage() {
     "fixed w-[320px] h-[320px] object-cover rounded-3xl shadow-2xl z-40 pointer-events-none";
 
   // Helper to combine per-image opacity with global fade out
-  const combine = (local: any) =>
-    useTransform([local, globalOpacity], ([a, b]) => a * b);
+  const combine = (local: MotionValue<number>) =>
+    useTransform([local, globalOpacity], ([a, b]: number[]) => a * b);
 
   return (
     <>
