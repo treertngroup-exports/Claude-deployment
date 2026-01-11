@@ -1,63 +1,94 @@
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
-export default function ExportJourney() {
-  const { scrollYProgress } = useScroll();
+export default function ExportJourneySection() {
+  const ref = useRef<HTMLDivElement>(null);
 
-  // 🌾 Harvest
-  const hX = useTransform(scrollYProgress, [0, 0.25], [400, 0]);
-  const hY = useTransform(scrollYProgress, [0, 0.25], [300, 0]);
-  const hScale = useTransform(scrollYProgress, [0, 0.25], [0.6, 1]);
-  const hOpacity = useTransform(scrollYProgress, [0.2, 0.3], [1, 0]);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end end"],
+  });
 
-  // 📦 Packing
-  const pX = useTransform(scrollYProgress, [0.25, 0.5], [-400, 0]);
-  const pY = useTransform(scrollYProgress, [0.25, 0.5], [-300, 0]);
-  const pScale = useTransform(scrollYProgress, [0.25, 0.5], [0.6, 1]);
-  const pOpacity = useTransform(scrollYProgress, [0.25, 0.5], [1, 1]);
+  const harvestOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
+  const packingOpacity = useTransform(scrollYProgress, [0.25, 0.5], [0, 1]);
+  const shipOpacity = useTransform(scrollYProgress, [0.5, 0.75], [0, 1]);
+  const planeOpacity = useTransform(scrollYProgress, [0.75, 1], [0, 1]);
 
-  // 🚢 Ship
-  const sX = useTransform(scrollYProgress, [0.5, 0.75], [-400, 0]);
-  const sY = useTransform(scrollYProgress, [0.5, 0.75], [300, 0]);
-  const sScale = useTransform(scrollYProgress, [0.5, 0.75], [0.6, 1]);
-  const sOpacity = useTransform(scrollYProgress, [0.5, 0.75], [1, 1]);
-
-  // ✈️ Plane
-  const aX = useTransform(scrollYProgress, [0.75, 1], [400, 0]);
-  const aY = useTransform(scrollYProgress, [0.75, 1], [-300, 0]);
-  const aScale = useTransform(scrollYProgress, [0.75, 1], [0.6, 1]);
-  const aOpacity = useTransform(scrollYProgress, [0.75, 1], [1, 1]);
-
-  const base =
-  "fixed right-12 top-1/2 w-[340px] h-[340px] -translate-y-1/2 object-cover rounded-3xl shadow-2xl z-30 pointer-events-none";
   return (
-    <>
-      {/* 🌾 Harvest */}
-      <motion.img
-        src="https://images.unsplash.com/photo-1594058573823-d8edf1ad3380?w=800"
-        style={{ x: hX, y: hY, scale: hScale, opacity: hOpacity }}
-        className={base}
-      />
+    <section ref={ref} className="relative py-32 bg-white">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 px-6">
 
-      {/* 📦 Packing */}
-      <motion.img
-        src="https://images.unsplash.com/photo-1595855759920-86582396756a?w=800"
-        style={{ x: pX, y: pY, scale: pScale, opacity: pOpacity }}
-        className={base}
-      />
+        {/* LEFT: Sticky Image Column */}
+        <div className="relative">
+          <div className="sticky top-32 h-[420px] flex items-center justify-center">
 
-      {/* 🚢 Ship */}
-      <motion.img
-        src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?w=800"
-        style={{ x: sX, y: sY, scale: sScale, opacity: sOpacity }}
-        className={base}
-      />
+            <div className="relative w-[380px] h-[380px]">
 
-      {/* ✈️ Plane */}
-      <motion.img
-        src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800"
-        style={{ x: aX, y: aY, scale: aScale, opacity: aOpacity }}
-        className={base}
-      />
-    </>
+              {/* 🌾 Harvest */}
+              <motion.img
+                src="https://images.unsplash.com/photo-1594058573823-d8edf1ad3380?w=800"
+                className="absolute inset-0 w-full h-full object-cover rounded-3xl shadow-2xl"
+                style={{ opacity: harvestOpacity }}
+              />
+
+              {/* 📦 Packing */}
+              <motion.img
+                src="https://images.unsplash.com/photo-1595855759920-86582396756a?w=800"
+                className="absolute inset-0 w-full h-full object-cover rounded-3xl shadow-2xl"
+                style={{ opacity: packingOpacity }}
+              />
+
+              {/* 🚢 Ship */}
+              <motion.img
+                src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?w=800"
+                className="absolute inset-0 w-full h-full object-cover rounded-3xl shadow-2xl"
+                style={{ opacity: shipOpacity }}
+              />
+
+              {/* ✈️ Plane */}
+              <motion.img
+                src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800"
+                className="absolute inset-0 w-full h-full object-cover rounded-3xl shadow-2xl"
+                style={{ opacity: planeOpacity }}
+              />
+
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT: Scrolling Content */}
+        <div className="space-y-32">
+
+          <div>
+            <h3 className="text-3xl font-bold mb-4">Harvesting at Source</h3>
+            <p className="text-gray-600 text-lg">
+              We carefully harvest produce directly from partner farms ensuring freshness and quality.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-3xl font-bold mb-4">Sorting & Packing</h3>
+            <p className="text-gray-600 text-lg">
+              Produce is cleaned, graded, and packed in export-grade hygienic facilities.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-3xl font-bold mb-4">Sea Logistics</h3>
+            <p className="text-gray-600 text-lg">
+              We ship in temperature-controlled containers across global destinations.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-3xl font-bold mb-4">Air Exports</h3>
+            <p className="text-gray-600 text-lg">
+              For premium and urgent shipments, we deliver by air cargo worldwide.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
   );
 }
