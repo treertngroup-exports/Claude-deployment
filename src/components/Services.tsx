@@ -33,7 +33,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="section-padding bg-cream relative overflow-hidden">
+    <section id="services" className="section-padding bg-transparent relative overflow-hidden">
       {/* Background Decorations */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-primary-100/30 via-transparent to-transparent rounded-full -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-radial from-accent-100/20 via-transparent to-transparent rounded-full translate-x-1/3 translate-y-1/3" />
