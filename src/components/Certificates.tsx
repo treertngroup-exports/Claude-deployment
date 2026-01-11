@@ -59,7 +59,7 @@ const Certificates = () => {
   };
 
   return (
-    <section id="Certificates" className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
+    <section id="Certificates" className="py-16 md:py-24 bg-white/70 backdrop-blur-lg from-gray-50 to-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* ✅ Heading & Paragraph from Image 1 (unchanged) */}
