@@ -67,7 +67,7 @@ const Certificates = () => {
           <h2 className="section-title mb-4">
             Legal <span className="text-primary-700">Certifications</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="section-subtitle">
             We proudly hold registrations and authorizations from India's most recognized regulatory authorities, ensuring the highest standards of quality and compliance.
           </p>
         </div>
