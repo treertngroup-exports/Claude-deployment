@@ -13,13 +13,19 @@ import Founders from "./components/Founders";
 import Contact from "./components/Contact";
 import WhatsAppButton from "./components/WhatsAppButton";
 import GalleryPage from "./pages/GalleryPage";
-import ExportJourney from "./components/ExportJourney"; // 👈 NEW
+
+// 🆕 Sticky scrollytelling section (KNP-style)
+import ExportJourneySection from "./components/ExportJourneySection";
 
 function Home() {
   return (
     <div className="min-h-screen">
       <Hero />
       <Stats />
+
+      {/* 🧭 Export Journey Storytelling Section */}
+      <ExportJourneySection />
+
       <Services />
       <Gallery />
       <Certificates />
@@ -35,31 +41,15 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen flex flex-col relative">
-        {/* Floating Cinematic Export Journey */}
-        <ExportJourney />
-
-        {/* Navbar always on top */}
         <Navbar />
 
-        {/* Main Content */}
-        <main className="flex-grow relative z-0">
-          <div className="max-w-7xl mx-auto flex gap-12 px-4">
-            
-            {/* Main content column */}
-            <div className="flex-1">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/gallery" element={<GalleryPage />} />
-              </Routes>
-            </div>
-        
-            {/* Right visual spacer for floating cards */}
-            <div className="hidden lg:block w-[420px]" />
-          </div>
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/gallery" element={<GalleryPage />} />
+          </Routes>
         </main>
 
-
-        {/* Footer & Floating WhatsApp */}
         <Footer />
         <WhatsAppButton />
       </div>
