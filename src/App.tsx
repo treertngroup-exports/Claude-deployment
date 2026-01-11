@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect } from "react";
 import ExportJourney from "./components/ExportJourney";
+import ScrollBackground from "./components/ScrollBackground";
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
@@ -20,6 +21,7 @@ function Home() {
   return (
     <div className="min-h-screen overflow-hidden">
       <ExportJourney />
+      <ScrollBackground />
       <Hero />
       <Stats />
       <Services />
