@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-
+import PageLoader from "./components/PageLoader";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
@@ -71,6 +71,7 @@ function AppLayout() {
 export default function App() {
   return (
     <Router>
+      <PageLoader />
       <AppLayout />
     </Router>
   );
