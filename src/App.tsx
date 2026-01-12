@@ -13,6 +13,8 @@ import Founders from "./components/Founders";
 import Contact from "./components/Contact";
 import WhatsAppButton from "./components/WhatsAppButton";
 import GalleryPage from "./pages/GalleryPage";
+import AboutUs from "./pages/AboutUs";
+
 
 import ExportScrollImage from "./components/ExportScrollImage";
 
@@ -49,6 +51,8 @@ function AppLayout() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/about-us" element={<AboutUs />} />
+
         </Routes>
       </main>
 
