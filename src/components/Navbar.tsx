@@ -7,7 +7,7 @@ const navLinks = [
   { name: 'Services', href: '#services' },
   { name: 'Gallery', href: '/gallery' },
   { name: 'Quality', href: '#quality' },
-  { name: 'About Us', href: '#founders' },
+  { name: 'About Us', href: '/about-us' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -25,14 +25,22 @@ export default function Navbar() {
   }, []);
 
   const handleNavClick = (href: string) => {
-    setIsOpen(false);
-    if (href.startsWith('#')) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  };
+  setIsOpen(false);
+
+  if (!href.startsWith("#")) return;
+
+  if (location.pathname !== "/") {
+    // Navigate to home first
+    window.location.href = `/${href}`;
+    return;
+  }
+
+  const element = document.querySelector(href);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
 
   return (
     <header
