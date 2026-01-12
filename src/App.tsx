@@ -12,7 +12,6 @@ import WhyChoose from "./components/WhyChoose";
 import Founders from "./components/Founders";
 import Contact from "./components/Contact";
 import WhatsAppButton from "./components/WhatsAppButton";
-import ExportScrollImage from "./components/ExportScrollImage";
 
 import GalleryPage from "./pages/GalleryPage";
 import AboutUs from "./pages/AboutUs";
@@ -47,9 +46,6 @@ function AppLayout() {
   return (
     <div className="min-h-screen flex flex-col relative">
       <Navbar />
-
-      {/* Show scroll animation ONLY on home */}
-      {isHome && <ExportScrollImage />}
 
       <main className="flex-grow">
         <Routes>
