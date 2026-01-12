@@ -1,4 +1,4 @@
-import { Linkedin, Quote, Users } from 'lucide-react';
+import { Linkedin, Mail, Quote, Users } from 'lucide-react';
 
 const founders = [
     {
