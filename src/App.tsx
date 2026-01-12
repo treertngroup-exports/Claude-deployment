@@ -12,13 +12,14 @@ import WhyChoose from "./components/WhyChoose";
 import Founders from "./components/Founders";
 import Contact from "./components/Contact";
 import WhatsAppButton from "./components/WhatsAppButton";
+import ExportScrollImage from "./components/ExportScrollImage";
+
 import GalleryPage from "./pages/GalleryPage";
 import AboutUs from "./pages/AboutUs";
 
-
-import ExportScrollImage from "./components/ExportScrollImage";
-
-// Home Page Layout
+/* =========================
+   Home Page Layout
+========================= */
 function Home() {
   return (
     <div className="min-h-screen">
@@ -35,7 +36,10 @@ function Home() {
   );
 }
 
-// Wrapper to control route-based effects
+/* =========================
+   App Layout Wrapper
+   Controls route-based UI
+========================= */
 function AppLayout() {
   const location = useLocation();
   const isHome = location.pathname === "/";
@@ -44,7 +48,7 @@ function AppLayout() {
     <div className="min-h-screen flex flex-col relative">
       <Navbar />
 
-      {/* ✅ Only show scroll animation on HOME PAGE */}
+      {/* Show scroll animation ONLY on home */}
       {isHome && <ExportScrollImage />}
 
       <main className="flex-grow">
@@ -52,7 +56,6 @@ function AppLayout() {
           <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/about-us" element={<AboutUs />} />
-
         </Routes>
       </main>
 
@@ -62,12 +65,13 @@ function AppLayout() {
   );
 }
 
-function App() {
+/* =========================
+   Root App
+========================= */
+export default function App() {
   return (
     <Router>
       <AppLayout />
     </Router>
   );
 }
-
-export default App;
