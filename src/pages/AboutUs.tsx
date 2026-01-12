@@ -1,17 +1,53 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Contact from "../components/Contact";
+import { Linkedin, Quote, Users } from "lucide-react";
 
+/* =========================
+   Leadership Data
+========================= */
 const leadership = [
   {
-    name: "Founder & Managing Director",
-    description:
-      "With deep expertise in agricultural exports, our founder leads TREERT with a commitment to quality, transparency, and long-term partnerships.",
+    name: "Deepak T S",
+    role: "CEO",
+    image: "https://drive.google.com/thumbnail?id=1AA0bfJbO21liHcAj0lRXMHFkUvHO_muC",
+    bio: "Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.",
+    linkedin: "#",
   },
   {
-    name: "Operations Head",
-    description:
-      "Oversees sourcing, quality control, and logistics to ensure timely and reliable exports across global markets.",
+    name: "Dheetchith T",
+    role: "Chairman & Managing Director",
+    image: "https://drive.google.com/thumbnail?id=1o8ZeX1SqNn_0Hx6UuSjlYM0nF_Mqk_fh",
+    bio: "Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.",
+    linkedin: "#",
+  },
+  {
+    name: "Arvindh S M",
+    role: "Chief Product Officer",
+    image: "https://drive.google.com/thumbnail?id=1IaWAj3Qw_UNuCixxZ8Uu5Rth5lwXpeff",
+    bio: "Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.",
+    linkedin: "#",
+  },
+  {
+    name: "Praneshvar M",
+    role: "Sales Analyst",
+    image: "https://drive.google.com/thumbnail?id=1595uqpXXkfWrUoXoOJnVngHQ2eDhd7VQ",
+    bio: "Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.",
+    linkedin: "#",
+  },
+  {
+    name: "Barathi",
+    role: "Technical Advisor",
+    image: "https://drive.google.com/thumbnail?id=1IaWAj3Qw_UNuCixxZ8Uu5Rth5lwXpeff",
+    bio: "Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.",
+    linkedin: "#",
+  },
+  {
+    name: "Barath T S",
+    role: "Technical Advisor",
+    image: "https://drive.google.com/thumbnail?id=1595uqpXXkfWrUoXoOJnVngHQ2eDhd7VQ",
+    bio: "Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.",
+    linkedin: "#",
   },
 ];
 
@@ -20,83 +56,119 @@ export default function AboutUs() {
     <div className="min-h-screen bg-white">
       <Navbar />
 
-      {/* Hero */}
-      <section className="bg-green-50 py-20">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold text-gray-900">About Us</h1>
-          <p className="mt-4 text-lg text-gray-600">
-            Building trust through quality agricultural exports from India.
-          </p>
-        </div>
+      {/* =========================
+          Hero
+      ========================= */}
+      <section className="pt-32 pb-20 bg-gradient-to-b from-primary-50 to-white text-center">
+        <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          About <span className="text-primary-700">TREERT</span>
+        </h1>
+        <p className="max-w-3xl mx-auto text-lg text-gray-600">
+          Delivering premium agricultural exports from India while empowering
+          farmers and building long-term global partnerships.
+        </p>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10">
+      {/* =========================
+          Mission & Vision
+      ========================= */}
+      <section className="section-padding">
+        <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12">
           <div>
-            <h2 className="text-2xl font-semibold text-gray-900">Our Mission</h2>
-            <p className="mt-4 text-gray-600 leading-relaxed">
-              To deliver premium agricultural products to global markets while
-              maintaining uncompromising quality standards, ethical sourcing,
-              and reliable supply chains.
+            <h2 className="section-title mb-4">Our Mission</h2>
+            <p className="text-gray-600 leading-relaxed">
+              To connect India’s agricultural excellence with global markets
+              through ethical sourcing, strict quality standards, and reliable
+              export operations.
             </p>
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold text-gray-900">Our Vision</h2>
-            <p className="mt-4 text-gray-600 leading-relaxed">
-              To become a globally trusted export partner, recognized for
-              excellence, consistency, and long-term value creation in the
-              agricultural trade ecosystem.
+            <h2 className="section-title mb-4">Our Vision</h2>
+            <p className="text-gray-600 leading-relaxed">
+              To become a globally trusted agricultural export brand known for
+              transparency, consistency, and long-term impact.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Our Story */}
-      <section className="bg-gray-50 py-16">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-semibold text-gray-900 text-center">
-            Our Story
-          </h2>
-          <p className="mt-6 text-gray-600 leading-relaxed text-center">
-            TREERT was founded with a clear objective: to connect India’s rich
-            agricultural produce with international buyers seeking reliability
-            and quality. From sourcing at origin to final delivery, every step
-            of our process is built on trust, expertise, and attention to
-            detail.
-          </p>
-        </div>
+      {/* =========================
+          Our Story
+      ========================= */}
+      <section className="section-padding bg-gray-50 text-center">
+        <h2 className="section-title mb-6">Our Story</h2>
+        <p className="max-w-4xl mx-auto text-gray-600 text-lg leading-relaxed">
+          Founded in 2024, TREERT was created to bridge the gap between India’s
+          agricultural heritage and international demand. Our journey is built
+          on trust, quality, and strong farmer partnerships across the country.
+        </p>
       </section>
 
-      {/* Leadership */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-semibold text-gray-900 text-center">
-            Leadership
-          </h2>
+      {/* =========================
+          Leadership
+      ========================= */}
+      <section className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 rounded-full mb-6">
+              <Users className="w-4 h-4 text-primary-600" />
+              <span className="text-xs font-bold uppercase text-primary-700">
+                Leadership
+              </span>
+            </div>
+            <h2 className="section-title mb-4">
+              Meet Our <span className="text-primary-700">Team</span>
+            </h2>
+            <p className="section-subtitle mx-auto">
+              Experienced professionals guiding TREERT’s growth and global
+              success.
+            </p>
+          </div>
 
-          <div className="mt-10 grid md:grid-cols-2 gap-8">
-            {leadership.map((leader, index) => (
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {leadership.map((leader) => (
               <div
-                key={index}
-                className="border rounded-lg p-6 shadow-sm hover:shadow-md transition"
+                key={leader.name}
+                className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition"
               >
-                <h3 className="text-lg font-semibold text-gray-800">
+                <img
+                  src={leader.image}
+                  alt={leader.name}
+                  className="w-32 h-32 mx-auto rounded-xl object-cover mb-4"
+                />
+
+                <h3 className="text-xl font-bold text-center text-gray-900">
                   {leader.name}
                 </h3>
-                <p className="mt-3 text-gray-600 leading-relaxed">
-                  {leader.description}
+                <p className="text-primary-600 text-center mb-4">
+                  {leader.role}
                 </p>
+
+                <Quote className="w-8 h-8 text-primary-100 mx-auto mb-2" />
+                <p className="text-gray-600 text-center italic">
+                  “{leader.bio}”
+                </p>
+
+                <div className="flex justify-center mt-4">
+                  <a
+                    href={leader.linkedin}
+                    aria-label="LinkedIn"
+                    className="text-primary-700 hover:text-primary-900"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact */}
+      {/* =========================
+          Contact
+      ========================= */}
       <Contact />
-
       <Footer />
     </div>
   );
