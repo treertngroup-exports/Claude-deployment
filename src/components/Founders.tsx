@@ -1,22 +1,54 @@
-import { Linkedin, Mail, Quote, Users } from 'lucide-react';
+import { Linkedin, Quote, Users } from 'lucide-react';
 
 const founders = [
-  {
-    name: 'Founder Name',
-    role: 'Chief Executive Officer',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80',
-    bio: 'With over 15 years of experience in agricultural exports, leading TREERT\'s vision of connecting Indian farms to global markets.',
-    linkedin: '#',
-    email: 'ceo@treert.com',
-  },
-  {
-    name: 'Co-Founder Name',
-    role: 'Chief Operations Officer',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80',
-    bio: 'Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.',
-    linkedin: '#',
-    email: 'coo@treert.com',
-  },
+    {
+      name: 'Deepak T S',
+      role: 'CEO',
+      image: 'https://drive.google.com/thumbnail?id=1AA0bfJbO21liHcAj0lRXMHFkUvHO_muC',
+      bio: 'Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.',
+      linkedin: '#',
+      email: 'coo@treert.com',
+    },
+    {
+      name: 'Dheetchith T',
+      role: 'Chairman & Managing Director',
+      image: 'https://drive.google.com/thumbnail?id=1o8ZeX1SqNn_0Hx6UuSjlYM0nF_Mqk_fh',
+      bio: 'Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.',
+      linkedin: '#',
+      email: 'coo@treert.com',
+    },
+    {
+      name: 'Arvindh S M',
+      role: 'Chief Product Officer',
+      image: 'https://drive.google.com/thumbnail?id=1IaWAj3Qw_UNuCixxZ8Uu5Rth5lwXpeff',
+      bio: 'Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.',
+      linkedin: '#',
+      email: 'coo@treert.com',
+    },
+    {
+      name: 'Praneshvar M',
+      role: 'Sales Analyst',
+      image: 'https://drive.google.com/thumbnail?id=1595uqpXXkfWrUoXoOJnVngHQ2eDhd7VQ',
+      bio: 'Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.',
+      linkedin: '#',
+      email: 'coo@treert.com',
+    },
+    {
+      name: 'Barathi',
+      role: 'Technical Advisor',
+      image: 'https://drive.google.com/thumbnail?id=1IaWAj3Qw_UNuCixxZ8Uu5Rth5lwXpeff',
+      bio: 'Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.',
+      linkedin: '#',
+      email: 'coo@treert.com',
+    },
+    {
+      name: 'Barath T S',
+      role: 'Technical Advisor',
+      image: 'https://drive.google.com/thumbnail?id=1595uqpXXkfWrUoXoOJnVngHQ2eDhd7VQ',
+      bio: 'Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.',
+      linkedin: '#',
+      email: 'coo@treert.com',
+    },
 ];
 
 export default function Founders() {
