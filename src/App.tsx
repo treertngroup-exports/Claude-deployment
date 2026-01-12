@@ -1,7 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import PageLoader from "./components/PageLoader";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import WhatsAppButton from "./components/WhatsAppButton";
+
 import Hero from "./components/Hero";
 import Stats from "./components/Stats";
 import Services from "./components/Services";
@@ -11,13 +13,12 @@ import Quality from "./components/Quality";
 import WhyChoose from "./components/WhyChoose";
 import Founders from "./components/Founders";
 import Contact from "./components/Contact";
-import WhatsAppButton from "./components/WhatsAppButton";
 
 import GalleryPage from "./pages/GalleryPage";
 import AboutUs from "./pages/AboutUs";
 
 /* =========================
-   Home Page Layout
+   Home Page
 ========================= */
 function Home() {
   return (
@@ -36,15 +37,11 @@ function Home() {
 }
 
 /* =========================
-   App Layout Wrapper
-   Controls route-based UI
+   App Layout
 ========================= */
 function AppLayout() {
-  const location = useLocation();
-  const isHome = location.pathname === "/";
-
   return (
-    <div className="min-h-screen flex flex-col relative">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
 
       <main className="flex-grow">
@@ -67,7 +64,6 @@ function AppLayout() {
 export default function App() {
   return (
     <Router>
-      <PageLoader />
       <AppLayout />
     </Router>
   );
