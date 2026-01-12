@@ -1,5 +1,6 @@
 import { Apple, Carrot, Leaf, Package, ArrowRight } from "lucide-react";
 
+
 const services = [
   {
     icon: Apple,
