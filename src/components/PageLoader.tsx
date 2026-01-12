@@ -6,7 +6,7 @@ export default function PageLoader() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setVisible(false);
-    }, 1800); // adjust timing if needed
+    }, 2200); // slightly longer for visual impact
 
     return () => clearTimeout(timer);
   }, []);
@@ -15,26 +15,58 @@ export default function PageLoader() {
 
   return (
     <div className="fixed inset-0 z-[9999] bg-white flex items-center justify-center">
-      <div className="text-center">
-        {/* Logo */}
-        <img
-          src="/logo.png"
-          alt="TREERT"
-          className="w-24 mx-auto mb-6 animate-pulse"
-        />
+      <div className="max-w-5xl w-full px-6 grid md:grid-cols-2 gap-12 items-center">
+        
+        {/* =========================
+            Left: Welcome & Brand
+        ========================= */}
+        <div className="text-center md:text-left">
+          <img
+            src="/logo.png"
+            alt="TREERT"
+            className="w-24 mb-6 mx-auto md:mx-0"
+          />
 
-        {/* Brand Name */}
-        <h1 className="font-display text-2xl font-bold text-gray-900 tracking-wide">
-          TREERT
-        </h1>
+          <h1 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Welcome to <span className="text-primary-700">TREERT</span>
+          </h1>
 
-        <p className="text-sm text-gray-500 mt-2 tracking-widest uppercase">
-          Exports & Imports
-        </p>
+          {/* Loader Bar */}
+          <div className="w-56 h-1 bg-gray-200 rounded-full overflow-hidden">
+            <div className="h-full bg-primary-700 animate-loader-bar" />
+          </div>
+        </div>
 
-        {/* Loading Bar */}
-        <div className="mt-8 w-48 h-1 bg-gray-200 rounded-full overflow-hidden mx-auto">
-          <div className="h-full bg-primary-700 animate-loader-bar" />
+        {/* =========================
+            Right: Business Visuals
+        ========================= */}
+        <div className="hidden md:grid grid-cols-2 gap-6">
+          {/* Agriculture */}
+          <div className="rounded-2xl overflow-hidden shadow-soft">
+            <img
+              src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif"
+              alt="Agriculture farming"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Export / Logistics */}
+          <div className="rounded-2xl overflow-hidden shadow-soft">
+            <img
+              src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif"
+              alt="Global logistics"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Packaging */}
+          <div className="rounded-2xl overflow-hidden shadow-soft col-span-2">
+            <img
+              src="https://media.giphy.com/media/l4pTfx2qLszoacZRS/giphy.gif"
+              alt="Agricultural packaging"
+              className="w-full h-40 object-cover"
+            />
+          </div>
         </div>
       </div>
     </div>
