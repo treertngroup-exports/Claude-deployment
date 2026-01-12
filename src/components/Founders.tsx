@@ -1,4 +1,4 @@
-import { Linkedin, Mail, Quote, Users } from 'lucide-react';
+import { Linkedin, Quote, Users } from 'lucide-react';
 
 const founders = [
     {
@@ -7,7 +7,6 @@ const founders = [
       image: 'https://drive.google.com/thumbnail?id=1AA0bfJbO21liHcAj0lRXMHFkUvHO_muC',
       bio: 'Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.',
       linkedin: '#',
-      email: 'coo@treert.com',
     },
     {
       name: 'Dheetchith T',
@@ -15,7 +14,6 @@ const founders = [
       image: 'https://drive.google.com/thumbnail?id=1o8ZeX1SqNn_0Hx6UuSjlYM0nF_Mqk_fh',
       bio: 'Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.',
       linkedin: '#',
-      email: 'coo@treert.com',
     },
     {
       name: 'Arvindh S M',
@@ -23,7 +21,6 @@ const founders = [
       image: 'https://drive.google.com/thumbnail?id=1IaWAj3Qw_UNuCixxZ8Uu5Rth5lwXpeff',
       bio: 'Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.',
       linkedin: '#',
-      email: 'coo@treert.com',
     },
     {
       name: 'Praneshvar M',
@@ -31,7 +28,6 @@ const founders = [
       image: 'https://drive.google.com/thumbnail?id=1595uqpXXkfWrUoXoOJnVngHQ2eDhd7VQ',
       bio: 'Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.',
       linkedin: '#',
-      email: 'coo@treert.com',
     },
     {
       name: 'Barathi',
@@ -39,7 +35,6 @@ const founders = [
       image: 'https://drive.google.com/thumbnail?id=1IaWAj3Qw_UNuCixxZ8Uu5Rth5lwXpeff',
       bio: 'Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.',
       linkedin: '#',
-      email: 'coo@treert.com',
     },
     {
       name: 'Barath T S',
@@ -47,7 +42,6 @@ const founders = [
       image: 'https://drive.google.com/thumbnail?id=1595uqpXXkfWrUoXoOJnVngHQ2eDhd7VQ',
       bio: 'Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.',
       linkedin: '#',
-      email: 'coo@treert.com',
     },
 ];
 
@@ -118,13 +112,6 @@ export default function Founders() {
                     aria-label="LinkedIn"
                   >
                     <Linkedin className="w-5 h-5 text-primary-700" />
-                  </a>
-                  <a
-                    href={`mailto:${founder.email}`}
-                    className="w-10 h-10 bg-primary-50 hover:bg-primary-100 rounded-full flex items-center justify-center transition-colors"
-                    aria-label="Email"
-                  >
-                    <Mail className="w-5 h-5 text-primary-700" />
                   </a>
                 </div>
               </div>
