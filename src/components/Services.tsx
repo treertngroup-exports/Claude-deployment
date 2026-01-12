@@ -1,127 +1,133 @@
-import { Apple, Carrot, Leaf, Package, ArrowRight } from 'lucide-react';
+import { Apple, Carrot, Leaf, Package, ArrowRight } from "lucide-react";
 
 const services = [
   {
     icon: Apple,
-    title: 'Fresh Fruits',
-    description: 'Premium quality seasonal and exotic fruits including mangoes, pomegranates, grapes, and tender coconuts sourced directly from certified farms.',
-    image: 'https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=600&q=80',
-    items: ['Mangoes', 'Pomegranates', 'Grapes', 'Coconuts'],
+    title: "Fresh Fruits",
+    description:
+      "Premium quality seasonal and exotic fruits including mangoes, pomegranates, grapes, and tender coconuts sourced directly from certified farms.",
+    image:
+      "https://images.unsplash.com/photo-1592921870789-04563d55041c?q=80&w=1600",
+    items: ["Mangoes", "Pomegranates", "Grapes", "Coconuts"],
   },
   {
     icon: Carrot,
-    title: 'Fresh Vegetables',
-    description: 'Hand-picked vegetables from Indian farms ensuring freshness and nutritional value. Available year-round with cold chain logistics.',
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80',
-    items: ['Onions', 'Potatoes', 'Tomatoes', 'Green Chillies'],
+    title: "Fresh Vegetables",
+    description:
+      "Hand-picked vegetables from Indian farms ensuring freshness and nutritional value. Available year-round with cold chain logistics.",
+    image:
+      "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1600",
+    items: ["Onions", "Potatoes", "Tomatoes", "Green Chillies"],
   },
   {
     icon: Leaf,
-    title: 'Premium Spices',
-    description: 'Authentic Indian spices and herbs known for distinctive aroma and flavor. Quality tested and export-ready packaging.',
-    image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&q=80',
-    items: ['Turmeric', 'Cardamom', 'Pepper', 'Cinnamon'],
+    title: "Premium Spices",
+    description:
+      "Authentic Indian spices and herbs known for distinctive aroma and flavor. Quality tested and export-ready packaging.",
+    image:
+      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=1600",
+    items: ["Turmeric", "Cardamom", "Pepper", "Cinnamon"],
   },
   {
     icon: Package,
-    title: 'Value Added Products',
-    description: 'Processed and packaged agricultural products meeting international food safety standards for retail and wholesale markets.',
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJU8V4LxQqMwDCCntRFG40VQvR-X3_2K3Mhw&s",
-    items: ['Dried Fruits', 'Pickles', 'Preserves', 'Ready Mixes'],
+    title: "Value Added Products",
+    description:
+      "Processed and packaged agricultural products meeting international food safety standards for retail and wholesale markets.",
+    image:
+      "https://images.unsplash.com/photo-1606787366850-de6330128bfc?q=80&w=1600",
+    items: ["Dried Fruits", "Pickles", "Preserves", "Ready Mixes"],
   },
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="section-padding bg-cream relative overflow-hidden">
-      {/* Background Decorations */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-primary-100/30 via-transparent to-transparent rounded-full -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-radial from-accent-100/20 via-transparent to-transparent rounded-full translate-x-1/3 translate-y-1/3" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-50 to-accent-50 rounded-full border border-primary-100 mb-6">
-            <Package className="w-4 h-4 text-accent-600" />
-            <span className="text-xs font-bold tracking-widest uppercase text-primary-700">
-              Our Products
-            </span>
-          </div>
-          <h2 className="section-title mb-4">
-            What We <span className="text-primary-700">Export</span>
-          </h2>
-          <p className="section-subtitle mx-auto">
-            Premium agricultural products sourced directly from certified farms across India, 
-            delivered fresh to global markets.
-          </p>
+    <section id="services" className="bg-white">
+      {/* =========================
+          Header
+      ========================= */}
+      <div className="section-padding text-center max-w-7xl mx-auto px-4">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 rounded-full border border-primary-100 mb-6">
+          <Package className="w-4 h-4 text-primary-700" />
+          <span className="text-xs font-bold tracking-widest uppercase text-primary-700">
+            Our Products
+          </span>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className="group bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-large transition-all duration-500 hover:-translate-y-2"
-            >
-              {/* Image */}
-              <div className="relative h-64 overflow-hidden">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                
-                {/* Icon Badge */}
-                <div className="absolute top-6 left-6 w-14 h-14 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
-                  <service.icon className="w-7 h-7 text-primary-700" />
-                </div>
+        <h2 className="section-title mb-4">
+          What We <span className="text-primary-700">Harvest & Export</span>
+        </h2>
 
-                {/* Title on Image */}
-                <div className="absolute bottom-6 left-6 right-6">
-                  <h3 className="font-display text-2xl font-bold text-white mb-2">
+        <p className="section-subtitle mx-auto">
+          From Indian farms to global markets — harvested, processed, and
+          delivered with care.
+        </p>
+      </div>
+
+      {/* =========================
+          Parallax Sections
+      ========================= */}
+      <div className="space-y-24 pb-24">
+        {services.map((service, index) => (
+          <div
+            key={service.title}
+            className="relative h-[520px] overflow-hidden group"
+          >
+            {/* Parallax Background */}
+            <div
+              className="absolute inset-0 bg-cover bg-center scale-110 will-change-transform"
+              style={{
+                backgroundImage: `url(${service.image})`,
+                backgroundAttachment: "fixed",
+              }}
+            />
+
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-black/50" />
+
+            {/* Content */}
+            <div className="relative h-full flex items-center">
+              <div
+                className={`max-w-7xl mx-auto px-6 w-full flex ${
+                  index % 2 === 0 ? "justify-start" : "justify-end"
+                }`}
+              >
+                <div className="bg-white/95 backdrop-blur-md rounded-3xl p-8 lg:p-10 max-w-xl shadow-large">
+                  {/* Icon */}
+                  <div className="w-14 h-14 bg-primary-50 rounded-xl flex items-center justify-center mb-6">
+                    <service.icon className="w-7 h-7 text-primary-700" />
+                  </div>
+
+                  <h3 className="font-display text-3xl font-bold text-gray-900 mb-4">
                     {service.title}
                   </h3>
-                  <div className="flex flex-wrap gap-2">
+
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    {service.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {service.items.map((item) => (
                       <span
                         key={item}
-                        className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium text-white"
+                        className="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium"
                       >
                         {item}
                       </span>
                     ))}
                   </div>
+
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-2 text-primary-700 font-semibold hover:text-primary-900 transition-colors"
+                  >
+                    Enquire Now
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
                 </div>
               </div>
-
-              {/* Content */}
-              <div className="p-6 lg:p-8">
-                <p className="text-gray-600 leading-relaxed mb-6">
-                  {service.description}
-                </p>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 text-primary-700 font-semibold hover:text-primary-900 transition-colors group/link"
-                >
-                  Enquire Now
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-                </a>
-              </div>
             </div>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <div className="text-center mt-16">
-          <a
-            href="#contact"
-            className="btn-primary"
-          >
-            View All Products
-            <ArrowRight className="w-5 h-5" />
-          </a>
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   );
