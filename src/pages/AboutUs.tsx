@@ -11,7 +11,7 @@ const leadership = [
     name: "Deepak T S",
     role: "Chief Executive Officer",
     image: "https://drive.google.com/thumbnail?id=1AA0bfJbO21liHcAj0lRXMHFkUvHO_muC",
-    summary:
+    bio:
       "Leads TREERT’s global operations with a focus on supply chain excellence, quality assurance, and international trade compliance.",
     linkedin: "#",
   },
@@ -19,7 +19,7 @@ const leadership = [
     name: "Dheetchith T",
     role: "Chairman & Managing Director",
     image: "https://drive.google.com/thumbnail?id=1o8ZeX1SqNn_0Hx6UuSjlYM0nF_Mqk_fh",
-    summary:
+    bio:
       "Provides strategic direction and governance, driving long-term growth through strong farmer partnerships and global market expansion.",
     linkedin: "#",
   },
@@ -27,10 +27,30 @@ const leadership = [
     name: "Arvindh S M",
     role: "Chief Product Officer",
     image: "https://drive.google.com/thumbnail?id=1IaWAj3Qw_UNuCixxZ8Uu5Rth5lwXpeff",
-    summary:
+    bio:
       "Oversees product quality, sourcing standards, and export readiness across all agricultural categories.",
     linkedin: "#",
   },
+   {
+    name: "Praneshvar M",
+    role: "Sales Analyst",
+    image: "https://drive.google.com/thumbnail?id=1595uqpXXkfWrUoXoOJnVngHQ2eDhd7VQ",
+    bio: "Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.",
+    linkedin: "#",
+  },
+  {
+    name: "Barathi",
+    role: "Database Administrator",
+    image: "https://drive.google.com/thumbnail?id=1IaWAj3Qw_UNuCixxZ8Uu5Rth5lwXpeff",
+    bio: "Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.",
+    linkedin: "#",
+  },
+  {
+    name: "Barath T S",
+    role: "Financial Director",
+    image: "https://drive.google.com/thumbnail?id=1595uqpXXkfWrUoXoOJnVngHQ2eDhd7VQ",
+    bio: "Expert in supply chain management and quality control, ensuring seamless operations from farm to international markets.",
+    linkedin: "#",
 ];
 
 export default function AboutUs() {
@@ -149,7 +169,7 @@ export default function AboutUs() {
                   {leader.role}
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-6">
-                  {leader.summary}
+                  {leader.bio}
                 </p>
                 <a
                   href={leader.linkedin}
