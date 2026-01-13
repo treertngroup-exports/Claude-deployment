@@ -15,7 +15,7 @@ const scenes = [
     title: "Quality Checked",
     subtitle: "Sorted, graded and inspected to meet export standards",
     image:
-      "https://images.unsplash.com/photo-1581091012184-5c7b7d3b4c9f?q=80&w=2400",
+      "https://unsplash.com/photos/person-picking-fruits-from-stall-xJF4IEbxcZc",
   },
   {
     title: "Carefully Packed",
