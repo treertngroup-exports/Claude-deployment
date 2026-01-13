@@ -44,54 +44,72 @@ const scenes = [
 ];
 
 export default function ExportStory() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const panels = gsap.utils.toArray<HTMLElement>(".story-panel");
+    const ctx = gsap.context(() => {
+      const panels = gsap.utils.toArray<HTMLElement>(".story-panel");
 
-    const tween = gsap.to(panels, {
-      xPercent: -100 * (panels.length - 1),
-      ease: "none",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        pin: true,
-        scrub: 1,
-        end: () => `+=${window.innerWidth * panels.length}`,
-      },
-    });
+      panels.forEach((panel, index) => {
+        const image = panel.querySelector(".story-bg");
+        const content = panel.querySelector(".story-content");
 
-    return () => {
-      tween.kill();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
+        gsap.set(panel, { zIndex: panels.length - index });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: `top+=${index * window.innerHeight} top`,
+            end: `top+=${(index + 1) * window.innerHeight} top`,
+            scrub: true,
+            pin: true,
+            pinSpacing: false,
+          },
+        });
+
+        tl.fromTo(
+          image,
+          { scale: 1.2, opacity: 0 },
+          { scale: 1, opacity: 1, ease: "none" }
+        ).fromTo(
+          content,
+          { y: 80, opacity: 0 },
+          { y: 0, opacity: 1, ease: "none" },
+          "<"
+        );
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={containerRef} className="relative h-screen overflow-hidden">
-      <div className="flex h-full" style={{ width: `${scenes.length * 100}vw` }}>
-        {scenes.map((scene, i) => (
-          <div
-            key={i}
-            className="story-panel relative w-screen h-screen flex-shrink-0"
-          >
-            <img
-              src={scene.image}
-              className="absolute inset-0 w-full h-full object-cover"
-              alt=""
-            />
-            <div className="absolute inset-0 bg-black/50" />
+    <section ref={sectionRef} className="relative">
+      {scenes.map((scene, i) => (
+        <div
+          key={i}
+          className="story-panel h-screen w-full absolute top-0 left-0"
+        >
+          <img
+            src={scene.image}
+            className="story-bg absolute inset-0 w-full h-full object-cover"
+            alt=""
+          />
+          <div className="absolute inset-0 bg-black/50" />
 
-            <div className="relative z-10 h-full flex flex-col items-center justify-center text-center text-white px-6">
-              <h2 className="font-display text-4xl md:text-6xl font-bold mb-4">
-                {scene.title}
-              </h2>
-              <p className="text-xl md:text-2xl text-white/90">
-                {scene.subtitle}
-              </p>
-            </div>
+          <div className="story-content relative z-10 h-full flex flex-col items-center justify-center text-center text-white px-6">
+            <h2 className="font-display text-4xl md:text-6xl font-bold mb-4">
+              {scene.title}
+            </h2>
+            <p className="text-xl md:text-2xl text-white/90">
+              {scene.subtitle}
+            </p>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
+
+      {/* Spacer to allow scrolling */}
+      <div style={{ height: `${scenes.length * 100}vh` }} />
     </section>
   );
 }
