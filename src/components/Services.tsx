@@ -1,4 +1,6 @@
 import { Apple, Carrot, Leaf, Package, ArrowRight } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const categories = [
   {
@@ -24,23 +26,44 @@ const categories = [
 ];
 
 export default function Services() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Apple-style 3D camera motion
+  const rotateX = useTransform(scrollYProgress, [0, 0.4], [35, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.4], [0.85, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
+
   return (
     <section
+      ref={sectionRef}
       id="services"
-      className="relative min-h-screen bg-fixed bg-cover bg-center overflow-hidden"
+      className="relative min-h-[160vh] bg-fixed bg-cover bg-center"
       style={{
         backgroundImage:
           "url(https://images.unsplash.com/photo-1598514983318-2f64f8f4796c?q=80&w=2400)", // farmers harvesting
       }}
     >
-      {/* Dark overlay */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-black/60" />
 
-      {/* Perspective container */}
-      <div className="relative section-padding text-white [perspective:1200px]">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          {/* Floating header */}
-          <div className="animate-[scaleIn_1s_ease-out]">
+      {/* 3D Perspective Scene */}
+      <div className="relative h-screen flex items-center justify-center [perspective:1200px]">
+        <motion.div
+          style={{
+            rotateX,
+            scale,
+            opacity,
+            transformStyle: "preserve-3d",
+          }}
+          className="max-w-7xl mx-auto px-6 text-center text-white"
+        >
+          {/* Header */}
+          <div className="mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20 mb-6">
               <Package className="w-4 h-4 text-accent-400" />
               <span className="text-xs font-bold tracking-widest uppercase text-white">
@@ -53,24 +76,19 @@ export default function Services() {
             </h2>
 
             <p className="max-w-3xl mx-auto text-lg text-white/90">
-              Every shipment begins in the fields of India — grown by farmers,
-              harvested by hand, packed with care, and delivered worldwide.
+              Grown by farmers. Harvested by hand. Trusted by the world.
             </p>
           </div>
-        </div>
 
-        {/* Cards with 3D lift */}
-        <div className="max-w-7xl mx-auto px-4 mt-24">
+          {/* Floating Cards */}
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {/*{categories.map((cat, i) => (*/}
-            {categories.map((cat) => (
-
-              <div
+            {categories.map((cat, i) => (
+              <motion.div
                 key={cat.title}
-                className="group bg-white/95 backdrop-blur-xl rounded-2xl p-6 text-center shadow-large transition-all duration-700 hover:-translate-y-4 hover:shadow-glow"
                 style={{
-                  transform: "translateZ(40px)",
+                  transform: `translateZ(${(i + 1) * 40}px)`,
                 }}
+                className="bg-white/95 backdrop-blur-xl rounded-2xl p-6 text-center shadow-large"
               >
                 <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-primary-50 flex items-center justify-center">
                   <cat.icon className="w-7 h-7 text-primary-700" />
@@ -93,18 +111,18 @@ export default function Services() {
                   Enquire
                   <ArrowRight className="w-4 h-4" />
                 </a>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           {/* CTA */}
-          <div className="text-center mt-20 animate-[slideUp_1s_ease-out]">
+          <div className="text-center mt-16">
             <a href="#contact" className="btn-primary">
               Request Product Catalogue
               <ArrowRight className="w-5 h-5" />
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
