@@ -32,6 +32,7 @@ export default function Services() {
     target: sectionRef,
     offset: ["start end", "end start"],
   });
+  
 
   // Subtle cinematic camera motion
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
@@ -41,8 +42,9 @@ export default function Services() {
     <section
       ref={sectionRef}
       id="services"
-      className="relative min-h-[200vh] overflow-hidden"
+      className="relative min-h-screen overflow-hidden"
     >
+
       {/* VIDEO BACKGROUND */}
       <motion.video
         autoPlay
