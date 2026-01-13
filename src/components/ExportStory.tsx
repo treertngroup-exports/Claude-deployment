@@ -21,13 +21,13 @@ const scenes = [
     title: "Carefully Packed",
     subtitle: "Export-grade packing to maintain freshness",
     image:
-      "public/packing.png",
+      "packing.png",
   },
   {
     title: "Shipped Worldwide",
     subtitle: "Via sea ports and air cargo for global markets",
     image:
-      "public/shipping.png",
+      "shipping.png",
   },
 ];
 
