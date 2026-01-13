@@ -21,19 +21,13 @@ const scenes = [
     title: "Carefully Packed",
     subtitle: "Export-grade packing to maintain freshness",
     image:
-      "https://lh3.googleusercontent.com/gg-dl/ABS2GSnZJgoPIFpAkx6ZZpsP689b-5dBoZuliXWiIl2HPWmqg7B1cMBh48UEsqAEjUQ3SSgYwLj3ke0Ssh8e0XSlN0JzM8HawPVJvDJM8-a4Dfq_zb7QNGhS0Aom-AbOoB-1V9RjM11IoGDpH76APIZ8N7rBZ-rZCM7K1X6JRoXAsqBWYvYo=s1024-rj",
+      "public/packing.jpg",
   },
   {
     title: "Shipped Worldwide",
     subtitle: "Via sea ports and air cargo for global markets",
     image:
-      "https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=2400",
-  },
-  {
-    title: "Delivered to Your Business",
-    subtitle: "On-time delivery with complete traceability",
-    image:
-      "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2400",
+      "public/shipping.jpg",
   },
 ];
 
