@@ -33,40 +33,32 @@ export default function Services() {
     offset: ["start end", "end start"],
   });
 
-  // Camera movement on background
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
-  const rotateX = useTransform(scrollYProgress, [0, 1], [0, -6]);
+  // Subtle cinematic camera motion
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
 
   return (
     <section
       ref={sectionRef}
       id="services"
-      className="relative min-h-[160vh] overflow-hidden"
+      className="relative min-h-[200vh] overflow-hidden"
     >
-      {/* 3D MOVING BACKGROUND */}
-      <motion.div
-        style={{
-          scale,
-          y,
-          rotateX,
-          transformOrigin: "center center",
-        }}
-        className="absolute inset-0"
+      {/* VIDEO BACKGROUND */}
+      <motion.video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ scale, y }}
       >
-        <div
-          className="w-full h-full bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url(https://images.unsplash.com/photo-1598514983318-2f64f8f4796c?q=80&w=2400)", // farmers harvesting
-          }}
-        />
-      </motion.div>
+        <source src="/harvest.mp4" type="video/mp4" />
+      </motion.video>
 
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/50" />
 
-      {/* CONTENT (mostly static) */}
+      {/* CONTENT */}
       <div className="relative section-padding text-white">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20 mb-6">
