@@ -15,7 +15,7 @@ const scenes = [
     title: "Quality Checked",
     subtitle: "Sorted, graded and inspected to meet export standards",
     image:
-      "https://unsplash.com/photos/person-picking-fruits-from-stall-xJF4IEbxcZc",
+      "https://images.unsplash.com/photo-1552901543-312fdade4c4e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTg0fHxwYWNraW5nJTIwZnJ1aXRzJTIwYW5kJTIwdmVnZXRhYmxlcyUyMHRvJTIwZXhwb3J0c3xlbnwwfDB8MHx8fDI%3D",
   },
   {
     title: "Carefully Packed",
