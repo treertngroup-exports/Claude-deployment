@@ -1,12 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Contact from "../components/Contact";
 import { Linkedin, Users, Target, Eye, X } from "lucide-react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 /* =========================
    Leadership Data
@@ -59,56 +55,13 @@ const leadership = [
 export default function AboutUs() {
   const [selectedLeader, setSelectedLeader] = useState<typeof leadership[0] | null>(null);
 
-  const storyRef = useRef<HTMLDivElement>(null);
-  const missionRef = useRef<HTMLDivElement>(null);
-  const leadershipRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Story text animation
-    gsap.from(storyRef.current?.children || [], {
-      scrollTrigger: {
-        trigger: storyRef.current,
-        start: "top 80%",
-      },
-      y: 40,
-      opacity: 0,
-      stagger: 0.15,
-      duration: 0.8,
-      ease: "power2.out",
-    });
-
-    // Mission & Vision cards
-    gsap.from(missionRef.current?.children || [], {
-      scrollTrigger: {
-        trigger: missionRef.current,
-        start: "top 80%",
-      },
-      y: 50,
-      opacity: 0,
-      stagger: 0.2,
-      duration: 0.8,
-      ease: "power2.out",
-    });
-
-    // Leadership cards
-    gsap.from(".leader-card", {
-      scrollTrigger: {
-        trigger: leadershipRef.current,
-        start: "top 80%",
-      },
-      y: 60,
-      opacity: 0,
-      stagger: 0.15,
-      duration: 0.8,
-      ease: "power2.out",
-    });
-  }, []);
-
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
 
-      {/* HEADER */}
+      {/* =========================
+          PAGE HEADER
+      ========================= */}
       <section className="pt-20 pb-10 bg-gradient-to-b from-primary-50 to-white text-center">
         <p className="text-sm font-semibold tracking-widest text-primary-700 uppercase mb-3">
           About TREERT
@@ -121,30 +74,96 @@ export default function AboutUs() {
         </p>
       </section>
 
-      {/* STORY */}
+      {/* =========================
+          OUR STORY
+      ========================= */}
       <section className="section-padding bg-white">
-        <div ref={storyRef} className="max-w-4xl mx-auto px-4 text-gray-700 leading-relaxed text-lg space-y-6">
-          {/* story content stays same */}
-          {/* (keep your paragraphs and lists here exactly as before) */}
+        <div className="max-w-4xl mx-auto px-4 text-gray-700 leading-relaxed text-lg space-y-6">
+
+          <p>
+            TREERT began in <strong>2024 in Annur, Coimbatore</strong>, from a concern we could no longer ignore. Across Tamil Nadu, farmers worked season after season, yet their produce often went unnoticed, unsold, or undervalued.
+          </p>
+
+          <ul className="list-disc pl-6 space-y-3">
+            <li>We witnessed broken trust, repeated losses, and farmers leaving agriculture.</li>
+            <li>Coming from a farming background, we decided to change this reality.</li>
+            <li>By stepping into exports, we enabled farmers’ produce to reach markets that truly value quality.</li>
+          </ul>
+
+          <p>
+            Our first successful shipment of <strong>onions and tomatoes to Dubai</strong> proved that honest sourcing and hard work can cross borders.
+          </p>
+
+          <ul className="list-disc pl-6 space-y-3">
+            <li>Early challenges in packing and logistics pushed us to work hands-on.</li>
+            <li>We visited farms, inspected every bag, and honored every commitment.</li>
+            <li>Trust followed naturally.</li>
+          </ul>
+
+          <p>Today, TREERT exports fruits and vegetables to:</p>
+
+          <ul className="list-disc pl-6 space-y-2 font-medium text-primary-700">
+            <li>Vietnam</li>
+            <li>Indonesia</li>
+            <li>Thailand</li>
+            <li>Malaysia</li>
+            <li>Singapore</li>
+          </ul>
+
+          <p className="text-primary-800 font-semibold">
+            Our goal remains simple: To carry the strength of Indian farmers to Europe, the UK, Canada, and beyond — without forgetting where we started: in the fields.
+          </p>
+
         </div>
       </section>
 
-      {/* MISSION & VISION */}
+      {/* =========================
+          MISSION & VISION
+      ========================= */}
       <section className="section-padding bg-gray-50">
-        <div ref={missionRef} className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12">
-          {/* mission & vision blocks unchanged */}
+        <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12">
+          <div className="bg-white border rounded-2xl p-10">
+            <div className="flex items-center gap-3 mb-4">
+              <Target className="w-5 h-5 text-primary-700" />
+              <h3 className="text-2xl font-semibold">Our Mission</h3>
+            </div>
+            <p className="text-gray-600">
+              To connect India’s agricultural excellence with global markets by delivering consistent quality, ensuring compliance with international standards, and creating sustainable value.
+            </p>
+          </div>
+
+          <div className="bg-white border rounded-2xl p-10">
+            <div className="flex items-center gap-3 mb-4">
+              <Eye className="w-5 h-5 text-primary-700" />
+              <h3 className="text-2xl font-semibold">Our Vision</h3>
+            </div>
+            <p className="text-gray-600">
+              To become a globally respected agricultural export organization, recognized for reliability, transparency, and long-term partnerships.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* LEADERSHIP */}
-      <section ref={leadershipRef} className="section-padding bg-white">
+      {/* =========================
+          LEADERSHIP
+      ========================= */}
+      <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-14">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 rounded-full mb-6">
+              <Users className="w-4 h-4 text-primary-600" />
+              <span className="text-xs font-bold uppercase text-primary-700">Leadership</span>
+            </div>
+            <h2 className="text-3xl font-semibold mb-3">Executive Leadership</h2>
+            <p className="text-gray-600">Click any profile to view details.</p>
+          </div>
+
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
             {leadership.map((leader) => (
               <button
                 key={leader.name}
                 onClick={() => setSelectedLeader(leader)}
-                className="leader-card bg-gray-50 border rounded-2xl p-8 hover:shadow-lg transition text-center"
+                className="bg-gray-50 border rounded-2xl p-8 hover:shadow-lg transition text-center"
               >
                 <img src={leader.image} className="w-32 h-32 rounded-xl mx-auto mb-6 object-cover" />
                 <h3 className="text-xl font-semibold">{leader.name}</h3>
@@ -155,8 +174,29 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* MODAL remains unchanged */}
-      {/* Contact & Footer remain unchanged */}
+      {/* =========================
+          PROFILE MODAL
+      ========================= */}
+      {selectedLeader && (
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-4" onClick={() => setSelectedLeader(null)}>
+          <div className="bg-white max-w-lg w-full rounded-2xl p-8 relative" onClick={(e) => e.stopPropagation()}>
+            <button className="absolute top-4 right-4" onClick={() => setSelectedLeader(null)}>
+              <X />
+            </button>
+
+            <div className="text-center">
+              <img src={selectedLeader.image} className="w-32 h-32 mx-auto rounded-xl mb-6 object-cover" />
+              <h3 className="text-2xl font-semibold">{selectedLeader.name}</h3>
+              <p className="text-primary-700 mb-4">{selectedLeader.role}</p>
+              <p className="text-gray-600 mb-6">{selectedLeader.bio}</p>
+
+              <a href={selectedLeader.linkedin} className="inline-flex items-center gap-2 text-primary-700 font-semibold">
+                <Linkedin className="w-4 h-4" /> View LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Contact />
       <Footer />
