@@ -73,29 +73,14 @@ export default function AboutUs() {
           About TREERT
         </p>
         <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-3">
-          From Indian Fields to Global Markets
+          Our Success Story
         </h1>
         <p className="max-w-3xl mx-auto text-gray-600 mt-2">
           We are building a transparent, farmer-first export company connecting
           India’s agricultural strength with the world.
         </p>
-      </section>
 
-      {/* =========================
-          OUR STORY
-      ========================= */}
-      <section className="py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="mb-10">
-            <h2 className="text-3xl font-semibold text-gray-900 mb-2">
-              Our Story
-            </h2>
-            <p className="text-gray-500">
-              How TREERT began and where we are heading.
-            </p>
-          </div>
-
-          <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
+         <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
             <p>
               TREERT began in <strong>2024 in Annur, Coimbatore</strong>, from a
               concern we could no longer ignore. Across Tamil Nadu, farmers
@@ -135,7 +120,6 @@ export default function AboutUs() {
               To carry the strength of Indian farmers to Europe, the UK, Canada, and beyond — without forgetting where we started: in the fields.
             </p>
           </div>
-        </div>
       </section>
 
       {/* =========================
