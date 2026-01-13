@@ -21,7 +21,7 @@ const scenes = [
     title: "Carefully Packed",
     subtitle: "Export-grade packing to maintain freshness",
     image:
-      "https://media.istockphoto.com/id/157558600/photo/view-from-above-inside-a-busy-huge-industrial-warehouse.webp?a=1&b=1&s=612x612&w=0&k=20&c=mjR7Twg0sWuM1QvqU786H7Qw69mtHznkB_iWcH-P08k=",
+      "https://lh3.googleusercontent.com/gg-dl/ABS2GSnZJgoPIFpAkx6ZZpsP689b-5dBoZuliXWiIl2HPWmqg7B1cMBh48UEsqAEjUQ3SSgYwLj3ke0Ssh8e0XSlN0JzM8HawPVJvDJM8-a4Dfq_zb7QNGhS0Aom-AbOoB-1V9RjM11IoGDpH76APIZ8N7rBZ-rZCM7K1X6JRoXAsqBWYvYo=s1024-rj",
   },
   {
     title: "Shipped Worldwide",
