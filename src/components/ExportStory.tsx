@@ -35,22 +35,54 @@ export default function ExportStory() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const panels = gsap.utils.toArray<HTMLElement>(".story-panel");
+  const panels = gsap.utils.toArray<HTMLElement>(".story-panel");
 
-    // Set initial state
-    panels.forEach((panel, i) => {
-      if (i !== 0) gsap.set(panel, { autoAlpha: 0 });
-    });
+  gsap.set(panels, { autoAlpha: 0 });
+  gsap.set(panels[0], { autoAlpha: 1 });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: `+=${panels.length * window.innerHeight}`,
-        scrub: true,
-        pin: true,
-      },
-    });
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: containerRef.current,
+      start: "top top",
+      end: `+=${panels.length * window.innerHeight}`,
+      scrub: true,
+      pin: true,
+    },
+  });
+
+  panels.forEach((panel, i) => {
+    const image = panel.querySelector(".story-bg");
+    const content = panel.querySelector(".story-content");
+
+    // Hold scene
+    tl.to({}, { duration: 0.8 });
+
+    // Animate current scene in
+    tl.fromTo(
+      image,
+      { scale: 1.15 },
+      { scale: 1, duration: 1.2, ease: "none" },
+      "<"
+    ).fromTo(
+      content,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8 },
+      "<"
+    );
+
+    // Crossfade to next
+    if (i < panels.length - 1) {
+      tl.to(panel, { autoAlpha: 0, duration: 1 }, "+=0.6");
+      tl.to(panels[i + 1], { autoAlpha: 1, duration: 1 }, "<");
+    }
+  });
+
+  return () => {
+    ScrollTrigger.getAll().forEach((t) => t.kill());
+    tl.kill();
+  };
+}, []);
+
 
     panels.forEach((panel, i) => {
       const image = panel.querySelector(".story-bg");
