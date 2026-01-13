@@ -68,14 +68,14 @@ export default function AboutUs() {
       {/* =========================
           PAGE HEADER
       ========================= */}
-      <section className="pt-28 pb-20 bg-gradient-to-b from-primary-50 to-white text-center">
+      <section className="pt-20 pb-10 bg-gradient-to-b from-primary-50 to-white text-center">
         <p className="text-sm font-semibold tracking-widest text-primary-700 uppercase mb-4">
           About TREERT
         </p>
-        <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-3">
           From Indian Fields to Global Markets
         </h1>
-        <p className="max-w-3xl mx-auto text-gray-600">
+        <p className="max-w-3xl mx-auto text-gray-600 mt-2">
           We are building a transparent, farmer-first export company connecting
           India’s agricultural strength with the world.
         </p>
@@ -84,7 +84,7 @@ export default function AboutUs() {
       {/* =========================
           OUR STORY
       ========================= */}
-      <section className="section-padding bg-white">
+      <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4">
           <div className="mb-10">
             <h2 className="text-3xl font-semibold text-gray-900 mb-2">
