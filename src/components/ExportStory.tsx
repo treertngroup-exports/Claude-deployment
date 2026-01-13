@@ -9,25 +9,23 @@ const scenes = [
     title: "Harvested at the Farm",
     subtitle: "Fresh fruits and vegetables picked directly from farmers",
     image:
-      "https://plus.unsplash.com/premium_photo-1680344513206-b1f8ff2f4c8c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://plus.unsplash.com/premium_photo-1680344513206-b1f8ff2f4c8c?q=80&w=1740&auto=format&fit=crop",
   },
   {
     title: "Quality Checked",
     subtitle: "Sorted, graded and inspected to meet export standards",
     image:
-      "https://images.unsplash.com/photo-1552901543-312fdade4c4e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTg0fHxwYWNraW5nJTIwZnJ1aXRzJTIwYW5kJTIwdmVnZXRhYmxlcyUyMHRvJTIwZXhwb3J0c3xlbnwwfDB8MHx8fDI%3D",
+      "https://images.unsplash.com/photo-1552901543-312fdade4c4e?w=900&auto=format&fit=crop&q=60",
   },
   {
     title: "Carefully Packed",
     subtitle: "Export-grade packing to maintain freshness",
-    image:
-      "packing.png",
+    image: "/packing.png", // from public/
   },
   {
     title: "Shipped Worldwide",
     subtitle: "Via sea ports and air cargo for global markets",
-    image:
-      "shipping.png",
+    image: "/shipping.png", // from public/
   },
 ];
 
@@ -35,84 +33,47 @@ export default function ExportStory() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-  const panels = gsap.utils.toArray<HTMLElement>(".story-panel");
+    const panels = gsap.utils.toArray<HTMLElement>(".story-panel");
 
-  gsap.set(panels, { autoAlpha: 0 });
-  gsap.set(panels[0], { autoAlpha: 1 });
+    // Initial visibility
+    gsap.set(panels, { autoAlpha: 0 });
+    gsap.set(panels[0], { autoAlpha: 1 });
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: containerRef.current,
-      start: "top top",
-      end: `+=${panels.length * window.innerHeight}`,
-      scrub: true,
-      pin: true,
-    },
-  });
-
-  panels.forEach((panel, i) => {
-    const image = panel.querySelector(".story-bg");
-    const content = panel.querySelector(".story-content");
-
-    // Hold scene
-    tl.to({}, { duration: 0.8 });
-
-    // Animate current scene in
-    tl.fromTo(
-      image,
-      { scale: 1.15 },
-      { scale: 1, duration: 1.2, ease: "none" },
-      "<"
-    ).fromTo(
-      content,
-      { y: 40, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8 },
-      "<"
-    );
-
-    // Crossfade to next
-    if (i < panels.length - 1) {
-      tl.to(panel, { autoAlpha: 0, duration: 1 }, "+=0.6");
-      tl.to(panels[i + 1], { autoAlpha: 1, duration: 1 }, "<");
-    }
-  });
-
-  return () => {
-    ScrollTrigger.getAll().forEach((t) => t.kill());
-    tl.kill();
-  };
-}, []);
-
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        end: `+=${panels.length * window.innerHeight}`,
+        scrub: true,
+        pin: true,
+      },
+    });
 
     panels.forEach((panel, i) => {
       const image = panel.querySelector(".story-bg");
       const content = panel.querySelector(".story-content");
 
-      if (i > 0) {
-        tl.to(panels[i - 1], { autoAlpha: 0, duration: 0.5 });
-      }
+      // Hold scene
+      tl.to({}, { duration: 0.8 });
 
-      tl.fromTo(
-        panel,
-        { autoAlpha: 0 },
-        { autoAlpha: 1, duration: 0.5 }
-      );
-
+      // Animate current scene
       tl.fromTo(
         image,
-        { scale: 1.2 },
-        { scale: 1, duration: 1 },
+        { scale: 1.15 },
+        { scale: 1, duration: 1.2, ease: "none" },
         "<"
-      );
-
-      tl.fromTo(
+      ).fromTo(
         content,
-        { y: 80, opacity: 0 },
+        { y: 40, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.8 },
         "<"
       );
 
-      tl.to({}, { duration: 1 }); // pause between scenes
+      // Crossfade to next
+      if (i < panels.length - 1) {
+        tl.to(panel, { autoAlpha: 0, duration: 1 }, "+=0.6");
+        tl.to(panels[i + 1], { autoAlpha: 1, duration: 1 }, "<");
+      }
     });
 
     return () => {
