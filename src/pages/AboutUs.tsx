@@ -68,7 +68,7 @@ export default function AboutUs() {
       {/* =========================
           PAGE HEADER
       ========================= */}
-      <section className="pt-24 pb-20 bg-gradient-to-b from-primary-50 to-white text-center">
+      <section className="pt-20 pb-20 bg-gradient-to-b from-primary-50 to-white text-center">
         <p className="text-sm font-semibold tracking-widest text-primary-700 uppercase mb-4">
           About TREERT
         </p>
