@@ -47,26 +47,28 @@ export default function ExportStory() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const sections = gsap.utils.toArray(".story-panel");
+    const panels = gsap.utils.toArray<HTMLElement>(".story-panel");
 
-    gsap.to(sections, {
-      xPercent: -100 * (sections.length - 1),
+    const tween = gsap.to(panels, {
+      xPercent: -100 * (panels.length - 1),
       ease: "none",
       scrollTrigger: {
         trigger: containerRef.current,
         pin: true,
         scrub: 1,
-        end: () => `+=${window.innerWidth * sections.length}`,
+        end: () => `+=${window.innerWidth * panels.length}`,
       },
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach((t: ScrollTrigger) => t.kill());
-    };[]);
+      tween.kill();
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, []);
 
   return (
     <section ref={containerRef} className="relative h-screen overflow-hidden">
-      <div className="flex h-full w-[600vw]">
+      <div className="flex h-full" style={{ width: `${scenes.length * 100}vw` }}>
         {scenes.map((scene, i) => (
           <div
             key={i}
