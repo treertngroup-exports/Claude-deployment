@@ -33,61 +33,64 @@ export default function Services() {
     offset: ["start end", "end start"],
   });
 
-  // Apple-style 3D camera motion
-  const rotateX = useTransform(scrollYProgress, [0, 0.4], [35, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.4], [0.85, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
+  // Camera movement on background
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+  const rotateX = useTransform(scrollYProgress, [0, 1], [0, -6]);
 
   return (
     <section
       ref={sectionRef}
       id="services"
-      className="relative min-h-[160vh] bg-fixed bg-cover bg-center"
-      style={{
-        backgroundImage:
-          "url(https://images.unsplash.com/photo-1598514983318-2f64f8f4796c?q=80&w=2400)", // farmers harvesting
-      }}
+      className="relative min-h-[160vh] overflow-hidden"
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60" />
-
-      {/* 3D Perspective Scene */}
-      <div className="relative h-screen flex items-center justify-center [perspective:1200px]">
-        <motion.div
+      {/* 3D MOVING BACKGROUND */}
+      <motion.div
+        style={{
+          scale,
+          y,
+          rotateX,
+          transformOrigin: "center center",
+        }}
+        className="absolute inset-0"
+      >
+        <div
+          className="w-full h-full bg-cover bg-center"
           style={{
-            rotateX,
-            scale,
-            opacity,
-            transformStyle: "preserve-3d",
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1598514983318-2f64f8f4796c?q=80&w=2400)", // farmers harvesting
           }}
-          className="max-w-7xl mx-auto px-6 text-center text-white"
-        >
-          {/* Header */}
-          <div className="mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20 mb-6">
-              <Package className="w-4 h-4 text-accent-400" />
-              <span className="text-xs font-bold tracking-widest uppercase text-white">
-                Our Products
-              </span>
-            </div>
+        />
+      </motion.div>
 
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              From Fields to Global Markets
-            </h2>
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/50" />
 
-            <p className="max-w-3xl mx-auto text-lg text-white/90">
-              Grown by farmers. Harvested by hand. Trusted by the world.
-            </p>
+      {/* CONTENT (mostly static) */}
+      <div className="relative section-padding text-white">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20 mb-6">
+            <Package className="w-4 h-4 text-accent-400" />
+            <span className="text-xs font-bold tracking-widest uppercase text-white">
+              Our Products
+            </span>
           </div>
 
-          {/* Floating Cards */}
+          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
+            From Fields to Global Markets
+          </h2>
+
+          <p className="max-w-3xl mx-auto text-lg text-white/90">
+            Grown by farmers. Harvested by hand. Trusted by the world.
+          </p>
+        </div>
+
+        {/* Cards */}
+        <div className="max-w-7xl mx-auto px-4 mt-20">
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {categories.map((cat, i) => (
-              <motion.div
+            {categories.map((cat) => (
+              <div
                 key={cat.title}
-                style={{
-                  transform: `translateZ(${(i + 1) * 40}px)`,
-                }}
                 className="bg-white/95 backdrop-blur-xl rounded-2xl p-6 text-center shadow-large"
               >
                 <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-primary-50 flex items-center justify-center">
@@ -111,7 +114,7 @@ export default function Services() {
                   Enquire
                   <ArrowRight className="w-4 h-4" />
                 </a>
-              </motion.div>
+              </div>
             ))}
           </div>
 
@@ -122,7 +125,7 @@ export default function Services() {
               <ArrowRight className="w-5 h-5" />
             </a>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
