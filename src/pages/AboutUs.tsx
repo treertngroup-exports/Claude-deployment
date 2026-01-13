@@ -73,11 +73,16 @@ export default function AboutUs() {
           About TREERT
         </p>
         <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-          Leadership Team
+          Our Story
         </h1>
         <p className="max-w-2xl mx-auto text-gray-600">
-          Experienced professionals guiding TREERT’s agricultural export mission
-          across global markets.
+          TREERT began in 2024 in Annur, Coimbatore, from a concern we could no longer ignore. Across Tamil Nadu, farmers worked season after season, yet their produce often went unnoticed, unsold, or undervalued.
+Coming from a farming background ourselves, we witnessed broken trust, repeated losses, and the painful thought of farmers leaving agriculture behind. TREERT was founded to change that reality.
+By stepping into exports, we enabled farmers’ produce to reach markets that truly value quality. Our first successful shipment of onions and tomatoes to Dubai proved that honest sourcing and hard work can cross borders.
+The journey was not easy. Early challenges in packing and logistics pushed us to work hands-on—visiting farms, inspecting every bag, and honoring every commitment we made. Trust followed naturally.
+Today, TREERT exports fruits and vegetables to Vietnam, Indonesia, Thailand, Malaysia, and Singapore with the same care, consistency, and farmer-first approach.
+As we look ahead, our goal remains simple: to carry the strength of Indian farmers to Europe, the UK, Canada, and beyond—without forgetting where we started: in the fields.
+
         </p>
       </section>
 
