@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
-
+import Hero from "./components/ExportStory";
 import Hero from "./components/Hero";
 import Stats from "./components/Stats";
 import Services from "./components/Services";
@@ -23,15 +23,16 @@ import AboutUs from "./pages/AboutUs";
 function Home() {
   return (
     <div className="min-h-screen">
-      <Hero />
+       {/*<Hero />
       <Stats />
       <Services />
-      {/* <Gallery /> */}
+       <Gallery /> 
       <Certificates />
       <Quality />
       <WhyChoose />
       <Founders />
-      <Contact />
+      <Contact />*/}
+      <ExportStory />
     </div>
   );
 }
