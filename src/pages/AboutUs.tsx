@@ -66,47 +66,54 @@ export default function AboutUs() {
       <Navbar />
 
       {/* =========================
-          PAGE HEADER
+          ABOUT + STORY (SINGLE SECTION)
       ========================= */}
-      <section className="pt-20 pb-10 bg-gradient-to-b from-primary-50 to-white text-center">
-        <p className="text-sm font-semibold tracking-widest text-primary-700 uppercase mb-4">
-          About TREERT
-        </p>
-        <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-3">
-          Our Success Story
-        </h1>
-        <p className="max-w-3xl mx-auto text-gray-600 mt-2">
-          We are building a transparent, farmer-first export company connecting
-          India’s agricultural strength with the world.
-        </p>
+      <section className="pt-20 pb-16 bg-gradient-to-b from-primary-50 to-white">
+        <div className="max-w-4xl mx-auto px-4">
 
-         <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
+          {/* Header */}
+          <div className="text-center mb-10">
+            <p className="text-sm font-semibold tracking-widest text-primary-700 uppercase mb-2">
+              About TREERT
+            </p>
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-3">
+              Our Success Story
+            </h1>
+            <p className="text-gray-600">
+              We are building a transparent, farmer-first export company connecting
+              India’s agricultural strength with the world.
+            </p>
+          </div>
+
+          {/* Story */}
+          <div className="text-gray-700 leading-relaxed text-lg space-y-6">
+
             <p>
-              TREERT began in <strong>2024 in Annur, Coimbatore</strong>, from a
-              concern we could no longer ignore. Across Tamil Nadu, farmers
-              worked season after season, yet their produce often went
-              unnoticed, unsold, or undervalued.
+              TREERT began in <strong>2024 in Annur, Coimbatore</strong>, from a concern we could no longer ignore.
+              Across Tamil Nadu, farmers worked season after season, yet their produce often went unnoticed,
+              unsold, or undervalued.
             </p>
 
-            <ul className="list-disc pl-6 space-y-3">
+            <ul className="list-disc pl-6 space-y-2">
               <li>We witnessed broken trust, repeated losses, and farmers leaving agriculture.</li>
               <li>Coming from a farming background, we decided to change this reality.</li>
               <li>By stepping into exports, we enabled farmers’ produce to reach markets that truly value quality.</li>
             </ul>
 
             <p>
-              Our first successful shipment of <strong>onions and tomatoes to Dubai</strong> proved that honest sourcing and hard work can cross borders.
+              Our first successful shipment of <strong>onions and tomatoes to Dubai</strong> proved that honest sourcing
+              and hard work can cross borders.
             </p>
 
-            <ul className="list-disc pl-6 space-y-3">
+            <ul className="list-disc pl-6 space-y-2">
               <li>Early challenges in packing and logistics pushed us to work hands-on.</li>
               <li>We visited farms, inspected every bag, and honored every commitment.</li>
               <li>Trust followed naturally.</li>
             </ul>
 
-            <p>Today, TREERT exports fruits and vegetables to:</p>
+            <p className="font-medium">Today, TREERT exports fruits and vegetables to:</p>
 
-            <ul className="list-disc pl-6 space-y-2 font-medium text-primary-700">
+            <ul className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-primary-700 font-semibold">
               <li>Vietnam</li>
               <li>Indonesia</li>
               <li>Thailand</li>
@@ -114,12 +121,13 @@ export default function AboutUs() {
               <li>Singapore</li>
             </ul>
 
-            <p className="font-semibold">Our goal remains simple:</p>
-
             <p className="text-primary-800 font-semibold">
-              To carry the strength of Indian farmers to Europe, the UK, Canada, and beyond — without forgetting where we started: in the fields.
+              Our goal remains simple: To carry the strength of Indian farmers to Europe, the UK, Canada, and beyond —
+              without forgetting where we started: in the fields.
             </p>
+
           </div>
+        </div>
       </section>
 
       {/* =========================
@@ -133,10 +141,8 @@ export default function AboutUs() {
               <h3 className="text-2xl font-semibold text-gray-900">Our Mission</h3>
             </div>
             <p className="text-gray-600 leading-relaxed">
-              To connect India’s agricultural excellence with global markets by
-              delivering consistent quality, ensuring compliance with
-              international standards, and creating sustainable value for
-              farmers, partners, and customers.
+              To connect India’s agricultural excellence with global markets by delivering consistent quality,
+              ensuring compliance with international standards, and creating sustainable value.
             </p>
           </div>
 
@@ -146,32 +152,22 @@ export default function AboutUs() {
               <h3 className="text-2xl font-semibold text-gray-900">Our Vision</h3>
             </div>
             <p className="text-gray-600 leading-relaxed">
-              To become a globally respected agricultural export organization,
-              recognized for reliability, transparency, and long-term
-              partnerships across international markets.
+              To become a globally respected agricultural export organization, recognized for reliability,
+              transparency, and long-term partnerships.
             </p>
           </div>
         </div>
       </section>
 
       {/* =========================
-          LEADERSHIP
+          LEADERSHIP (POPUP)
       ========================= */}
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 rounded-full mb-6">
-              <Users className="w-4 h-4 text-primary-600" />
-              <span className="text-xs font-bold uppercase text-primary-700">
-                Leadership
-              </span>
-            </div>
-            <h2 className="text-3xl font-semibold text-gray-900 mb-3">
-              Executive Leadership
-            </h2>
-            <p className="max-w-2xl mx-auto text-gray-600">
-              Click on any leader to view their full profile.
-            </p>
+          <div className="text-center mb-12">
+            <Users className="w-8 h-8 mx-auto text-primary-600 mb-3" />
+            <h2 className="text-3xl font-semibold text-gray-900">Leadership</h2>
+            <p className="text-gray-600 mt-2">Click any leader to view full profile</p>
           </div>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
@@ -184,14 +180,12 @@ export default function AboutUs() {
                 <img
                   src={leader.image}
                   alt={leader.name}
-                  className="w-32 h-32 rounded-xl object-cover mx-auto mb-6"
+                  className="w-28 h-28 rounded-xl object-cover mx-auto mb-4"
                 />
                 <h3 className="text-xl font-semibold text-gray-900">
                   {leader.name}
                 </h3>
-                <p className="text-primary-700 font-medium">
-                  {leader.role}
-                </p>
+                <p className="text-primary-700 font-medium">{leader.role}</p>
               </button>
             ))}
           </div>
@@ -199,43 +193,22 @@ export default function AboutUs() {
       </section>
 
       {/* =========================
-          PROFILE MODAL
+          MODAL
       ========================= */}
       {selectedLeader && (
-        <div
-          className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-4"
-          onClick={() => setSelectedLeader(null)}
-        >
-          <div
-            className="bg-white max-w-lg w-full rounded-2xl p-8 relative animate-scale-in"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setSelectedLeader(null)}
-              className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full"
-            >
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-4" onClick={() => setSelectedLeader(null)}>
+          <div className="bg-white max-w-lg w-full rounded-2xl p-8 relative" onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => setSelectedLeader(null)} className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full">
               <X className="w-5 h-5" />
             </button>
 
             <div className="text-center">
-              <img
-                src={selectedLeader.image}
-                className="w-32 h-32 mx-auto rounded-xl object-cover mb-6"
-              />
-              <h3 className="text-2xl font-semibold text-gray-900">
-                {selectedLeader.name}
-              </h3>
-              <p className="text-primary-700 font-medium mb-4">
-                {selectedLeader.role}
-              </p>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                {selectedLeader.bio}
-              </p>
+              <img src={selectedLeader.image} className="w-28 h-28 mx-auto rounded-xl mb-4" />
+              <h3 className="text-2xl font-semibold">{selectedLeader.name}</h3>
+              <p className="text-primary-700 mb-4">{selectedLeader.role}</p>
+              <p className="text-gray-600 mb-6">{selectedLeader.bio}</p>
 
-              <a
-                href={selectedLeader.linkedin}
-                className="inline-flex items-center gap-2 text-primary-700 font-semibold"
-              >
+              <a href={selectedLeader.linkedin} className="inline-flex items-center gap-2 text-primary-700 font-semibold">
                 <Linkedin className="w-4 h-4" />
                 View LinkedIn Profile
               </a>
