@@ -62,7 +62,9 @@ export default function Services() {
         {/* Cards with 3D lift */}
         <div className="max-w-7xl mx-auto px-4 mt-24">
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {categories.map((cat, i) => (
+            {/*{categories.map((cat, i) => (*/}
+            {categories.map((cat) => (
+
               <div
                 key={cat.title}
                 className="group bg-white/95 backdrop-blur-xl rounded-2xl p-6 text-center shadow-large transition-all duration-700 hover:-translate-y-4 hover:shadow-glow"
