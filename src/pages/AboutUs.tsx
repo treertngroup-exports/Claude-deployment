@@ -68,35 +68,85 @@ export default function AboutUs() {
       {/* =========================
           PAGE HEADER
       ========================= */}
-      <section className="pt-36 pb-24 bg-gradient-to-b from-primary-50 to-white text-center">
+      <section className="pt-28 pb-20 bg-gradient-to-b from-primary-50 to-white text-center">
         <p className="text-sm font-semibold tracking-widest text-primary-700 uppercase mb-4">
           About TREERT
         </p>
         <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-          Our Story
+          From Indian Fields to Global Markets
         </h1>
-        <p className="max-w-2xl mx-auto text-gray-600">
-          TREERT began in 2024 in Annur, Coimbatore, from a concern we could no longer ignore. Across Tamil Nadu, farmers worked season after season, yet their produce often went unnoticed, unsold, or undervalued.
-Coming from a farming background ourselves, we witnessed broken trust, repeated losses, and the painful thought of farmers leaving agriculture behind. TREERT was founded to change that reality.
-By stepping into exports, we enabled farmers’ produce to reach markets that truly value quality. Our first successful shipment of onions and tomatoes to Dubai proved that honest sourcing and hard work can cross borders.
-The journey was not easy. Early challenges in packing and logistics pushed us to work hands-on—visiting farms, inspecting every bag, and honoring every commitment we made. Trust followed naturally.
-Today, TREERT exports fruits and vegetables to Vietnam, Indonesia, Thailand, Malaysia, and Singapore with the same care, consistency, and farmer-first approach.
-As we look ahead, our goal remains simple: to carry the strength of Indian farmers to Europe, the UK, Canada, and beyond—without forgetting where we started: in the fields.
-
+        <p className="max-w-3xl mx-auto text-gray-600">
+          We are building a transparent, farmer-first export company connecting
+          India’s agricultural strength with the world.
         </p>
+      </section>
+
+      {/* =========================
+          OUR STORY
+      ========================= */}
+      <section className="section-padding bg-white">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="mb-10">
+            <h2 className="text-3xl font-semibold text-gray-900 mb-2">
+              Our Story
+            </h2>
+            <p className="text-gray-500">
+              How TREERT began and where we are heading.
+            </p>
+          </div>
+
+          <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
+            <p>
+              TREERT began in <strong>2024 in Annur, Coimbatore</strong>, from a
+              concern we could no longer ignore. Across Tamil Nadu, farmers
+              worked season after season, yet their produce often went
+              unnoticed, unsold, or undervalued.
+            </p>
+
+            <ul className="list-disc pl-6 space-y-3">
+              <li>We witnessed broken trust, repeated losses, and farmers leaving agriculture.</li>
+              <li>Coming from a farming background, we decided to change this reality.</li>
+              <li>By stepping into exports, we enabled farmers’ produce to reach markets that truly value quality.</li>
+            </ul>
+
+            <p>
+              Our first successful shipment of <strong>onions and tomatoes to Dubai</strong> proved that honest sourcing and hard work can cross borders.
+            </p>
+
+            <ul className="list-disc pl-6 space-y-3">
+              <li>Early challenges in packing and logistics pushed us to work hands-on.</li>
+              <li>We visited farms, inspected every bag, and honored every commitment.</li>
+              <li>Trust followed naturally.</li>
+            </ul>
+
+            <p>Today, TREERT exports fruits and vegetables to:</p>
+
+            <ul className="list-disc pl-6 space-y-2 font-medium text-primary-700">
+              <li>Vietnam</li>
+              <li>Indonesia</li>
+              <li>Thailand</li>
+              <li>Malaysia</li>
+              <li>Singapore</li>
+            </ul>
+
+            <p className="font-semibold">Our goal remains simple:</p>
+
+            <p className="text-primary-800 font-semibold">
+              To carry the strength of Indian farmers to Europe, the UK, Canada, and beyond — without forgetting where we started: in the fields.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* =========================
           MISSION & VISION
       ========================= */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12">
-          <div className="border border-gray-100 rounded-2xl p-10">
+          <div className="bg-white border border-gray-100 rounded-2xl p-10">
             <div className="flex items-center gap-3 mb-4">
               <Target className="w-5 h-5 text-primary-700" />
-              <h2 className="text-2xl font-semibold text-gray-900">
-                Our Mission
-              </h2>
+              <h3 className="text-2xl font-semibold text-gray-900">Our Mission</h3>
             </div>
             <p className="text-gray-600 leading-relaxed">
               To connect India’s agricultural excellence with global markets by
@@ -106,12 +156,10 @@ As we look ahead, our goal remains simple: to carry the strength of Indian farme
             </p>
           </div>
 
-          <div className="border border-gray-100 rounded-2xl p-10">
+          <div className="bg-white border border-gray-100 rounded-2xl p-10">
             <div className="flex items-center gap-3 mb-4">
               <Eye className="w-5 h-5 text-primary-700" />
-              <h2 className="text-2xl font-semibold text-gray-900">
-                Our Vision
-              </h2>
+              <h3 className="text-2xl font-semibold text-gray-900">Our Vision</h3>
             </div>
             <p className="text-gray-600 leading-relaxed">
               To become a globally respected agricultural export organization,
@@ -123,22 +171,22 @@ As we look ahead, our goal remains simple: to carry the strength of Indian farme
       </section>
 
       {/* =========================
-          LEADERSHIP GRID
+          LEADERSHIP
       ========================= */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 rounded-full mb-6">
               <Users className="w-4 h-4 text-primary-600" />
               <span className="text-xs font-bold uppercase text-primary-700">
                 Leadership
               </span>
             </div>
-            <h2 className="text-3xl font-semibold text-gray-900 mb-4">
+            <h2 className="text-3xl font-semibold text-gray-900 mb-3">
               Executive Leadership
             </h2>
             <p className="max-w-2xl mx-auto text-gray-600">
-              Click any leader to view their full profile.
+              Click on any leader to view their full profile.
             </p>
           </div>
 
@@ -147,7 +195,7 @@ As we look ahead, our goal remains simple: to carry the strength of Indian farme
               <button
                 key={leader.name}
                 onClick={() => setSelectedLeader(leader)}
-                className="bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-lg transition text-center"
+                className="bg-gray-50 border border-gray-100 rounded-2xl p-8 hover:shadow-lg transition text-center"
               >
                 <img
                   src={leader.image}
