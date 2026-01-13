@@ -60,8 +60,9 @@ export default function ExportStory() {
       },
     });
 
-    return () => ScrollTrigger.getAll().forEach((t) => t.kill());
-  }, []);
+    return () => {
+      ScrollTrigger.getAll().forEach((t: ScrollTrigger) => t.kill());
+    };[]);
 
   return (
     <section ref={containerRef} className="relative h-screen overflow-hidden">
