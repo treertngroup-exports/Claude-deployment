@@ -38,70 +38,89 @@ const scenes = [
 ];
 
 export default function ExportStory() {
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const panels = gsap.utils.toArray<HTMLElement>(".story-panel");
+    const panels = gsap.utils.toArray<HTMLElement>(".story-panel");
 
-      panels.forEach((panel, index) => {
-        const image = panel.querySelector(".story-bg");
-        const content = panel.querySelector(".story-content");
+    // Set initial state
+    panels.forEach((panel, i) => {
+      if (i !== 0) gsap.set(panel, { autoAlpha: 0 });
+    });
 
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: `top+=${index * window.innerHeight} top`,
-            end: `top+=${(index + 1) * window.innerHeight} top`,
-            scrub: true,
-            pin: true,
-            pinSpacing: false,
-          },
-        });
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        end: `+=${panels.length * window.innerHeight}`,
+        scrub: true,
+        pin: true,
+      },
+    });
 
-        tl.fromTo(
-          image,
-          { scale: 1.15, opacity: 0 },
-          { scale: 1, opacity: 1, ease: "none" }
-        ).fromTo(
-          content,
-          { y: 80, opacity: 0 },
-          { y: 0, opacity: 1, ease: "none" },
-          "<"
-        );
-      });
-    }, sectionRef);
+    panels.forEach((panel, i) => {
+      const image = panel.querySelector(".story-bg");
+      const content = panel.querySelector(".story-content");
 
-    return () => ctx.revert();
+      if (i > 0) {
+        tl.to(panels[i - 1], { autoAlpha: 0, duration: 0.5 });
+      }
+
+      tl.fromTo(
+        panel,
+        { autoAlpha: 0 },
+        { autoAlpha: 1, duration: 0.5 }
+      );
+
+      tl.fromTo(
+        image,
+        { scale: 1.2 },
+        { scale: 1, duration: 1 },
+        "<"
+      );
+
+      tl.fromTo(
+        content,
+        { y: 80, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8 },
+        "<"
+      );
+
+      tl.to({}, { duration: 1 }); // pause between scenes
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+      tl.kill();
+    };
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-black">
-      {scenes.map((scene, i) => (
-        <div
-          key={i}
-          className="story-panel h-screen w-full absolute top-0 left-0"
-        >
-          <img
-            src={scene.image}
-            className="story-bg absolute inset-0 w-full h-full object-cover"
-            alt=""
-          />
-          <div className="absolute inset-0 bg-black/50" />
+    <section ref={containerRef} className="relative h-screen overflow-hidden">
+      <div className="relative h-screen w-full">
+        {scenes.map((scene, i) => (
+          <div
+            key={i}
+            className="story-panel absolute inset-0 h-full w-full"
+          >
+            <img
+              src={scene.image}
+              className="story-bg absolute inset-0 w-full h-full object-cover"
+              alt=""
+            />
+            <div className="absolute inset-0 bg-black/50" />
 
-          <div className="story-content relative z-10 h-full flex flex-col items-center justify-center text-center text-white px-6">
-            <h2 className="font-display text-4xl md:text-6xl font-bold mb-4">
-              {scene.title}
-            </h2>
-            <p className="text-xl md:text-2xl text-white/90">
-              {scene.subtitle}
-            </p>
+            <div className="story-content relative z-10 h-full flex flex-col items-center justify-center text-center text-white px-6">
+              <h2 className="font-display text-4xl md:text-6xl font-bold mb-4">
+                {scene.title}
+              </h2>
+              <p className="text-xl md:text-2xl text-white/90">
+                {scene.subtitle}
+              </p>
+            </div>
           </div>
-        </div>
-      ))}
-
-      {/* Scroll space */}
-      <div style={{ height: `${scenes.length * 100}vh` }} />
+        ))}
+      </div>
     </section>
   );
 }
