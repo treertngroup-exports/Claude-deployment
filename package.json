@@ -15,7 +15,11 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.9.6",
-    "gsap": "^3.14.2"
+    "gsap": "^3.14.2",
+    "@supabase/supabase-js": "^2.57.4",
+    "react-select": "^5.10.2",
+    "react-world-flags": "^1.6.0",
+    "react-phone-input-2": "^2.15.1"
 
   },
   "devDependencies": {
