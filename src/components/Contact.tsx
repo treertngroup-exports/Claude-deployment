@@ -1,18 +1,5 @@
-import { useState, useEffect } from "react";
-import {
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-  Send,
-  Trash2,
-  PlusCircle,
-  MessageSquare,
-} from "lucide-react";
-
-import PhoneInput from "react-phone-input-2";
-import Select from "react-select";
-import Flag from "react-world-flags";
+import { useState } from "react";
+import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 
 /* ---------------- CONTACT INFO ---------------- */
 const contactInfo = [
@@ -40,81 +27,23 @@ const contactInfo = [
   },
 ];
 
-/* ---------------- DIAL CODES (MINIMAL) ---------------- */
-const phoneCodes: any = {
-  IN: "91",
-  AE: "971",
-  US: "1",
-  GB: "44",
-  SG: "65",
-};
-
-/* ---------------- NATIONALITIES (SHORT LIST - YOU CAN EXTEND) ---------------- */
-const nationalityOptions = [
-  { value: "IN", label: "India" },
-  { value: "AE", label: "United Arab Emirates" },
-  { value: "US", label: "United States" },
-  { value: "GB", label: "United Kingdom" },
-  { value: "SG", label: "Singapore" },
-];
-
 const airPorts = ["JFK (New York)", "DXB (Dubai)", "SIN (Singapore)", "LAX (Los Angeles)"];
 const seaPorts = ["Shanghai Port", "Singapore Port", "Rotterdam Port", "Nhava Sheva (India)"];
 
-/* ===================================================== */
-
 export default function Contact() {
-  const [formData, setFormData] = useState<any>({
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
-    nationality: "",
+    country: "",
     phone: "",
     cargoType: "air",
     port: "",
-    products: [{ product: "", quantity: "", unit: "ton" }],
     message: "",
   });
 
   const [errors, setErrors] = useState<any>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
-
-  /* -------- AUTO SET DIAL CODE WHEN COUNTRY CHANGES -------- */
-  useEffect(() => {
-    if (formData.nationality && phoneCodes[formData.nationality]) {
-      const dial = phoneCodes[formData.nationality];
-      if (!formData.phone || formData.phone.startsWith("+")) {
-        setFormData((prev: any) => ({ ...prev, phone: `+${dial}` }));
-      }
-    }
-  }, [formData.nationality]);
-
-  /* ---------------- PRODUCT HELPERS ---------------- */
-  const addProductRow = () => {
-    setFormData((prev: any) => ({
-      ...prev,
-      products: [...prev.products, { product: "", quantity: "", unit: "ton" }],
-    }));
-  };
-
-  const removeProductRow = (index: number) => {
-    setFormData((prev: any) => {
-      const products = [...prev.products];
-      products.splice(index, 1);
-      return {
-        ...prev,
-        products: products.length ? products : [{ product: "", quantity: "", unit: "ton" }],
-      };
-    });
-  };
-
-  const updateProductRow = (index: number, key: string, value: any) => {
-    setFormData((prev: any) => {
-      const products = [...prev.products];
-      products[index] = { ...products[index], [key]: value };
-      return { ...prev, products };
-    });
-  };
 
   /* ---------------- VALIDATION ---------------- */
   const validate = () => {
@@ -123,7 +52,7 @@ export default function Contact() {
     if (!formData.name.trim()) tempErrors.name = "Name is required";
     if (!formData.email.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/))
       tempErrors.email = "Valid email is required";
-    if (!formData.nationality) tempErrors.nationality = "Nationality is required";
+    if (!formData.country.trim()) tempErrors.country = "Country is required";
     if (!formData.phone || formData.phone.length < 8)
       tempErrors.phone = "Valid phone number required";
     if (!formData.port) tempErrors.port = "Please select a port";
@@ -134,7 +63,7 @@ export default function Contact() {
   };
 
   /* ---------------- SUBMIT ---------------- */
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
@@ -155,13 +84,13 @@ export default function Contact() {
       setFormData({
         name: "",
         email: "",
-        nationality: "",
+        country: "",
         phone: "",
         cargoType: "air",
         port: "",
-        products: [{ product: "", quantity: "", unit: "ton" }],
         message: "",
       });
+
       setErrors({});
     } catch (err) {
       setSubmitMessage("❌ Failed to send. Please try again.");
@@ -183,61 +112,72 @@ export default function Contact() {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* ================= FORM ================= */}
           <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow-xl space-y-6">
+            <div>
+              <input
+                placeholder="Your Name"
+                className="w-full border-2 p-3 rounded-lg"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              />
+              {errors.name && <p className="text-red-600 text-sm">{errors.name}</p>}
+            </div>
 
-            <input
-              placeholder="Your Name"
-              className="w-full border-2 p-3 rounded-lg"
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            />
-            {errors.name && <p className="text-red-600 text-sm">{errors.name}</p>}
+            <div>
+              <input
+                placeholder="Your Email"
+                className="w-full border-2 p-3 rounded-lg"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              />
+              {errors.email && <p className="text-red-600 text-sm">{errors.email}</p>}
+            </div>
 
-            <input
-              placeholder="Your Email"
-              className="w-full border-2 p-3 rounded-lg"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            />
-            {errors.email && <p className="text-red-600 text-sm">{errors.email}</p>}
+            <div>
+              <input
+                placeholder="Your Country"
+                className="w-full border-2 p-3 rounded-lg"
+                value={formData.country}
+                onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+              />
+              {errors.country && <p className="text-red-600 text-sm">{errors.country}</p>}
+            </div>
 
-            <Select
-              options={nationalityOptions}
-              value={nationalityOptions.find((n) => n.value === formData.nationality)}
-              onChange={(opt: any) => setFormData({ ...formData, nationality: opt?.value || "" })}
-              formatOptionLabel={(c: any) => (
-                <div className="flex gap-2 items-center">
-                  <Flag code={c.value} style={{ width: 24 }} /> {c.label}
-                </div>
-              )}
-            />
-            {errors.nationality && <p className="text-red-600 text-sm">{errors.nationality}</p>}
+            <div>
+              <input
+                placeholder="Your Phone"
+                className="w-full border-2 p-3 rounded-lg"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              />
+              {errors.phone && <p className="text-red-600 text-sm">{errors.phone}</p>}
+            </div>
 
-            <PhoneInput
-              country={(formData.nationality || "IN").toLowerCase()}
-              value={formData.phone}
-              onChange={(phone: any) => setFormData({ ...formData, phone })}
-              inputClass="!w-full !py-3 !border-2 !rounded-lg"
-            />
-            {errors.phone && <p className="text-red-600 text-sm">{errors.phone}</p>}
+            <div>
+              <select
+                className="w-full border-2 p-3 rounded-lg"
+                value={formData.port}
+                onChange={(e) => setFormData({ ...formData, port: e.target.value })}
+              >
+                <option value="">Select Port</option>
+                {(formData.cargoType === "air" ? airPorts : seaPorts).map((p) => (
+                  <option key={p} value={p}>
+                    {p}
+                  </option>
+                ))}
+              </select>
+              {errors.port && <p className="text-red-600 text-sm">{errors.port}</p>}
+            </div>
 
-            <Select
-              options={(formData.cargoType === "air" ? airPorts : seaPorts).map((p) => ({
-                value: p,
-                label: p,
-              }))}
-              placeholder="Select Port"
-              onChange={(opt: any) => setFormData({ ...formData, port: opt?.value })}
-            />
-            {errors.port && <p className="text-red-600 text-sm">{errors.port}</p>}
-
-            <textarea
-              placeholder="Your Message"
-              rows={4}
-              className="w-full border-2 p-3 rounded-lg"
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-            />
-            {errors.message && <p className="text-red-600 text-sm">{errors.message}</p>}
+            <div>
+              <textarea
+                placeholder="Your Message"
+                rows={4}
+                className="w-full border-2 p-3 rounded-lg"
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              />
+              {errors.message && <p className="text-red-600 text-sm">{errors.message}</p>}
+            </div>
 
             <button
               type="submit"
