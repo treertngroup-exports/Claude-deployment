@@ -40,28 +40,30 @@ const leadership = [
     name: "Raghul D",
     role: "Manager (UAE)",
     image: "https://drive.google.com/thumbnail?id=1IaWAj3Qw_UNuCixxZ8Uu5Rth5lwXpeff",
-    bio: "Manages data infrastructure, reporting systems, and operational accuracy across internal business processes.",
+    bio: "Manages regional operations and partner relationships in the UAE market.",
     linkedin: "#",
   },
   {
     name: "Barath T S",
     role: "Financial Director",
     image: "https://drive.google.com/thumbnail?id=1595uqpXXkfWrUoXoOJnVngHQ2eDhd7VQ",
-    bio: "Oversees financial planning, compliance, and risk management to ensure sustainable and transparent growth.",
+    bio: "Oversees financial planning, compliance, and risk management to ensure sustainable growth.",
     linkedin: "#",
   },
-   
   {
     name: "Jeevini",
     role: "Manager (UK)",
     image: "https://drive.google.com/thumbnail?id=1595uqpXXkfWrUoXoOJnVngHQ2eDhd7VQ",
-    bio: "Oversees financial planning, compliance, and risk management to ensure sustainable and transparent growth.",
+    bio: "Handles UK operations, logistics coordination, and customer partnerships.",
     linkedin: "#",
   },
 ];
 
 export default function AboutUs() {
   const [selectedLeader, setSelectedLeader] = useState<typeof leadership[0] | null>(null);
+
+  const founders = leadership.slice(0, 2);
+  const team = leadership.slice(2);
 
   return (
     <div className="min-h-screen bg-white">
@@ -70,7 +72,7 @@ export default function AboutUs() {
       {/* =========================
           PAGE HEADER
       ========================= */}
-      <section className="pt-20 pb-2 bg-gradient-to-b from-primary-50 to-white text-center">
+      <section className="pt-20 pb-10 bg-gradient-to-b from-primary-50 to-white text-center">
         <p className="text-sm font-semibold tracking-widest text-primary-700 uppercase mb-3">
           About TREERT
         </p>
@@ -85,9 +87,8 @@ export default function AboutUs() {
       {/* =========================
           OUR STORY
       ========================= */}
-      <section className="section-padding bg-white">
+      <section className="py-10 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-gray-700 leading-relaxed text-lg space-y-6">
-
           <p>
             TREERT began in <strong>2024 in Annur, Coimbatore</strong>, from a concern we could no longer ignore. Across Tamil Nadu, farmers worked season after season, yet their produce often went unnoticed, unsold, or undervalued.
           </p>
@@ -121,14 +122,13 @@ export default function AboutUs() {
           <p className="text-primary-800 font-semibold">
             Our goal remains simple: To carry the strength of Indian farmers to Europe, the UK, Canada, and beyond — without forgetting where we started: in the fields.
           </p>
-
         </div>
       </section>
 
       {/* =========================
           MISSION & VISION
       ========================= */}
-      <section className="section-padding bg-gray-50">
+      <section className="py-12 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12">
           <div className="bg-white border rounded-2xl p-10">
             <div className="flex items-center gap-3 mb-4">
@@ -136,7 +136,7 @@ export default function AboutUs() {
               <h3 className="text-2xl font-semibold">Our Mission</h3>
             </div>
             <p className="text-gray-600">
-              To connect India’s agricultural excellence with global markets by delivering consistent quality, ensuring compliance with international standards, and creating sustainable value.
+              To connect India’s agricultural excellence with global markets by delivering consistent quality, ensuring compliance, and creating sustainable value.
             </p>
           </div>
 
@@ -146,7 +146,7 @@ export default function AboutUs() {
               <h3 className="text-2xl font-semibold">Our Vision</h3>
             </div>
             <p className="text-gray-600">
-              To become a globally respected agricultural export organization, recognized for reliability, transparency, and long-term partnerships.
+              To become a globally respected agricultural export organization recognized for reliability and transparency.
             </p>
           </div>
         </div>
@@ -155,9 +155,9 @@ export default function AboutUs() {
       {/* =========================
           LEADERSHIP
       ========================= */}
-      <section className="section-padding bg-white">
+      <section className="py-14 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-14">
+          <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 rounded-full mb-6">
               <Users className="w-4 h-4 text-primary-600" />
               <span className="text-xs font-bold uppercase text-primary-700">Leadership</span>
@@ -166,14 +166,30 @@ export default function AboutUs() {
             <p className="text-gray-600">Click any profile to view details.</p>
           </div>
 
+          {/* Founders */}
+          <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto mb-16">
+            {founders.map((leader) => (
+              <button
+                key={leader.name}
+                onClick={() => setSelectedLeader(leader)}
+                className="bg-gray-50 border rounded-2xl p-10 hover:shadow-xl transition text-center"
+              >
+                <img src={leader.image} className="w-36 h-36 rounded-xl mx-auto mb-6 object-cover" />
+                <h3 className="text-2xl font-semibold">{leader.name}</h3>
+                <p className="text-primary-700">{leader.role}</p>
+              </button>
+            ))}
+          </div>
+
+          {/* Team */}
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
-            {leadership.map((leader) => (
+            {team.map((leader) => (
               <button
                 key={leader.name}
                 onClick={() => setSelectedLeader(leader)}
                 className="bg-gray-50 border rounded-2xl p-8 hover:shadow-lg transition text-center"
               >
-                <img src={leader.image} className="w-32 h-32 rounded-xl mx-auto mb-6 object-cover" />
+                <img src={leader.image} className="w-28 h-28 rounded-xl mx-auto mb-5 object-cover" />
                 <h3 className="text-xl font-semibold">{leader.name}</h3>
                 <p className="text-primary-700">{leader.role}</p>
               </button>
