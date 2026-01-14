@@ -5,7 +5,6 @@ import {
   Mail,
   Clock,
   Send,
-  MessageCircle,
   Trash2,
   PlusCircle,
 } from "lucide-react";
