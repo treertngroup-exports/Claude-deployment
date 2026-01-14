@@ -1,238 +1,288 @@
-import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Clock, Globe2, MessageSquare } from 'lucide-react';
+import { useState, useEffect } from "react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Send,
+  Trash2,
+  PlusCircle,
+  MessageSquare,
+} from "lucide-react";
 
+import PhoneInput from "react-phone-input-2";
+import Select from "react-select";
+import Flag from "react-world-flags";
+
+/* ---------------- CONTACT INFO ---------------- */
 const contactInfo = [
   {
     icon: Phone,
-    title: 'Phone',
-    value: '+91 99944 98426',
-    link: 'tel:+919994498426',
+    label: "Phone",
+    value: "+91 99944 98426",
+    link: "tel:+919994498426",
   },
   {
     icon: Mail,
-    title: 'Email',
-    value: 'treertngroup@gmail.com',
-    link: 'mailto:treertngroup@gmail.com',
+    label: "Email",
+    value: "treertngroup@gmail.com",
+    link: "mailto:treertngroup@gmail.com",
   },
   {
     icon: MapPin,
-    title: 'Location',
-    value: 'Tamil Nadu, India',
-    link: '#',
+    label: "Location",
+    value: "Tamil Nadu, India",
   },
   {
     icon: Clock,
-    title: 'Business Hours',
-    value: 'Mon - Sat: 9AM - 6PM',
-    link: '#',
+    label: "Business Hours",
+    value: "Mon - Sat: 9AM - 6PM",
   },
 ];
 
+/* ---------------- DIAL CODES (MINIMAL) ---------------- */
+const phoneCodes: any = {
+  IN: "91",
+  AE: "971",
+  US: "1",
+  GB: "44",
+  SG: "65",
+};
+
+/* ---------------- NATIONALITIES (SHORT LIST - YOU CAN EXTEND) ---------------- */
+const nationalityOptions = [
+  { value: "IN", label: "India" },
+  { value: "AE", label: "United Arab Emirates" },
+  { value: "US", label: "United States" },
+  { value: "GB", label: "United Kingdom" },
+  { value: "SG", label: "Singapore" },
+];
+
+const airPorts = ["JFK (New York)", "DXB (Dubai)", "SIN (Singapore)", "LAX (Los Angeles)"];
+const seaPorts = ["Shanghai Port", "Singapore Port", "Rotterdam Port", "Nhava Sheva (India)"];
+
+/* ===================================================== */
+
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    product: '',
-    message: '',
+  const [formData, setFormData] = useState<any>({
+    name: "",
+    email: "",
+    nationality: "",
+    phone: "",
+    cargoType: "air",
+    port: "",
+    products: [{ product: "", quantity: "", unit: "ton" }],
+    message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [errors, setErrors] = useState<any>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+
+  /* -------- AUTO SET DIAL CODE WHEN COUNTRY CHANGES -------- */
+  useEffect(() => {
+    if (formData.nationality && phoneCodes[formData.nationality]) {
+      const dial = phoneCodes[formData.nationality];
+      if (!formData.phone || formData.phone.startsWith("+")) {
+        setFormData((prev: any) => ({ ...prev, phone: `+${dial}` }));
+      }
+    }
+  }, [formData.nationality]);
+
+  /* ---------------- PRODUCT HELPERS ---------------- */
+  const addProductRow = () => {
+    setFormData((prev: any) => ({
+      ...prev,
+      products: [...prev.products, { product: "", quantity: "", unit: "ton" }],
+    }));
+  };
+
+  const removeProductRow = (index: number) => {
+    setFormData((prev: any) => {
+      const products = [...prev.products];
+      products.splice(index, 1);
+      return {
+        ...prev,
+        products: products.length ? products : [{ product: "", quantity: "", unit: "ton" }],
+      };
+    });
+  };
+
+  const updateProductRow = (index: number, key: string, value: any) => {
+    setFormData((prev: any) => {
+      const products = [...prev.products];
+      products[index] = { ...products[index], [key]: value };
+      return { ...prev, products };
+    });
+  };
+
+  /* ---------------- VALIDATION ---------------- */
+  const validate = () => {
+    const tempErrors: any = {};
+
+    if (!formData.name.trim()) tempErrors.name = "Name is required";
+    if (!formData.email.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/))
+      tempErrors.email = "Valid email is required";
+    if (!formData.nationality) tempErrors.nationality = "Nationality is required";
+    if (!formData.phone || formData.phone.length < 8)
+      tempErrors.phone = "Valid phone number required";
+    if (!formData.port) tempErrors.port = "Please select a port";
+    if (!formData.message.trim()) tempErrors.message = "Message is required";
+
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
+  };
+
+  /* ---------------- SUBMIT ---------------- */
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
-    alert('Thank you for your enquiry! We will get back to you soon.');
+    if (!validate()) return;
+
+    setIsSubmitting(true);
+
+    const GOOGLE_SHEET_WEBHOOK =
+      "https://script.google.com/macros/s/AKfycbwlIbQuPa8Y2-I1tCtZ1ZS-D0bYKIZ6G1s2R1oB9F3NJsOl2X4EOqnW7kfZ-mH76Pby8A/exec";
+
+    try {
+      await fetch(GOOGLE_SHEET_WEBHOOK, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify(formData),
+      });
+
+      setSubmitMessage("✅ Thank you! We have received your enquiry.");
+
+      setFormData({
+        name: "",
+        email: "",
+        nationality: "",
+        phone: "",
+        cargoType: "air",
+        port: "",
+        products: [{ product: "", quantity: "", unit: "ton" }],
+        message: "",
+      });
+      setErrors({});
+    } catch (err) {
+      setSubmitMessage("❌ Failed to send. Please try again.");
+    }
+
+    setIsSubmitting(false);
+    setTimeout(() => setSubmitMessage(""), 6000);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
+  /* ====================== UI ====================== */
   return (
-    <section id="contact" className="section-padding bg-gradient-to-b from-white to-cream relative overflow-hidden">
-      {/* Background Decorations */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-primary-100/30 via-transparent to-transparent rounded-full -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-radial from-accent-100/20 via-transparent to-transparent rounded-full translate-x-1/3 translate-y-1/3" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-50 to-accent-50 rounded-full border border-primary-100 mb-6">
-            <MessageSquare className="w-4 h-4 text-accent-600" />
-            <span className="text-xs font-bold tracking-widest uppercase text-primary-700">
-              Get In Touch
-            </span>
-          </div>
-          <h2 className="section-title mb-4">
-            Let's Start a <span className="text-primary-700">Conversation</span>
-          </h2>
-          <p className="section-subtitle mx-auto">
-            Ready to source premium agricultural products? Contact us for quotes, 
-            product inquiries, or partnership opportunities.
-          </p>
+    <section id="contact" className="py-16 md:py-24 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold">Request a Quote</h2>
+          <p className="text-gray-600 mt-3">Tell us your export requirements</p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-12">
-          {/* Contact Info */}
-          <div className="lg:col-span-2 space-y-6">
-            <div className="bg-white rounded-3xl p-8 shadow-soft border border-gray-100">
-              <h3 className="font-display text-2xl font-bold text-gray-900 mb-6">
-                Contact Information
-              </h3>
-              
-              <div className="space-y-6">
-                {contactInfo.map((info) => (
-                  <a
-                    key={info.title}
-                    href={info.link}
-                    className="flex items-start gap-4 group"
-                  >
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                      <info.icon className="w-5 h-5 text-primary-700" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-500 mb-1">{info.title}</p>
-                      <p className="font-semibold text-gray-900 group-hover:text-primary-700 transition-colors">
-                        {info.value}
-                      </p>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </div>
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* ================= FORM ================= */}
+          <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow-xl space-y-6">
 
-            {/* Quick Connect */}
-            <div className="bg-gradient-to-br from-primary-900 to-primary-800 rounded-3xl p-8 text-white">
-              <Globe2 className="w-10 h-10 text-accent-400 mb-4" />
-              <h4 className="font-display text-xl font-bold mb-3">
-                Export Enquiries
-              </h4>
-              <p className="text-primary-100 mb-6">
-                Looking to import premium Indian agricultural products? 
-                We're ready to serve your business needs.
-              </p>
-              <a
-                href="https://wa.me/919994498426"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary-800 font-semibold rounded-full hover:bg-accent-100 transition-colors"
-              >
-                <MessageSquare className="w-5 h-5" />
-                Chat on WhatsApp
-              </a>
-            </div>
-          </div>
+            <input
+              placeholder="Your Name"
+              className="w-full border-2 p-3 rounded-lg"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            />
+            {errors.name && <p className="text-red-600 text-sm">{errors.name}</p>}
 
-          {/* Contact Form */}
-          <div className="lg:col-span-3">
-            <form
-              onSubmit={handleSubmit}
-              className="bg-white rounded-3xl p-8 lg:p-10 shadow-soft border border-gray-100"
+            <input
+              placeholder="Your Email"
+              className="w-full border-2 p-3 rounded-lg"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            />
+            {errors.email && <p className="text-red-600 text-sm">{errors.email}</p>}
+
+            <Select
+              options={nationalityOptions}
+              value={nationalityOptions.find((n) => n.value === formData.nationality)}
+              onChange={(opt: any) => setFormData({ ...formData, nationality: opt?.value || "" })}
+              formatOptionLabel={(c: any) => (
+                <div className="flex gap-2 items-center">
+                  <Flag code={c.value} style={{ width: 24 }} /> {c.label}
+                </div>
+              )}
+            />
+            {errors.nationality && <p className="text-red-600 text-sm">{errors.nationality}</p>}
+
+            <PhoneInput
+              country={(formData.nationality || "IN").toLowerCase()}
+              value={formData.phone}
+              onChange={(phone: any) => setFormData({ ...formData, phone })}
+              inputClass="!w-full !py-3 !border-2 !rounded-lg"
+            />
+            {errors.phone && <p className="text-red-600 text-sm">{errors.phone}</p>}
+
+            <Select
+              options={(formData.cargoType === "air" ? airPorts : seaPorts).map((p) => ({
+                value: p,
+                label: p,
+              }))}
+              placeholder="Select Port"
+              onChange={(opt: any) => setFormData({ ...formData, port: opt?.value })}
+            />
+            {errors.port && <p className="text-red-600 text-sm">{errors.port}</p>}
+
+            <textarea
+              placeholder="Your Message"
+              rows={4}
+              className="w-full border-2 p-3 rounded-lg"
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            />
+            {errors.message && <p className="text-red-600 text-sm">{errors.message}</p>}
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-green-600 text-white py-4 rounded-lg font-semibold flex items-center justify-center gap-2"
             >
-              <h3 className="font-display text-2xl font-bold text-gray-900 mb-8">
-                Send Us a Message
-              </h3>
+              {isSubmitting ? "Sending..." : <>Send Enquiry <Send size={18} /></>}
+            </button>
 
-              <div className="grid sm:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-                    placeholder="John Doe"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-                    placeholder="john@company.com"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-                    placeholder="+1 234 567 8900"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Company Name
-                  </label>
-                  <input
-                    type="text"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-                    placeholder="Company Ltd."
-                  />
-                </div>
-              </div>
+            {submitMessage && (
+              <p className="text-center font-semibold text-green-600">{submitMessage}</p>
+            )}
+          </form>
 
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Product Interest
-                </label>
-                <select
-                  name="product"
-                  value={formData.product}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-                >
-                  <option value="">Select a product category</option>
-                  <option value="fruits">Fresh Fruits</option>
-                  <option value="vegetables">Fresh Vegetables</option>
-                  <option value="spices">Spices & Herbs</option>
-                  <option value="value-added">Value Added Products</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
+          {/* ================= RIGHT SIDE ================= */}
+          <div className="space-y-6">
+            <div className="bg-white p-8 rounded-2xl shadow-xl space-y-6">
+              {contactInfo.map((info, i) => (
+                <div key={i} className="flex gap-4">
+                  <div className="p-3 bg-green-50 rounded-lg">
+                    <info.icon className="w-5 h-5 text-green-700" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500">{info.label}</p>
+                    {info.link ? (
+                      <a href={info.link} className="font-semibold text-gray-900">
+                        {info.value}
+                      </a>
+                    ) : (
+                      <p className="font-semibold">{info.value}</p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
 
-              <div className="mb-8">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Message *
-                </label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={4}
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none"
-                  placeholder="Tell us about your requirements..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full btn-primary justify-center"
-              >
-                Send Message
-                <Send className="w-5 h-5" />
-              </button>
-            </form>
+            <div className="rounded-2xl overflow-hidden shadow-xl">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15656.495082513109!2d77.0725775!3d11.1784707"
+                width="100%"
+                height="300"
+                loading="lazy"
+                style={{ border: 0 }}
+              ></iframe>
+            </div>
           </div>
         </div>
       </div>
