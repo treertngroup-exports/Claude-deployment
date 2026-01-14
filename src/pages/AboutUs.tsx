@@ -8,53 +8,49 @@ import { Linkedin, Target, Eye, X } from "lucide-react";
    Leadership Data
 ========================= */
 const leadership = [
-   {
+  {
     name: "Deepak T S",
     role: "Chief Executive Officer",
-    image: "https://drive.google.com/thumbnail?id=1AA0bfJbO21liHcAj0lRXMHFkUvHO_muC",
+    image: "https://drive.google.com/thumbnail?id=16spkW4ZRP6ESZDAbK5IIczyCafYwrLx4",
     bio: "Leads TREERT’s global operations with a strong focus on supply chain excellence, quality assurance, and adherence to international trade standards.",
     linkedin: "#",
   },
   {
     name: "Dheetchith T",
     role: "Chairman & Managing Director",
-    image: "https://drive.google.com/thumbnail?id=1o8ZeX1SqNn_0Hx6UuSjlYM0nF_Mqk_fh",
+    image: "https://drive.google.com/thumbnail?id=1vTnsu6xQNFl7Kj996DWvygpISzUMpQ71",
     bio: "Provides strategic leadership and corporate governance, guiding long-term growth through strong farmer relationships and global market expansion.",
     linkedin: "#",
   },
   {
     name: "Bala Jeevini S",
     role: "Manager (UK)",
-    image: "https://drive.google.com/thumbnail?id=1595uqpXXkfWrUoXoOJnVngHQ2eDhd7VQ",
+    image: "https://drive.google.com/thumbnail?id=18UxGfJI9f1IKVfm5CUGVcD0vI4sUUAuR",
     bio: "Oversees UK operations and international coordination.",
     linkedin: "#",
-    
   },
   {
     name: "Barath T S",
-    role: "Financial Director (UK)",
     role: "Financial Director",
-    image: "https://drive.google.com/thumbnail?id=1595uqpXXkfWrUoXoOJnVngHQ2eDhd7VQ",
+    image: "https://drive.google.com/thumbnail?id=1s4KaufDEksOEgo8gkdiUulJfu92y4QO6",
     bio: "Oversees financial planning, compliance, and risk management.",
     linkedin: "#",
-    
   },
   {
     name: "Arvindh S M",
     role: "Chief Product Officer (UAE)",
-    image: "https://drive.google.com/thumbnail?id=1IaWAj3Qw_UNuCixxZ8Uu5Rth5lwXpeff",
+    image: "https://drive.google.com/thumbnail?id=13ZL20P5GkATtlT_4TCM3wwAt6MqlM4zK",
     bio: "Oversees product quality and export readiness.",
     linkedin: "#",
   },
   {
     name: "Raghul D",
     role: "Manager (UAE)",
-    image: "https://drive.google.com/thumbnail?id=1IaWAj3Qw_UNuCixxZ8Uu5Rth5lwXpeff",
+    image: "https://drive.google.com/thumbnail?id=1cASUQ1JXNz0DraYo88pYYhm5vyuFwhAH",
     bio: "Manages regional operations and logistics.",
     linkedin: "#",
   },
 ];
-
 
 export default function AboutUs() {
   const [selectedLeader, setSelectedLeader] = useState<typeof leadership[0] | null>(null);
