@@ -783,7 +783,9 @@ setTimeout(() => setSubmitMessage(""), 6000);
                   </thead>
             
                   <tbody>
-                    {formData.products.map((row: any, idx: number) => (
+                    formData.products.map((row, _idx) => (
+
+                    {/*{formData.products.map((row: any, idx: number) => (*/}
                       <tr key={idx} className="border-t">
                         <td className="px-4 py-3">
                           <input
