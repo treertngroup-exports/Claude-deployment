@@ -8,7 +8,7 @@ import { Linkedin, Target, Eye, X } from "lucide-react";
    Leadership Data
 ========================= */
 const leadership = [
-  {
+   {
     name: "Deepak T S",
     role: "Chief Executive Officer",
     image: "https://drive.google.com/thumbnail?id=1AA0bfJbO21liHcAj0lRXMHFkUvHO_muC",
@@ -28,13 +28,16 @@ const leadership = [
     image: "https://drive.google.com/thumbnail?id=1595uqpXXkfWrUoXoOJnVngHQ2eDhd7VQ",
     bio: "Oversees UK operations and international coordination.",
     linkedin: "#",
+    
   },
   {
     name: "Barath T S",
+    role: "Financial Director (UK)",
     role: "Financial Director",
     image: "https://drive.google.com/thumbnail?id=1595uqpXXkfWrUoXoOJnVngHQ2eDhd7VQ",
     bio: "Oversees financial planning, compliance, and risk management.",
     linkedin: "#",
+    
   },
   {
     name: "Arvindh S M",
@@ -51,6 +54,7 @@ const leadership = [
     linkedin: "#",
   },
 ];
+
 
 export default function AboutUs() {
   const [selectedLeader, setSelectedLeader] = useState<typeof leadership[0] | null>(null);
