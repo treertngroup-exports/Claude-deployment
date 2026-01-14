@@ -783,9 +783,7 @@ setTimeout(() => setSubmitMessage(""), 6000);
                   </thead>
             
                   <tbody>
-                    formData.products.map((row, _idx) => (
-
-                    {/*{formData.products.map((row: any, idx: number) => (*/}
+                    {formData.products.map((row: any, idx: number) => (
                       <tr key={idx} className="border-t">
                         <td className="px-4 py-3">
                           <input
@@ -997,16 +995,6 @@ setTimeout(() => setSubmitMessage(""), 6000);
           </div>
         </div>
       </div>
-
-      {/* WhatsApp Button */}
-      <a
-        href="https://wa.me/+918438906166"
-        target="_blank"
-        rel="noreferrer"
-        className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition transform hover:scale-110"
-      >
-        <MessageCircle className="w-6 h-6" />
-      </a>
     </section>
   );
 };
