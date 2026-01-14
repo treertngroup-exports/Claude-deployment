@@ -1,21 +1,5 @@
-import { useState, useEffect } from "react";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Clock,
-  Globe2,
-  MessageSquare,
-  Send,
-  Trash2,
-  PlusCircle,
-} from "lucide-react";
-
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
-
-import Select from "react-select";
-import Flag from "react-world-flags";
+import { useState } from "react";
+import { Mail, Phone, MapPin, Clock, Send, Trash2, PlusCircle } from "lucide-react";
 
 /* ---------------- CONTACT INFO ---------------- */
 const contactInfo = [
@@ -25,20 +9,8 @@ const contactInfo = [
   { icon: Clock, title: "Business Hours", value: "Mon - Sat: 9AM - 6PM", link: "#" },
 ];
 
-/* ---------------- DATA ---------------- */
-const phoneCodes: Record<string, string> = { IN: "91", AF: "93", AL: "355", DZ: "213", AS: "1", AD: "376" };
-
 const airPorts = ["JFK (New York)", "DXB (Dubai)", "SIN (Singapore)", "LAX (Los Angeles)"];
 const seaPorts = ["Shanghai Port", "Singapore Port", "Rotterdam Port", "Nhava Sheva (India)"];
-
-const nationalityOptions = [
-  { value: "IN", label: "India" },
-  { value: "AF", label: "Afghanistan" },
-  { value: "AL", label: "Albania" },
-  { value: "DZ", label: "Algeria" },
-  { value: "AS", label: "American Samoa" },
-  { value: "AD", label: "Andorra" },
-];
 
 type ProductRow = {
   product: string;
@@ -50,7 +22,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    nationality: "",
+    country: "",
     phone: "",
     cargoType: "air",
     port: "",
@@ -58,19 +30,8 @@ export default function Contact() {
     message: "",
   });
 
-  const [errors, setErrors] = useState<any>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
-
-  /* ---------------- AUTO PHONE ---------------- */
-  useEffect(() => {
-    const iso = formData.nationality;
-    if (iso && phoneCodes[iso]) {
-      if (!formData.phone || /^\+\d*$/.test(formData.phone)) {
-        setFormData((prev) => ({ ...prev, phone: `+${phoneCodes[iso]}` }));
-      }
-    }
-  }, [formData.nationality]);
 
   /* ---------------- PRODUCTS ---------------- */
   const addProductRow = () => {
@@ -99,25 +60,9 @@ export default function Contact() {
     });
   };
 
-  /* ---------------- VALIDATION ---------------- */
-  const validate = () => {
-    const tempErrors: any = {};
-
-    if (!formData.name.trim()) tempErrors.name = "Required";
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(formData.email)) tempErrors.email = "Invalid email";
-    if (!formData.nationality) tempErrors.nationality = "Required";
-    if (!formData.phone || formData.phone.length < 8) tempErrors.phone = "Invalid phone";
-    if (!formData.port) tempErrors.port = "Select port";
-    if (!formData.message.trim()) tempErrors.message = "Required";
-
-    setErrors(tempErrors);
-    return Object.keys(tempErrors).length === 0;
-  };
-
   /* ---------------- SUBMIT ---------------- */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validate()) return;
 
     setIsSubmitting(true);
 
@@ -132,6 +77,7 @@ export default function Contact() {
 
     setSubmitMessage("Thank you! We received your enquiry.");
     setIsSubmitting(false);
+
     setTimeout(() => setSubmitMessage(""), 6000);
   };
 
@@ -162,26 +108,22 @@ export default function Contact() {
           <input className="w-full border p-3" placeholder="Email" value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
 
-          <Select
-            options={nationalityOptions}
-            onChange={(opt: any) => setFormData({ ...formData, nationality: opt.value })}
-            formatOptionLabel={(c: any) => (
-              <div className="flex gap-2 items-center">
-                <Flag code={c.value} style={{ width: 24 }} /> {c.label}
-              </div>
-            )}
-          />
+          <input className="w-full border p-3" placeholder="Country" value={formData.country}
+            onChange={(e) => setFormData({ ...formData, country: e.target.value })} />
 
-          <PhoneInput
-            country={(formData.nationality || "in").toLowerCase()}
-            value={formData.phone}
-            onChange={(phone) => setFormData({ ...formData, phone })}
-          />
+          <input className="w-full border p-3" placeholder="Phone" value={formData.phone}
+            onChange={(e) => setFormData({ ...formData, phone: e.target.value })} />
 
-          <Select
-            options={(formData.cargoType === "air" ? airPorts : seaPorts).map((p) => ({ value: p, label: p }))}
-            onChange={(opt: any) => setFormData({ ...formData, port: opt.value })}
-          />
+          <select
+            className="w-full border p-3"
+            value={formData.port}
+            onChange={(e) => setFormData({ ...formData, port: e.target.value })}
+          >
+            <option value="">Select Port</option>
+            {(formData.cargoType === "air" ? airPorts : seaPorts).map((p) => (
+              <option key={p} value={p}>{p}</option>
+            ))}
+          </select>
 
           {/* PRODUCTS */}
           {formData.products.map((row, idx) => (
