@@ -55,7 +55,7 @@ const leadership = [
 ];
 
 export default function AboutUs() {
-  const [selectedLeader, setSelectedLeader] = useState<typeof leadership[0] | null>(null);
+  const [selectedLeader, setSelectedLeader] = useState<(typeof leadership)[0] | null>(null);
 
   const founders = leadership.slice(0, 2);
   const team = leadership.slice(2);
@@ -64,7 +64,7 @@ export default function AboutUs() {
     <div className="min-h-screen bg-white">
       <Navbar />
 
-      {/* HEADER */}
+      {/* ================= HEADER ================= */}
       <section className="pt-20 pb-10 bg-gradient-to-b from-primary-50 to-white text-center">
         <p className="text-sm font-semibold tracking-widest text-primary-700 uppercase mb-3">
           About TREERT
@@ -77,43 +77,71 @@ export default function AboutUs() {
         </p>
       </section>
 
-      {/* STORY */}
+      {/* ================= STORY ================= */}
       <section className="py-10 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-gray-700 leading-relaxed text-lg space-y-6">
           <p>
-            TREERT began in <strong>2024 in Annur, Coimbatore</strong>, from a concern we could no longer ignore...
+            TREERT began in <strong>2024 in Annur, Coimbatore</strong>, from a concern we could no longer ignore. Across Tamil Nadu, farmers worked season after season, yet their produce often went unnoticed, unsold, or undervalued.
+          </p>
+
+          <ul className="list-disc pl-6 space-y-3">
+            <li>We witnessed broken trust, repeated losses, and farmers leaving agriculture.</li>
+            <li>Coming from a farming background, we decided to change this reality.</li>
+            <li>By stepping into exports, we enabled farmers’ produce to reach markets that truly value quality.</li>
+          </ul>
+
+          <p>
+            Our first successful shipment of <strong>onions and tomatoes to Dubai</strong> proved that honest sourcing and hard work can cross borders.
+          </p>
+
+          <ul className="list-disc pl-6 space-y-3">
+            <li>Early challenges in packing and logistics pushed us to work hands-on.</li>
+            <li>We visited farms, inspected every bag, and honored every commitment.</li>
+            <li>Trust followed naturally.</li>
+          </ul>
+
+          <p>Today, TREERT exports fruits and vegetables to:</p>
+
+          <ul className="list-disc pl-6 space-y-2 font-medium text-primary-700">
+            <li>Vietnam</li>
+            <li>Indonesia</li>
+            <li>Thailand</li>
+            <li>Malaysia</li>
+            <li>Singapore</li>
+          </ul>
+
+          <p className="text-primary-800 font-semibold">
+            Our goal remains simple: To carry the strength of Indian farmers to Europe, the UK, Canada, and beyond — without forgetting where we started: in the fields.
           </p>
         </div>
       </section>
 
-      {/* MISSION & VISION */}
+      {/* ================= MISSION & VISION ================= */}
       <section className="py-12 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12">
-          {/* Mission */}
           <div className="bg-white border rounded-2xl p-10">
             <div className="flex items-center gap-3 mb-4">
               <Target className="w-5 h-5 text-primary-700" />
               <h3 className="text-2xl font-semibold">Our Mission</h3>
             </div>
             <p className="text-gray-600">
-              To connect India’s agricultural excellence with global markets by delivering consistent quality and compliance.
+              To connect India’s agricultural excellence with global markets by delivering consistent quality, ensuring compliance, and creating sustainable value.
             </p>
           </div>
 
-          {/* Vision */}
           <div className="bg-white border rounded-2xl p-10">
             <div className="flex items-center gap-3 mb-4">
               <Eye className="w-5 h-5 text-primary-700" />
               <h3 className="text-2xl font-semibold">Our Vision</h3>
             </div>
             <p className="text-gray-600">
-              To become a globally respected agricultural export organization.
+              To become a globally respected agricultural export organization, recognized for reliability and long-term partnerships.
             </p>
           </div>
         </div>
       </section>
 
-      {/* LEADERSHIP */}
+      {/* ================= LEADERSHIP ================= */}
       <section className="py-14 bg-white">
         <div className="max-w-7xl mx-auto px-4">
 
@@ -132,7 +160,7 @@ export default function AboutUs() {
             ))}
           </div>
 
-          {/* Team (4 columns) */}
+          {/* Team */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
             {team.map((leader) => (
               <button
@@ -150,7 +178,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* MODAL */}
+      {/* ================= MODAL ================= */}
       {selectedLeader && (
         <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-4" onClick={() => setSelectedLeader(null)}>
           <div className="bg-white max-w-lg w-full rounded-2xl p-8 relative" onClick={(e) => e.stopPropagation()}>
