@@ -37,8 +37,8 @@ const leadership = [
     linkedin: "#",
   },
   {
-    name: "Barathi",
-    role: "Database Administrator",
+    name: "Raghul D",
+    role: "Manager (UAE)",
     image: "https://drive.google.com/thumbnail?id=1IaWAj3Qw_UNuCixxZ8Uu5Rth5lwXpeff",
     bio: "Manages data infrastructure, reporting systems, and operational accuracy across internal business processes.",
     linkedin: "#",
@@ -46,6 +46,14 @@ const leadership = [
   {
     name: "Barath T S",
     role: "Financial Director",
+    image: "https://drive.google.com/thumbnail?id=1595uqpXXkfWrUoXoOJnVngHQ2eDhd7VQ",
+    bio: "Oversees financial planning, compliance, and risk management to ensure sustainable and transparent growth.",
+    linkedin: "#",
+  },
+   
+  {
+    name: "Jeevini",
+    role: "Manager (UK)",
     image: "https://drive.google.com/thumbnail?id=1595uqpXXkfWrUoXoOJnVngHQ2eDhd7VQ",
     bio: "Oversees financial planning, compliance, and risk management to ensure sustainable and transparent growth.",
     linkedin: "#",
