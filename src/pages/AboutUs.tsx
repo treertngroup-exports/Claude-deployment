@@ -23,8 +23,24 @@ const leadership = [
     linkedin: "#",
   },
   {
+    name: "Jeevini",
+    role: "Manager (UK)",
+    image: "https://drive.google.com/thumbnail?id=1595uqpXXkfWrUoXoOJnVngHQ2eDhd7VQ",
+    bio: "Handles UK operations, logistics coordination, and customer partnerships.",
+    linkedin: "#",
+    
+  },
+  {
+    name: "Barath T S",
+    role: "Financial Director (UK)",
+    image: "https://drive.google.com/thumbnail?id=1595uqpXXkfWrUoXoOJnVngHQ2eDhd7VQ",
+    bio: "Oversees financial planning, compliance, and risk management to ensure sustainable growth.",
+    linkedin: "#",
+    
+  },
+  {
     name: "Arvindh S M",
-    role: "Chief Product Officer",
+    role: "Chief Product Officer (UAE)",
     image: "https://drive.google.com/thumbnail?id=1IaWAj3Qw_UNuCixxZ8Uu5Rth5lwXpeff",
     bio: "Oversees product quality, sourcing protocols, and export readiness across all agricultural categories and destinations.",
     linkedin: "#",
@@ -34,20 +50,6 @@ const leadership = [
     role: "Manager (UAE)",
     image: "https://drive.google.com/thumbnail?id=1IaWAj3Qw_UNuCixxZ8Uu5Rth5lwXpeff",
     bio: "Manages regional operations and partner relationships in the UAE market.",
-    linkedin: "#",
-  },
-  {
-    name: "Barath T S",
-    role: "Financial Director",
-    image: "https://drive.google.com/thumbnail?id=1595uqpXXkfWrUoXoOJnVngHQ2eDhd7VQ",
-    bio: "Oversees financial planning, compliance, and risk management to ensure sustainable growth.",
-    linkedin: "#",
-  },
-  {
-    name: "Jeevini",
-    role: "Manager (UK)",
-    image: "https://drive.google.com/thumbnail?id=1595uqpXXkfWrUoXoOJnVngHQ2eDhd7VQ",
-    bio: "Handles UK operations, logistics coordination, and customer partnerships.",
     linkedin: "#",
   },
 ];
