@@ -27,7 +27,7 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center text-white">
         <p className="uppercase tracking-widest text-sm text-primary-200 mb-4">
-          Trusted Indian Exporter of Agricultural Products
+          Trusted Indian Agricultural Exporter
         </p>
 
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight">
