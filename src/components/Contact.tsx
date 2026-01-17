@@ -1,11 +1,11 @@
+import { useState, useEffect } from "react";
 import {
-  Mail,
-  Phone,
   MapPin,
+  Phone,
+  Mail,
   Clock,
-  Globe2,
-  MessageSquare,
   Send,
+  MessageCircle,
   Trash2,
   PlusCircle,
 } from "lucide-react";
@@ -995,6 +995,16 @@ setTimeout(() => setSubmitMessage(""), 6000);
           </div>
         </div>
       </div>
+
+      {/* WhatsApp Button */}
+      <a
+        href="https://wa.me/+918438906166"
+        target="_blank"
+        rel="noreferrer"
+        className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition transform hover:scale-110"
+      >
+        <MessageCircle className="w-6 h-6" />
+      </a>
     </section>
   );
 };
