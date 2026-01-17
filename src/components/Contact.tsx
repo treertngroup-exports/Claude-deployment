@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
 import {
-  MapPin,
-  Phone,
   Mail,
+  Phone,
+  MapPin,
   Clock,
+  Globe2,
+  MessageSquare,
   Send,
   Trash2,
   PlusCircle,
