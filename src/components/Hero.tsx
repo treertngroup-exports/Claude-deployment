@@ -27,17 +27,17 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center text-white">
         <p className="uppercase tracking-widest text-sm text-primary-200 mb-4">
-          From Indian Fields to Global Markets
+          Trusted Indian Exporter of Agricultural Products
         </p>
 
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight">
-          Harvested with Care. <br />
-          Delivered with Trust.
+          Connect Your Business <br />
+          To A World Of Possibilities
         </h1>
 
-        <p className="text-xl sm:text-2xl mb-4 font-light max-w-4xl mx-auto">
-          TREERT exports premium agricultural and value-added products worldwide,
-          connecting farmers to international markets with quality and integrity.
+        <p className="text-xl sm:text-2xl mb-6 font-light max-w-4xl mx-auto">
+          TREERT exports premium agriculture and value-added products globally,
+          promoting quality, sustainability, and farmer empowerment.
         </p>
 
         <p className="text-lg sm:text-xl mb-12 max-w-2xl mx-auto opacity-90">
@@ -59,7 +59,7 @@ const Hero = () => {
             onClick={(e) => scrollToSection(e, "#services")}
             className="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 transition-all duration-300 border border-white/30"
           >
-            Explore Our Products
+            Explore Our Services
           </a>
         </div>
       </div>
