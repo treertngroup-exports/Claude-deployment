@@ -257,15 +257,25 @@ function LeaderTile({
   const aspect =
     variant === "founder" ? "aspect-[4/5]" : "aspect-square";
 
+  // Control visual size of person inside the frame
+  const imageScale =
+    variant === "founder"
+      ? "scale-110"   // slightly bigger (your "4")
+      : "scale-95";   // slightly smaller (your "2")
+
   return (
     <button onClick={() => onClick(leader)} className="group text-left w-full">
       <div
-        className={`relative w-full ${aspect} rounded-2xl overflow-hidden ${leader.color} transition-transform duration-300 group-hover:-translate-y-1`}
+        className={`relative w-full ${aspect} rounded-2xl overflow-hidden ${leader.color} transition-transform duration-300 group-hover:-translate-y-1 flex items-end justify-center`}
       >
         <img
           src={leader.image}
           alt={leader.name}
-          className="w-full h-full object-cover"
+          className={`w-full h-full object-contain origin-bottom transition-transform duration-300 ${imageScale}`}
+          style={{
+            // Push image down so legs can crop but head stays
+            transformOrigin: "bottom center",
+          }}
         />
       </div>
 
@@ -278,3 +288,4 @@ function LeaderTile({
     </button>
   );
 }
+
