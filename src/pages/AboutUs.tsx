@@ -25,7 +25,7 @@ const leadership = [
   {
     name: "Bala Jeevini S",
     role: "Manager (UK)",
-    image: "https://drive.google.com/thumbnail?id=1GF_bGFuEDAustEtnm1U_ppuMu656DbB6",
+    image: "https://drive.google.com/thumbnail?id=1Ro-vLZxtJrDapQP3WpDaEZe9ZX2KZ8Rv",
     bio: "Oversees UK operations and international coordination.",
     linkedin: "#",
   },
