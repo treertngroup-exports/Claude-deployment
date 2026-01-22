@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from 'react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const GalleryPage = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
@@ -332,128 +332,113 @@ const GalleryPage = () => {
     setSelectedImageIndex(selectedImageIndex === images.length - 1 ? 0 : selectedImageIndex + 1);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (selectedImageIndex === null) return;
+    if (e.key === 'ArrowLeft') handlePrevious();
+    if (e.key === 'ArrowRight') handleNext();
+    if (e.key === 'Escape') setSelectedImageIndex(null);
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white page-offset pb-24">
+    <div className="min-h-screen bg-gray-50">
+      <div className="pt-20 pb-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Gallery</h1>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Explore our complete collection of premium produce and farming operations
+            </p>
+          </div>
 
-      {/* Header */}
-      <div className="container mx-auto px-6 pt-16 text-center">
-        <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
-          Our Gallery
-        </h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          A visual journey through our farms, produce, packing, and export excellence.
-        </p>
-      </div>
-
-      {/* Grid */}
-      <div className="container mx-auto px-6 mt-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-
-          {images.map((image, index) => (
-            <div
-              key={image.id}
-              className="perspective-1000"
-              onClick={() => setSelectedImageIndex(index)}
-            >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {images.map((image, index) => (
               <div
-                className="gallery-card preserve-3d group relative rounded-2xl overflow-hidden bg-white cursor-pointer"
-                onMouseMove={(e) => {
-                  const card = e.currentTarget;
-                  const rect = card.getBoundingClientRect();
-                  const x = e.clientX - rect.left;
-                  const y = e.clientY - rect.top;
-                  const midX = rect.width / 2;
-                  const midY = rect.height / 2;
-                  const rotateY = (x - midX) / 20;
-                  const rotateX = -(y - midY) / 20;
-                  card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "rotateX(0) rotateY(0) translateY(0)";
-                }}
+                key={image.id}
+                className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer h-64"
+                onClick={() => setSelectedImageIndex(index)}
               >
-                {/* Image */}
                 <img
                   src={image.thumb}
                   alt={image.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   loading="lazy"
-                  className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-
-                {/* Glass Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-5">
-                  <div className="backdrop-blur-md bg-white/10 rounded-xl p-4 border border-white/20">
-                    <h3 className="text-white font-semibold text-lg">
-                      {image.title}
-                    </h3>
-                    <p className="text-green-300 text-sm font-medium">
-                      {image.category}
-                    </p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                  <h3 className="text-white font-semibold text-sm md:text-base">{image.title}</h3>
+                  <span className="text-green-300 text-xs font-medium">{image.category}</span>
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="bg-white/20 backdrop-blur-sm p-3 rounded-full">
+                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M10 0a10 10 0 1 1 0 20 10 10 0 0 1 0-20zm0 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm3.5 8a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-7 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                    </svg>
                   </div>
                 </div>
-
               </div>
-            </div>
-          ))}
-
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Modal */}
       {selectedImageIndex !== null && (
         <div
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 animate-fade-zoom"
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 backdrop-blur-md"
           onClick={() => setSelectedImageIndex(null)}
+          onKeyDown={handleKeyDown}
+          role="dialog"
+          tabIndex={0}
         >
-          {/* Close */}
           <button
-            className="absolute top-6 right-6 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full"
             onClick={() => setSelectedImageIndex(null)}
+            className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full transition-all duration-300 backdrop-blur-sm"
+            aria-label="Close"
           >
-            <X size={28} />
+            <X size={24} />
           </button>
 
-          {/* Prev */}
           <button
-            className="absolute left-6 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-4 rounded-full hidden md:flex"
-            onClick={(e) => { e.stopPropagation(); handlePrevious(); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              handlePrevious();
+            }}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm hidden sm:flex"
+            aria-label="Previous image"
           >
-            <ChevronLeft size={28} />
+            <ChevronLeft size={24} />
           </button>
 
-          {/* Next */}
           <button
-            className="absolute right-6 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-4 rounded-full hidden md:flex"
-            onClick={(e) => { e.stopPropagation(); handleNext(); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleNext();
+            }}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm hidden sm:flex"
+            aria-label="Next image"
           >
-            <ChevronRight size={28} />
+            <ChevronRight size={24} />
           </button>
 
-          {/* Image */}
-          <div className="max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
+          <div className="max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
             <img
               src={images[selectedImageIndex].src}
               alt={images[selectedImageIndex].title}
-              className="w-full h-auto rounded-3xl shadow-2xl"
+              className="w-full h-auto rounded-lg shadow-2xl animate-fade-in"
             />
             <div className="mt-6 text-center">
-              <h3 className="text-white text-2xl font-semibold">
+              <h3 className="text-white text-xl md:text-2xl font-semibold mb-2">
                 {images[selectedImageIndex].title}
               </h3>
-              <p className="text-gray-400">
+              <p className="text-gray-400 text-sm md:text-base mb-4">
                 {images[selectedImageIndex].category}
               </p>
-              <p className="text-gray-500 text-sm mt-2">
+              <p className="text-gray-500 text-xs md:text-sm">
                 {selectedImageIndex + 1} / {images.length}
               </p>
             </div>
           </div>
-
         </div>
       )}
-
     </div>
   );
 };
-
 export default GalleryPage;
