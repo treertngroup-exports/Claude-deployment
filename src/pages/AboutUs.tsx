@@ -250,7 +250,7 @@ function LeaderTile({
         <img
           src={leader.image}
           alt={leader.name}
-          className="max-w-[85%] max-h-[85%] object-contain"
+          className="h-[92%] w-auto object-contain"
         />
       </div>
 
@@ -264,4 +264,5 @@ function LeaderTile({
     </button>
   );
 }
+
 
