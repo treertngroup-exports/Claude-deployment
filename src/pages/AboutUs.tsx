@@ -81,13 +81,99 @@ export default function AboutUs() {
       <Navbar />
 
       {/* ================= HEADER ================= */}
-      {/* (UNCHANGED — keep your existing sections here) */}
+      <section className="pt-24 pb-16 bg-gradient-to-b from-primary-50 to-white text-center">
+        <p className="text-sm font-semibold tracking-widest text-primary-700 uppercase mb-3">
+          About TREERT
+        </p>
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          Our Success Story
+        </h1>
+        <p className="max-w-3xl mx-auto text-gray-600 text-lg">
+          We are building a transparent, farmer-first export company connecting India’s agricultural strength with the world.
+        </p>
+      </section>
+
+      {/* ================= STORY (PREMIUM) ================= */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+
+          <div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6 leading-tight">
+              Built from the fields. <br /> Scaled for the world.
+            </h2>
+
+            <div className="space-y-5 text-gray-600 text-lg leading-relaxed">
+              <p>
+                TREERT began in <strong>2024 in Annur, Coimbatore</strong>, from a concern we could no longer ignore.
+                Across Tamil Nadu, farmers worked season after season, yet their produce often went unnoticed, unsold, or undervalued.
+              </p>
+
+              <p>
+                Coming from a farming background, we stepped into exports to ensure farmers’ produce reaches markets that truly value quality.
+              </p>
+
+              <p>
+                Our first successful shipment of <strong>onions and tomatoes to Dubai</strong> proved that honest sourcing and disciplined execution can cross borders.
+              </p>
+
+              <p className="font-semibold text-primary-800">
+                Today, TREERT exports to Vietnam, Indonesia, Thailand, Malaysia, and Singapore — with Europe, UK, and Canada in sight.
+              </p>
+            </div>
+          </div>
+
+          {/* Highlight Card */}
+          <div className="bg-gradient-to-br from-primary-600 to-primary-800 text-white rounded-3xl p-12 shadow-xl">
+            <h3 className="text-2xl font-semibold mb-6">What defines us</h3>
+            <ul className="space-y-4 text-white/90 text-lg">
+              <li>• Farmer-first sourcing</li>
+              <li>• Hands-on quality control</li>
+              <li>• Export-grade compliance</li>
+              <li>• Long-term global partnerships</li>
+              <li>• Trust over shortcuts</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ================= MISSION & VISION (PREMIUM) ================= */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+
+          <div className="bg-white rounded-3xl p-12 shadow-sm border relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary-100 rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center">
+                <Target className="w-6 h-6 text-primary-700" />
+              </div>
+              <h3 className="text-2xl font-semibold">Our Mission</h3>
+            </div>
+            <p className="text-gray-600 text-lg leading-relaxed">
+              To connect India’s agricultural excellence with global markets by delivering consistent quality, ensuring compliance, and creating sustainable value.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl p-12 shadow-sm border relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-100 rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center">
+                <Eye className="w-6 h-6 text-emerald-700" />
+              </div>
+              <h3 className="text-2xl font-semibold">Our Vision</h3>
+            </div>
+            <p className="text-gray-600 text-lg leading-relaxed">
+              To become a globally respected agricultural export organization, recognized for reliability and long-term partnerships.
+            </p>
+          </div>
+
+        </div>
+      </section>
 
       {/* ========================= LEADERSHIP ========================= */}
       <section className="py-24 bg-white">
         <div className="w-full px-6">
 
-          {/* Section Heading */}
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Our Leadership Team
@@ -97,17 +183,17 @@ export default function AboutUs() {
             </p>
           </div>
 
-          {/* Founders Row */}
+          {/* Founders */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto mb-20">
             {founders.map((leader) => (
-              <LeaderTile key={leader.name} leader={leader} onClick={setSelectedLeader} />
+              <LeaderTile key={leader.name} leader={leader} onClick={setSelectedLeader} variant="founder" />
             ))}
           </div>
 
-          {/* Team Row */}
+          {/* Team */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 max-w-7xl mx-auto">
             {team.map((leader) => (
-              <LeaderTile key={leader.name} leader={leader} onClick={setSelectedLeader} />
+              <LeaderTile key={leader.name} leader={leader} onClick={setSelectedLeader} variant="team" />
             ))}
           </div>
 
@@ -121,7 +207,7 @@ export default function AboutUs() {
           onClick={() => setSelectedLeader(null)}
         >
           <div
-            className="bg-white max-w-lg w-full rounded-2xl p-8 relative animate-scaleIn"
+            className="bg-white max-w-lg w-full rounded-2xl p-8 relative"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -157,23 +243,24 @@ export default function AboutUs() {
 }
 
 /* =========================
-   Leader Tile (Atlassian Style)
+   Leader Tile
 ========================= */
 function LeaderTile({
   leader,
   onClick,
+  variant,
 }: {
   leader: Leader;
   onClick: (l: Leader) => void;
+  variant: "founder" | "team";
 }) {
+  const aspect =
+    variant === "founder" ? "aspect-[4/5]" : "aspect-square";
+
   return (
-    <button
-      onClick={() => onClick(leader)}
-      className="group text-left w-full"
-    >
-      {/* Image Block */}
+    <button onClick={() => onClick(leader)} className="group text-left w-full">
       <div
-        className={`relative w-full aspect-[3/4] rounded-2xl overflow-hidden ${leader.color} flex items-end justify-center transition-transform duration-300 group-hover:-translate-y-1`}
+        className={`relative w-full ${aspect} rounded-2xl overflow-hidden ${leader.color} transition-transform duration-300 group-hover:-translate-y-1`}
       >
         <img
           src={leader.image}
@@ -182,7 +269,6 @@ function LeaderTile({
         />
       </div>
 
-      {/* Text */}
       <div className="mt-4">
         <h3 className="text-lg font-semibold text-gray-900">{leader.name}</h3>
         <p className="text-sm text-gray-600 uppercase tracking-wide">
