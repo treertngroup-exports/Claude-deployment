@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState } from "react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 const GalleryPage = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
@@ -334,52 +334,42 @@ const GalleryPage = () => {
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (selectedImageIndex === null) return;
-    if (e.key === 'ArrowLeft') handlePrevious();
-    if (e.key === 'ArrowRight') handleNext();
-    if (e.key === 'Escape') setSelectedImageIndex(null);
+    if (e.key === "ArrowLeft") handlePrevious();
+    if (e.key === "ArrowRight") handleNext();
+    if (e.key === "Escape") setSelectedImageIndex(null);
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="pt-32 pb-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Gallery</h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Explore our complete collection of premium produce and farming operations
-            </p>
-          </div>
+    <div className="min-h-screen bg-gray-50 py-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Gallery</h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Explore our complete collection of premium produce and farming operations
+          </p>
+        </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {images.map((image, index) => (
-              <div
-                key={image.id}
-                className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer h-64"
-                onClick={() => setSelectedImageIndex(index)}
-              >
-                <img
-                  src={image.thumb}
-                  alt={image.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                  <h3 className="text-white font-semibold text-sm md:text-base">{image.title}</h3>
-                  <span className="text-green-300 text-xs font-medium">{image.category}</span>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="bg-white/20 backdrop-blur-sm p-3 rounded-full">
-                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10 0a10 10 0 1 1 0 20 10 10 0 0 1 0-20zm0 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm3.5 8a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-7 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {images.map((image, index) => (
+            <div
+              key={image.id}
+              className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer h-64"
+              onClick={() => setSelectedImageIndex(index)}
+            >
+              <img
+                src={image.thumb}
+                alt={image.title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                loading="lazy"
+              />
+            </div>
+          ))}
         </div>
       </div>
 
+      {/* Modal */}
       {selectedImageIndex !== null && (
         <div
           className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 backdrop-blur-md"
@@ -390,8 +380,7 @@ const GalleryPage = () => {
         >
           <button
             onClick={() => setSelectedImageIndex(null)}
-            className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full transition-all duration-300 backdrop-blur-sm"
-            aria-label="Close"
+            className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full"
           >
             <X size={24} />
           </button>
@@ -401,8 +390,7 @@ const GalleryPage = () => {
               e.stopPropagation();
               handlePrevious();
             }}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm hidden sm:flex"
-            aria-label="Previous image"
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 text-white p-3 rounded-full hidden sm:flex"
           >
             <ChevronLeft size={24} />
           </button>
@@ -412,34 +400,23 @@ const GalleryPage = () => {
               e.stopPropagation();
               handleNext();
             }}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm hidden sm:flex"
-            aria-label="Next image"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 text-white p-3 rounded-full hidden sm:flex"
           >
             <ChevronRight size={24} />
           </button>
 
-          <div className="max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
+          <div className="max-w-4xl w-full">
             <img
               src={images[selectedImageIndex].src}
               alt={images[selectedImageIndex].title}
-              className="w-full h-auto rounded-lg shadow-2xl animate-fade-in"
+              className="w-full h-auto rounded-lg shadow-2xl"
             />
-            <div className="mt-6 text-center">
-              <h3 className="text-white text-xl md:text-2xl font-semibold mb-2">
-                {images[selectedImageIndex].title}
-              </h3>
-              <p className="text-gray-400 text-sm md:text-base mb-4">
-                {images[selectedImageIndex].category}
-              </p>
-              <p className="text-gray-500 text-xs md:text-sm">
-                {selectedImageIndex + 1} / {images.length}
-              </p>
-            </div>
           </div>
         </div>
       )}
     </div>
   );
 };
+export default GalleryPage;
 
 export default GalleryPage;
