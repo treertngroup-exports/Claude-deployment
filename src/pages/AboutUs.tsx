@@ -39,7 +39,7 @@ const leadership: Leader[] = [
   {
     name: "Bala Jeevini S",
     role: "Manager (UK)",
-    image: "https://drive.google.com/thumbnail?id=1Ro-vLZxtJrDapQP3WpDaEZe9ZX2KZ8Rv",
+    image: "https://drive.google.com/thumbnail?id=1GF_bGFuEDAustEtnm1U_ppuMu656DbB6",
     bio: "Oversees UK operations and international coordination.",
     linkedin: "#",
     color: "bg-gradient-to-br from-sky-500 to-sky-700",
@@ -47,7 +47,7 @@ const leadership: Leader[] = [
   {
     name: "Barath T S",
     role: "Financial Director",
-    image: "https://drive.google.com/thumbnail?id=1Ro-vLZxtJrDapQP3WpDaEZe9ZX2",
+    image: "https://drive.google.com/thumbnail?id=1Ro-vLZxtJrDapQP3WpDaEZe9ZX2KZ8Rv",
     bio: "Oversees financial planning, compliance, and risk management.",
     linkedin: "#",
     color: "bg-gradient-to-br from-violet-500 to-violet-700",
