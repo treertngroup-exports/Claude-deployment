@@ -252,15 +252,29 @@ function LeaderTile({
 }) {
   const imageHeight = variant === "founder" ? "h-[85%]" : "h-[97%]";
 
+  const isUK =
+    leader.name === "Bala Jeevini S" || leader.name === "Barath T S";
+
   return (
     <button onClick={() => onClick(leader)} className="group text-left w-full">
       <div
-        className={`relative w-full aspect-[4/3] rounded-2xl overflow-hidden ${leader.color} flex items-end justify-center`}
+        className={`relative w-full aspect-[4/3] rounded-2xl overflow-hidden flex items-end justify-center transition-all duration-700
+          
+          ${isUK ? "bg-cover bg-center" : leader.color}
+          
+          ${isUK ? "group-hover:bg-[url('https://media.giphy.com/media/l0HlQ7LRal7hF9R5K/giphy.gif')]" : ""}
+        `}
       >
+        {/* Overlay for readability */}
+        {isUK && (
+          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+        )}
+
+        {/* Person Image */}
         <img
           src={leader.image}
           alt={leader.name}
-          className={`${imageHeight} w-auto object-contain`}
+          className={`${imageHeight} w-auto object-contain relative z-10 transition-transform duration-500 group-hover:scale-105`}
         />
       </div>
 
@@ -273,3 +287,4 @@ function LeaderTile({
     </button>
   );
 }
+
