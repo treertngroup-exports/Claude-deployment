@@ -1,110 +1,110 @@
 import { useEffect, useRef } from "react";
+import { Quote } from "lucide-react";
 
-/* =========================
-   Certificates Data
-========================= */
 const certificates = [
   {
-    id: 1,
-    image: "https://drive.google.com/thumbnail?id=1XCfemS3R0p4LC_YQ4dvldc5fHrXeHIU3&auto=compress&cs=tinysrgb&w=600",
     title: "Coconut Development Board",
+    image:
+      "https://drive.google.com/thumbnail?id=1XCfemS3R0p4LC_YQ4dvldc5fHrXeHIU3&auto=compress&cs=tinysrgb&w=600",
     link: "https://coconutboard.gov.in",
   },
   {
-    id: 2,
-    image: "https://drive.google.com/thumbnail?id=1nzF3cJdx5uWVn_UDxfV-Hq0I_8UmmCgK&auto=compress&cs=tinysrgb&w=600",
     title: "Spices Board India",
+    image:
+      "https://drive.google.com/thumbnail?id=1nzF3cJdx5uWVn_UDxfV-Hq0I_8UmmCgK&auto=compress&cs=tinysrgb&w=600",
     link: "https://www.indianspices.com",
   },
   {
-    id: 3,
-    image: "https://drive.google.com/thumbnail?id=1Ig6V80TNYFUVghhOdi_Im_20U3LK-wUj&auto=compress&cs=tinysrgb&w=600",
     title: "FSSAI",
+    image:
+      "https://drive.google.com/thumbnail?id=1Ig6V80TNYFUVghhOdi_Im_20U3LK-wUj&auto=compress&cs=tinysrgb&w=600",
     link: "https://www.fssai.gov.in",
   },
   {
-    id: 4,
-    image: "https://drive.google.com/thumbnail?id=1Bic6LAdejJ2WP29T_-SsNntdKvN5uZZ7&auto=compress&cs=tinysrgb&w=600",
     title: "MSME",
+    image:
+      "https://drive.google.com/thumbnail?id=1Bic6LAdejJ2WP29T_-SsNntdKvN5uZZ7&auto=compress&cs=tinysrgb&w=600",
     link: "https://msme.gov.in",
   },
   {
-    id: 5,
-    image: "https://drive.google.com/thumbnail?id=16tUIOxiwW6-GoSxBACyrS2IFbbvg_KVs&auto=compress&cs=tinysrgb&w=600",
     title: "APEDA",
+    image:
+      "https://drive.google.com/thumbnail?id=16tUIOxiwW6-GoSxBACyrS2IFbbvg_KVs&auto=compress&cs=tinysrgb&w=600",
     link: "https://apeda.gov.in",
   },
 ];
 
-/* =========================
-   Testimonials
-========================= */
 const testimonials = [
   {
-    name: "Rajesh Kumar",
-    role: "Importer, Dubai",
-    text: "TREERT delivers consistent quality and professional export handling. Extremely reliable partner.",
+    name: "Global Buyer - Dubai",
+    text: "TREERT delivers consistent quality and perfect documentation every shipment.",
   },
   {
-    name: "Anand Patel",
-    role: "Wholesale Buyer, Singapore",
-    text: "Their packing quality and documentation process is world-class. Highly recommended.",
+    name: "Importer - Singapore",
+    text: "Packaging, freshness, and compliance are always top class.",
   },
   {
-    name: "Mohammed Irfan",
-    role: "Trader, Malaysia",
-    text: "Very transparent sourcing and timely shipments. We are working long term with TREERT.",
+    name: "Wholesale Partner - Malaysia",
+    text: "Very professional export process and reliable timelines.",
   },
   {
-    name: "Suresh Rao",
-    role: "Distributor, Chennai",
-    text: "One of the most disciplined export companies I have seen in agri sector.",
+    name: "Distributor - Qatar",
+    text: "Quality control and certifications are always perfect.",
   },
   {
-    name: "Lee Wong",
-    role: "Buyer, Thailand",
-    text: "Great quality control and communication. Shipments always arrive perfectly.",
+    name: "Retail Chain - Oman",
+    text: "One of the most trustworthy exporters we’ve worked with.",
   },
 ];
 
-export default function Credibility() {
+export default function CredibilityPage() {
   const certRef = useRef<HTMLDivElement>(null);
   const testRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (certRef.current) {
-      certRef.current.animate(
-        [{ transform: "translateX(0)" }, { transform: "translateX(-50%)" }],
-        { duration: 30000, iterations: Infinity, easing: "linear" }
-      );
-    }
+    const cert = certRef.current;
+    const test = testRef.current;
 
-    if (testRef.current) {
-      testRef.current.animate(
-        [{ transform: "translateX(-50%)" }, { transform: "translateX(0)" }],
-        { duration: 35000, iterations: Infinity, easing: "linear" }
-      );
-    }
+    let c1 = 0;
+    let c2 = 0;
+
+    const animate = () => {
+      if (cert) {
+        c1 -= 0.4;
+        if (Math.abs(c1) >= cert.scrollWidth / 2) c1 = 0;
+        cert.style.transform = `translateX(${c1}px)`;
+      }
+
+      if (test) {
+        c2 += 0.3;
+        if (c2 >= test.scrollWidth / 2) c2 = 0;
+        test.style.transform = `translateX(${c2}px)`;
+      }
+
+      requestAnimationFrame(animate);
+    };
+
+    animate();
   }, []);
 
   return (
-    <div className="bg-white pt-20 pb-16">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-32 pb-24 overflow-hidden">
 
-      {/* ================= HEADER ================= */}
-      <section className="py-20 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+      {/* HERO */}
+      <div className="text-center mb-20">
+        <h1 className="text-5xl md:text-6xl font-bold gradient-text mb-6">
           Our Credibility
         </h1>
-        <p className="text-gray-600 max-w-3xl mx-auto">
-          Our certifications and our clients’ trust define our commitment to quality and compliance.
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          Certified. Trusted. Globally Compliant. Recognized by India’s top export authorities.
         </p>
-      </section>
+      </div>
 
-      {/* ================= CERTIFICATES ================= */}
-      <section className="py-16 bg-gray-50 overflow-hidden">
+      {/* CERTIFICATES */}
+      <div className="mb-32">
         <h2 className="text-3xl font-bold text-center mb-12">Our Certifications</h2>
 
-        <div className="relative w-full overflow-hidden">
+        <div className="relative overflow-hidden">
           <div className="flex gap-10 w-max" ref={certRef}>
             {[...certificates, ...certificates].map((cert, i) => (
               <a
@@ -112,40 +112,55 @@ export default function Credibility() {
                 href={cert.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-64 h-48 bg-white rounded-2xl shadow-lg flex items-center justify-center hover:shadow-xl transition"
+                className="group w-64 shrink-0"
               >
-                <img
-                  src={cert.image}
-                  alt={cert.title}
-                  className="max-h-32 object-contain"
-                />
+                <div className="perspective-1000">
+                  <div className="gallery-card bg-white rounded-2xl p-6 shadow-lg hover:scale-105 transition-all duration-500">
+                    <img
+                      src={cert.image}
+                      alt={cert.title}
+                      className="h-40 w-full object-contain"
+                    />
+                    <p className="text-center mt-4 font-semibold text-gray-800">
+                      {cert.title}
+                    </p>
+                  </div>
+                </div>
               </a>
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ================= TESTIMONIALS ================= */}
-      <section className="py-20 overflow-hidden">
-        <h2 className="text-3xl font-bold text-center mb-12">What Our Partners Say</h2>
+      {/* TRUST STATEMENT */}
+      <div className="max-w-5xl mx-auto text-center mb-32">
+        <h2 className="text-4xl font-bold mb-6">Why Global Buyers Trust Us</h2>
+        <p className="text-lg text-gray-600 leading-relaxed">
+          We follow international export standards, strict quality control, certified packaging,
+          regulatory compliance, and transparent documentation — ensuring zero-risk shipments and
+          long-term partnerships.
+        </p>
+      </div>
 
-        <div className="relative w-full overflow-hidden">
+      {/* TESTIMONIALS */}
+      <div>
+        <h2 className="text-3xl font-bold text-center mb-12">What Our Clients Say</h2>
+
+        <div className="relative overflow-hidden">
           <div className="flex gap-8 w-max" ref={testRef}>
             {[...testimonials, ...testimonials].map((t, i) => (
               <div
                 key={i}
-                className="w-80 bg-white border rounded-2xl p-6 shadow-md"
+                className="w-80 shrink-0 glass rounded-2xl p-8 shadow-xl border border-white/20"
               >
-                <p className="text-gray-600 mb-4">“{t.text}”</p>
-                <div>
-                  <p className="font-semibold">{t.name}</p>
-                  <p className="text-sm text-gray-500">{t.role}</p>
-                </div>
+                <Quote className="text-primary-600 mb-4" />
+                <p className="text-gray-700 mb-4 italic">“{t.text}”</p>
+                <p className="font-semibold text-gray-900">{t.name}</p>
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
     </div>
   );
