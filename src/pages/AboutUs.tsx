@@ -246,12 +246,12 @@ function LeaderTile({
   onClick: (l: Leader) => void;
   variant: "founder" | "team";
 }) {
-  const imageHeight = variant === "founder" ? "h-[82%]" : "h-[92%]";
+  const imageHeight = variant === "founder" ? "h-[85%]" : "h-[95%]";
 
   return (
     <button onClick={() => onClick(leader)} className="group text-left w-full">
       <div
-        className={`relative w-full aspect-[4/3] rounded-2xl overflow-hidden ${leader.color} flex items-end justify-center pb-4`}
+        className={`relative w-full aspect-[4/3] rounded-2xl overflow-hidden ${leader.color} flex items-end justify-center`}
       >
         <img
           src={leader.image}
@@ -269,3 +269,4 @@ function LeaderTile({
     </button>
   );
 }
+
