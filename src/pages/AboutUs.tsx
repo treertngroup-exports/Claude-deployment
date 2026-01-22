@@ -258,16 +258,26 @@ function LeaderTile({
   return (
     <button onClick={() => onClick(leader)} className="group text-left w-full">
       <div
-        className={`relative w-full aspect-[4/3] rounded-2xl overflow-hidden flex items-end justify-center transition-all duration-700
-          
-          ${isUK ? "bg-cover bg-center" : leader.color}
-          
-          ${isUK ? "group-hover:bg-[url('https://media.giphy.com/media/l0HlQ7LRal7hF9R5K/giphy.gif')]" : ""}
+        className={`
+          relative w-full aspect-[4/3] rounded-2xl overflow-hidden flex items-end justify-center transition-all duration-700
+          ${isUK ? "" : leader.color}
         `}
       >
-        {/* Overlay for readability */}
+
+        {/* UK Background GIF on Hover */}
         {isUK && (
-          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          <div
+            className="absolute inset-0 bg-cover bg-center transition-opacity duration-700 opacity-0 group-hover:opacity-100"
+            style={{
+              backgroundImage:
+                "url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDhtYzY3ZWppeHFndzkyYTZzcXg3OGpycmxvbHFqZDZ1OXlrYnpyMiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/nXQZ2BQ2VtbZC/giphy.webp')",
+            }}
+          />
+        )}
+
+        {/* Overlay to keep photo visible */}
+        {isUK && (
+          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-700"></div>
         )}
 
         {/* Person Image */}
@@ -280,11 +290,10 @@ function LeaderTile({
 
       <div className="mt-4">
         <h3 className="text-lg font-semibold text-gray-900">{leader.name}</h3>
-        <p className="text-sm text-gray-600 uppercase tracking-wide">
-          {leader.role}
-        </p>
+        <p className="text-sm text-gray-600 uppercase tracking-wide">{leader.role}</p>
       </div>
     </button>
   );
 }
+
 
