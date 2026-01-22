@@ -341,7 +341,7 @@ const GalleryPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="pt-24 pb-16">
+      <div className="pt-20 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Gallery</h1>
