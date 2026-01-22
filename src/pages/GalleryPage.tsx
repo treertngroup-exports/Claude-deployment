@@ -418,5 +418,3 @@ const GalleryPage = () => {
   );
 };
 export default GalleryPage;
-
-export default GalleryPage;
