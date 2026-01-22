@@ -252,47 +252,61 @@ function LeaderTile({
 }) {
   const imageHeight = variant === "founder" ? "h-[85%]" : "h-[97%]";
 
-  // Only Arvindh & Raghul get the animated background hover
-  const useFlagGif =
+  // UK leaders
+  const isUK =
+    leader.name === "Barath T S" || leader.name === "Bala Jeevini S";
+
+  // UAE leaders
+  const isUAE =
     leader.name === "Arvindh S M" || leader.name === "Raghul D";
+
+  let hoverGif: string | null = null;
+
+  if (isUK) {
+    hoverGif =
+      "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDhtYzY3ZWppeHFndzkyYTZzcXg3OGpycmxvbHFqZDZ1OXlrYnpyMiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/nXQZ2BQ2VtbZC/giphy.webp";
+  }
+
+  if (isUAE) {
+    hoverGif =
+      "https://cdn.pixabay.com/animation/2022/09/16/16/43/16-43-28-59_512.gif";
+  }
 
   return (
     <button onClick={() => onClick(leader)} className="group text-left w-full">
       <div
-        className={`
-          relative w-full aspect-[4/3] rounded-2xl overflow-hidden flex items-end justify-center transition-all duration-700
-          ${!useFlagGif ? leader.color : ""}
-        `}
+        className={`relative w-full aspect-[4/3] rounded-2xl overflow-hidden flex items-end justify-center ${leader.color}`}
       >
-        {/* Animated background GIF for Arvindh & Raghul on hover */}
-        {useFlagGif && (
+        {/* GIF LAYER (only for specific leaders) */}
+        {hoverGif && (
           <div
-            className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-            style={{
-              backgroundImage: `url('https://cdn.pixabay.com/animation/2022/09/16/16/43/16-43-28-59_512.gif')`,
-            }}
+            className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0"
+            style={{ backgroundImage: `url('${hoverGif}')` }}
           />
         )}
 
-        {/* Optional Overlay for readability */}
-        {useFlagGif && (
-          <div className="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition-colors duration-700" />
+        {/* Dark overlay for readability */}
+        {hoverGif && (
+          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10" />
         )}
 
         {/* Person Image */}
         <img
           src={leader.image}
           alt={leader.name}
-          className={`${imageHeight} w-auto object-contain relative z-10 transition-transform duration-500 group-hover:scale-105`}
+          className={`${imageHeight} w-auto object-contain relative z-20 transition-transform duration-500 group-hover:scale-105`}
         />
       </div>
 
       <div className="mt-4">
         <h3 className="text-lg font-semibold text-gray-900">{leader.name}</h3>
-        <p className="text-sm text-gray-600 uppercase tracking-wide">{leader.role}</p>
+        <p className="text-sm text-gray-600 uppercase tracking-wide">
+          {leader.role}
+        </p>
       </div>
     </button>
   );
 }
+
 
 
