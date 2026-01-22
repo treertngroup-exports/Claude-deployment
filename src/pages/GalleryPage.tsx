@@ -340,15 +340,18 @@ const GalleryPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-16">
+  <div className="min-h-screen bg-gray-50">
+    <div className="pb-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Gallery</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Gallery
+          </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Explore our complete collection of premium produce and farming operations
           </p>
         </div>
+
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
