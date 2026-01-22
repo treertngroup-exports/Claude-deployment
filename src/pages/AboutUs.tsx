@@ -243,18 +243,16 @@ function LeaderTile({
 }) {
   return (
     <button onClick={() => onClick(leader)} className="group text-left w-full">
-      {/* Image Tile */}
       <div
-        className={`relative w-full aspect-[4/3] rounded-2xl overflow-hidden ${leader.color} flex items-center justify-center`}
+        className={`relative w-full aspect-[4/3] rounded-2xl overflow-hidden ${leader.color} flex items-end justify-center pb-4`}
       >
         <img
           src={leader.image}
           alt={leader.name}
-          className="h-[92%] w-auto object-contain"
+          className="h-[82%] w-auto object-contain"
         />
       </div>
 
-      {/* Text */}
       <div className="mt-4">
         <h3 className="text-lg font-semibold text-gray-900">{leader.name}</h3>
         <p className="text-sm text-gray-600 uppercase tracking-wide">
