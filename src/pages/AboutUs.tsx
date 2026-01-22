@@ -244,20 +244,13 @@ function LeaderTile({
   return (
     <button onClick={() => onClick(leader)} className="group text-left w-full">
       <div
-        className={`relative w-full aspect-[4/3] rounded-2xl overflow-hidden ${leader.color} flex items-end justify-center`}
+        className={`relative w-full aspect-[4/3] rounded-2xl overflow-hidden ${leader.color} flex items-end justify-center pb-4`}
       >
-        {/* Safe inner frame */}
-        <div className="w-full h-full flex items-end justify-center pb-4">
-          <img
-            src={leader.image}
-            alt={leader.name}
-            className="max-h-[85%] max-w-[85%] object-contain"
-            onError={(e) => {
-              // Fallback if Google thumbnail fails
-              (e.currentTarget as HTMLImageElement).src = "/placeholder-person.png";
-            }}
-          />
-        </div>
+        <img
+          src={leader.image}
+          alt={leader.name}
+          className="h-[82%] w-auto object-contain"
+        />
       </div>
 
       <div className="mt-4">
@@ -269,6 +262,7 @@ function LeaderTile({
     </button>
   );
 }
+
 
 
 
