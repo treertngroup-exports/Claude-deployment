@@ -2,7 +2,7 @@ import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Contact from "../components/Contact";
-import { Linkedin, X, Target, Eye} from "lucide-react";
+import { Linkedin, X, Target, Eye } from "lucide-react";
 
 /* =========================
    Types
@@ -93,10 +93,9 @@ export default function AboutUs() {
         </p>
       </section>
 
-      {/* ================= STORY (PREMIUM) ================= */}
+      {/* ================= STORY ================= */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-
           <div>
             <h2 className="text-3xl font-bold text-gray-900 mb-6 leading-tight">
               Built from the fields. <br /> Scaled for the world.
@@ -122,7 +121,6 @@ export default function AboutUs() {
             </div>
           </div>
 
-          {/* Highlight Card */}
           <div className="bg-gradient-to-br from-primary-600 to-primary-800 text-white rounded-3xl p-12 shadow-xl">
             <h3 className="text-2xl font-semibold mb-6">What defines us</h3>
             <ul className="space-y-4 text-white/90 text-lg">
@@ -133,16 +131,13 @@ export default function AboutUs() {
               <li>• Trust over shortcuts</li>
             </ul>
           </div>
-
         </div>
       </section>
 
-      {/* ================= MISSION & VISION (PREMIUM) ================= */}
+      {/* ================= MISSION & VISION ================= */}
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
-
           <div className="bg-white rounded-3xl p-12 shadow-sm border relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-primary-100 rounded-full -translate-y-1/2 translate-x-1/2" />
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center">
                 <Target className="w-6 h-6 text-primary-700" />
@@ -155,7 +150,6 @@ export default function AboutUs() {
           </div>
 
           <div className="bg-white rounded-3xl p-12 shadow-sm border relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-100 rounded-full -translate-y-1/2 translate-x-1/2" />
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center">
                 <Eye className="w-6 h-6 text-emerald-700" />
@@ -166,14 +160,12 @@ export default function AboutUs() {
               To become a globally respected agricultural export organization, recognized for reliability and long-term partnerships.
             </p>
           </div>
-
         </div>
       </section>
 
-      {/* ========================= LEADERSHIP ========================= */}
+      {/* ================= LEADERSHIP ================= */}
       <section className="py-24 bg-white">
         <div className="w-full px-6">
-
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Our Leadership Team
@@ -186,21 +178,20 @@ export default function AboutUs() {
           {/* Founders */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto mb-20">
             {founders.map((leader) => (
-              <LeaderTile key={leader.name} leader={leader} onClick={setSelectedLeader} variant="founder" />
+              <LeaderTile key={leader.name} leader={leader} onClick={setSelectedLeader} />
             ))}
           </div>
 
           {/* Team */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 max-w-7xl mx-auto">
             {team.map((leader) => (
-              <LeaderTile key={leader.name} leader={leader} onClick={setSelectedLeader} variant="team" />
+              <LeaderTile key={leader.name} leader={leader} onClick={setSelectedLeader} />
             ))}
           </div>
-
         </div>
       </section>
 
-      {/* ========================= MODAL ========================= */}
+      {/* ================= MODAL ================= */}
       {selectedLeader && (
         <div
           className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center px-4"
@@ -219,7 +210,7 @@ export default function AboutUs() {
 
             <div className="text-center">
               <div className="w-40 h-40 mx-auto mb-6 rounded-xl overflow-hidden bg-gray-100">
-                <img src={selectedLeader.image} className="w-full h-full object-cover" />
+                <img src={selectedLeader.image} className="w-full h-full object-contain" />
               </div>
               <h3 className="text-2xl font-semibold">{selectedLeader.name}</h3>
               <p className="text-primary-700 mb-4">{selectedLeader.role}</p>
@@ -242,41 +233,24 @@ export default function AboutUs() {
   );
 }
 
-/* =========================
-   Leader Tile
-========================= */
+/* ================= Leader Tile ================= */
 function LeaderTile({
   leader,
   onClick,
-  variant,
 }: {
   leader: Leader;
   onClick: (l: Leader) => void;
-  variant: "founder" | "team";
 }) {
-  const aspect =
-    variant === "founder" ? "aspect-[4/5]" : "aspect-square";
-
-  // Control visual size of person inside the frame
-  const imageScale =
-    variant === "founder"
-      ? "scale-110"   // slightly bigger (your "4")
-      : "scale-95";   // slightly smaller (your "2")
-
   return (
     <button onClick={() => onClick(leader)} className="group text-left w-full">
-      <div
-        className={`relative w-full ${aspect} rounded-2xl overflow-hidden ${leader.color} transition-transform duration-300 group-hover:-translate-y-1 flex items-end justify-center`}
-      >
-        <img
-          src={leader.image}
-          alt={leader.name}
-          className={`w-full h-full object-contain origin-bottom transition-transform duration-300 ${imageScale}`}
-          style={{
-            // Push image down so legs can crop but head stays
-            transformOrigin: "bottom center",
-          }}
-        />
+      <div className={`relative w-full aspect-square rounded-2xl overflow-hidden ${leader.color} flex items-end justify-center`}>
+        <div className="w-full h-full flex items-end justify-center pt-4 px-4">
+          <img
+            src={leader.image}
+            alt={leader.name}
+            className="max-w-full max-h-full object-contain"
+          />
+        </div>
       </div>
 
       <div className="mt-4">
@@ -288,4 +262,3 @@ function LeaderTile({
     </button>
   );
 }
-
