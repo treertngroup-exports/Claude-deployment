@@ -2,7 +2,7 @@ import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Contact from "../components/Contact";
-import { Linkedin, X } from "lucide-react";
+import { Linkedin, X, Target, Eye} from "lucide-react";
 
 /* =========================
    Types
