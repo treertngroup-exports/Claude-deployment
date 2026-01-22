@@ -88,7 +88,7 @@ export default function Credibility() {
   }, []);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white pt-24 pb-16">
 
       {/* ================= HEADER ================= */}
       <section className="py-20 text-center">
