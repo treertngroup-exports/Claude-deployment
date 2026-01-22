@@ -48,11 +48,12 @@ const Hero = () => {
           <a
             href="#contact"
             onClick={(e) => scrollToSection(e, "#contact")}
-            className="bg-accent-500 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-accent-400 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl"
+            className="bg-yellow-400 hover:bg-yellow-300 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl"
           >
             Get a Quote
             <ArrowRight size={20} />
           </a>
+
 
           <a
             href="#services"
