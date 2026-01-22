@@ -252,32 +252,31 @@ function LeaderTile({
 }) {
   const imageHeight = variant === "founder" ? "h-[85%]" : "h-[97%]";
 
-  const isUK =
-    leader.name === "Bala Jeevini S" || leader.name === "Barath T S";
+  // Only Arvindh & Raghul get the animated background hover
+  const useFlagGif =
+    leader.name === "Arvindh S M" || leader.name === "Raghul D";
 
   return (
     <button onClick={() => onClick(leader)} className="group text-left w-full">
       <div
         className={`
           relative w-full aspect-[4/3] rounded-2xl overflow-hidden flex items-end justify-center transition-all duration-700
-          ${isUK ? "" : leader.color}
+          ${!useFlagGif ? leader.color : ""}
         `}
       >
-
-        {/* UK Background GIF on Hover */}
-        {isUK && (
+        {/* Animated background GIF for Arvindh & Raghul on hover */}
+        {useFlagGif && (
           <div
-            className="absolute inset-0 bg-cover bg-center transition-opacity duration-700 opacity-0 group-hover:opacity-100"
+            className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-700"
             style={{
-              backgroundImage:
-                "url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDhtYzY3ZWppeHFndzkyYTZzcXg3OGpycmxvbHFqZDZ1OXlrYnpyMiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/nXQZ2BQ2VtbZC/giphy.webp')",
+              backgroundImage: `url('https://cdn.pixabay.com/animation/2022/09/16/16/43/16-43-28-59_512.gif')`,
             }}
           />
         )}
 
-        {/* Overlay to keep photo visible */}
-        {isUK && (
-          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-700"></div>
+        {/* Optional Overlay for readability */}
+        {useFlagGif && (
+          <div className="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition-colors duration-700" />
         )}
 
         {/* Person Image */}
