@@ -99,7 +99,7 @@ export default function CredibilityPage() {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-10 pb-20 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-10 pb-25 overflow-hidden">
 
       {/* HERO */}
       <div className="text-center mb-10">
@@ -112,7 +112,7 @@ export default function CredibilityPage() {
       </div>
 
       {/* CERTIFICATES */}
-      <div className="mb-25">
+      <div className="mb-32">
         <h2 className="text-3xl font-bold text-center mb-8">Certifications</h2>
 
         <div className="relative overflow-hidden">
@@ -155,7 +155,7 @@ export default function CredibilityPage() {
 
       {/* TESTIMONIALS */}
       <div>
-        <h2 className="text-3xl font-bold text-center mb-8">What Our Clients Say</h2>
+        <h2 className="text-3xl font-bold text-center mb-10">What Our Clients Say</h2>
 
         <div className="relative overflow-hidden">
           <div className="flex gap-8 w-max" ref={testRef}>
