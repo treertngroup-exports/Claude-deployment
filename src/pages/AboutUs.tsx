@@ -252,11 +252,11 @@ function LeaderTile({
 }) {
   const isFounder = variant === "founder";
 
-  // Image sizes
-  const imageHeight = isFounder ? "h-[90%]" : "h-[82%]";
+  // Slightly bigger, not huge
+  const cardScale = isFounder ? "scale-[1.06]" : "scale-100";
 
-  // Card scale (10% bigger for founders)
-  const cardScale = isFounder ? "scale-[1.1]" : "scale-100";
+  // Image size tuning
+  const imageHeight = isFounder ? "h-[88%]" : "h-[82%]";
 
   // UK leaders
   const isUK =
@@ -316,6 +316,7 @@ function LeaderTile({
     </button>
   );
 }
+
 
 
 
