@@ -37,7 +37,7 @@ const leadership: Leader[] = [
     color: "bg-gradient-to-br from-emerald-600 to-emerald-800",
   },
   {
-    name: "Bala Jeevini S",
+    name: "BalaJeevini S",
     role: "Manager (UK)",
     image: "https://drive.google.com/thumbnail?id=1GF_bGFuEDAustEtnm1U_ppuMu656DbB6",
     bio: "Oversees UK operations and international coordination.",
@@ -252,11 +252,9 @@ function LeaderTile({
 }) {
   const isFounder = variant === "founder";
 
-  // Slightly bigger, not huge
-  const cardScale = isFounder ? "scale-[1.06]" : "scale-100";
-
-  // Image size tuning
-  const imageHeight = isFounder ? "h-[88%]" : "h-[82%]";
+  // Same card size for everyone
+  const imageHeight = isFounder ? "h-[88%]" : "h-[80%]";
+  const imageScale = isFounder ? "scale-[1.08]" : "scale-100";
 
   // UK leaders
   const isUK =
@@ -279,14 +277,11 @@ function LeaderTile({
   }
 
   return (
-    <button
-      onClick={() => onClick(leader)}
-      className={`group text-left w-full transition-transform duration-300 ${cardScale}`}
-    >
+    <button onClick={() => onClick(leader)} className="group text-left w-full">
       <div
         className={`relative w-full aspect-[4/3] rounded-2xl overflow-hidden flex items-end justify-center ${leader.color}`}
       >
-        {/* GIF layer */}
+        {/* Hover GIF */}
         {hoverGif && (
           <div
             className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0"
@@ -299,11 +294,11 @@ function LeaderTile({
           <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10" />
         )}
 
-        {/* Person image */}
+        {/* Person */}
         <img
           src={leader.image}
           alt={leader.name}
-          className={`${imageHeight} w-auto object-contain relative z-20 transition-transform duration-500 group-hover:scale-105`}
+          className={`${imageHeight} ${imageScale} w-auto object-contain relative z-20 transition-transform duration-500 group-hover:scale-[1.12]`}
         />
       </div>
 
@@ -316,6 +311,7 @@ function LeaderTile({
     </button>
   );
 }
+
 
 
 
