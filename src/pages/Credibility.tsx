@@ -68,34 +68,32 @@ export default function CredibilityPage() {
     if (!cert || !test) return;
   
     let c1 = 0;
-    let c2 = 0;
+    let c2 = -test.scrollWidth / 2; // IMPORTANT: start negative for right scroll
   
     const speedCert = 0.4;
     const speedTest = 0.35;
   
     const animate = () => {
-      // ===== Certificates scroll LEFT =====
+      // Certificates → LEFT
       c1 -= speedCert;
       if (Math.abs(c1) >= cert.scrollWidth / 2) {
         c1 = 0;
       }
       cert.style.transform = `translateX(${c1}px)`;
   
-      // ===== Testimonials scroll RIGHT (true infinite) =====
-      c2 -= speedTest; // IMPORTANT: still move left internally
-  
-      if (Math.abs(c2) >= test.scrollWidth / 2) {
-        c2 = 0;
+      // Testimonials → RIGHT (true infinite loop)
+      c2 += speedTest;
+      if (c2 >= 0) {
+        c2 = -test.scrollWidth / 2;
       }
-  
-      // Flip direction visually using scaleX
-      test.style.transform = `translateX(${c2}px) scaleX(-1)`;
+      test.style.transform = `translateX(${c2}px)`;
   
       requestAnimationFrame(animate);
     };
   
     animate();
   }, []);
+
 
 
 
