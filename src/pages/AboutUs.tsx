@@ -169,15 +169,15 @@ export default function AboutUs() {
             </div>
 
             {/* Founders */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto mb-20">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 max-w-7xl mx-auto mb-20">
               {founders.map((leader) => (
-                <LeaderTile
-                  key={leader.name}
-                  leader={leader}
-                  onClick={setSelectedLeader}
-                  variant="founder"
-                />
-              ))}
+                 <LeaderTile
+                   key={leader.name}
+                   leader={leader}
+                   onClick={setSelectedLeader}
+                   variant="founder"
+                 />
+               ))}
             </div>
 
             {/* Team */}
@@ -252,9 +252,11 @@ function LeaderTile({
 }) {
   const isFounder = variant === "founder";
 
-  // Same card size for everyone
-  const imageHeight = isFounder ? "h-[88%]" : "h-[80%]";
-  const imageScale = isFounder ? "scale-[1.08]" : "scale-100";
+  // Everyone same card size
+  const imageHeight = "h-[80%]";
+
+  // Only founders get slight zoom
+  const baseScale = isFounder ? "scale-[1.08]" : "scale-100";
 
   // UK leaders
   const isUK =
@@ -298,7 +300,7 @@ function LeaderTile({
         <img
           src={leader.image}
           alt={leader.name}
-          className={`${imageHeight} ${imageScale} w-auto object-contain relative z-20 transition-transform duration-500 group-hover:scale-[1.12]`}
+          className={`${imageHeight} ${baseScale} w-auto object-contain relative z-20 transition-transform duration-500 group-hover:scale-[1.12]`}
         />
       </div>
 
@@ -311,6 +313,7 @@ function LeaderTile({
     </button>
   );
 }
+
 
 
 
