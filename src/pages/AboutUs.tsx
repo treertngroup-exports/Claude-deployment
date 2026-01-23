@@ -255,7 +255,7 @@ function LeaderTile({
   const isFounder = variant === "founder";
 
   // Everyone same card size
-  const imageHeight = "h-[80%]";
+  const imageHeight = "h-[97%]";
 
   // Only founders get slight zoom
   const baseScale = isFounder ? "scale-[1.08]" : "scale-100";
