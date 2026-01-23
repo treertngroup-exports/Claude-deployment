@@ -102,9 +102,9 @@ export default function Credibility() {
       {/* STATS */}
       <section className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-6 mb-24">
         {[
-          { label: "Shipments Completed", value: "500+" },
-          { label: "Countries Served", value: "12+" },
-          { label: "Compliance Score", value: "99.8%" },
+          { label: "Shipments Completed", value: "300+" },
+          { label: "Countries Served", value: "5+" },
+          { label: "Compliance Score", value: "99.5%" },
         ].map((s) => (
           <div key={s.label} className="card text-center">
             <p className="text-4xl font-bold gradient-text mb-2">{s.value}</p>
