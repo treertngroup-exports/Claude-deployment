@@ -316,7 +316,6 @@ function LeaderTile({
   );
 }
 
-}
 
 
 
