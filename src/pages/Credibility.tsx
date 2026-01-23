@@ -14,19 +14,19 @@ const certificates = [
     title: "FSSAI",
     image:
       "https://drive.google.com/thumbnail?id=1nzF3cJdx5uWVn_UDxfV-Hq0I_8UmmCgK&auto=compress&cs=tinysrgb&w=600",
-    link: "https://www.indianspices.com",
+    link: "https://www.fssai.gov.in",
   },
   {
     title: "MSME",
     image:
       "https://drive.google.com/thumbnail?id=1Ig6V80TNYFUVghhOdi_Im_20U3LK-wUj&auto=compress&cs=tinysrgb&w=600",
-    link: "https://www.fssai.gov.in",
+    link: "https://msme.gov.in",
   },
   {
     title: "Spices Board India",
     image:
       "https://drive.google.com/thumbnail?id=1Bic6LAdejJ2WP29T_-SsNntdKvN5uZZ7&auto=compress&cs=tinysrgb&w=600",
-    link: "https://msme.gov.in",
+    link: "https://www.indianspices.com",
   },
   {
     title: "APEDA",
