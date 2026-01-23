@@ -2,7 +2,6 @@ import Hero from "../components/Hero";
 import Stats from "../components/Stats";
 import Services from "../components/Services";
 import Quality from "../components/Quality";
-import ExportStory from "../components/ExportStory";
 import Contact from "../components/Contact";
 
 export default function Home() {
@@ -26,11 +25,6 @@ export default function Home() {
       {/* Quality */}
       <section id="quality" className="scroll-mt-32 py-20 bg-gray-50">
         <Quality />
-      </section>
-
-      {/* Story */}
-      <section className="py-20">
-        <ExportStory />
       </section>
 
       {/* Contact */}
