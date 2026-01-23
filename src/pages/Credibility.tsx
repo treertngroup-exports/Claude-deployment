@@ -3,25 +3,25 @@ import { Quote } from "lucide-react";
 
 const certificates = [
   {
-    title: "Coconut Development Board",
+    title: "CDB",
     image:
       "https://drive.google.com/thumbnail?id=1XCfemS3R0p4LC_YQ4dvldc5fHrXeHIU3&auto=compress&cs=tinysrgb&w=600",
     link: "https://coconutboard.gov.in",
   },
   {
-    title: "Spices Board India",
+    title: "FSSAI",
     image:
       "https://drive.google.com/thumbnail?id=1nzF3cJdx5uWVn_UDxfV-Hq0I_8UmmCgK&auto=compress&cs=tinysrgb&w=600",
     link: "https://www.indianspices.com",
   },
   {
-    title: "FSSAI",
+    title: "MSME",
     image:
       "https://drive.google.com/thumbnail?id=1Ig6V80TNYFUVghhOdi_Im_20U3LK-wUj&auto=compress&cs=tinysrgb&w=600",
     link: "https://www.fssai.gov.in",
   },
   {
-    title: "MSME",
+    title: "Spices Board India",
     image:
       "https://drive.google.com/thumbnail?id=1Bic6LAdejJ2WP29T_-SsNntdKvN5uZZ7&auto=compress&cs=tinysrgb&w=600",
     link: "https://msme.gov.in",
@@ -64,28 +64,38 @@ export default function CredibilityPage() {
   useEffect(() => {
     const cert = certRef.current;
     const test = testRef.current;
-
+  
     let c1 = 0;
     let c2 = 0;
-
+  
+    const speedCert = 0.4;
+    const speedTest = 0.35;
+  
     const animate = () => {
+      // Certificates scroll LEFT
       if (cert) {
-        c1 -= 0.4;
-        if (Math.abs(c1) >= cert.scrollWidth / 2) c1 = 0;
+        c1 -= speedCert;
+        if (Math.abs(c1) >= cert.scrollWidth / 2) {
+          c1 = 0;
+        }
         cert.style.transform = `translateX(${c1}px)`;
       }
-
+  
+      // Testimonials scroll LEFT (same direction for perfect loop)
       if (test) {
-        c2 += 0.3;
-        if (c2 >= test.scrollWidth / 2) c2 = 0;
+        c2 -= speedTest;
+        if (Math.abs(c2) >= test.scrollWidth / 2) {
+          c2 = 0;
+        }
         test.style.transform = `translateX(${c2}px)`;
       }
-
+  
       requestAnimationFrame(animate);
     };
-
+  
     animate();
   }, []);
+
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-32 pb-24 overflow-hidden">
