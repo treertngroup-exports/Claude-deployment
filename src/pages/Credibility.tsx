@@ -65,6 +65,8 @@ export default function CredibilityPage() {
     const cert = certRef.current;
     const test = testRef.current;
   
+    if (!cert || !test) return;
+  
     let c1 = 0;
     let c2 = 0;
   
@@ -72,25 +74,22 @@ export default function CredibilityPage() {
     const speedTest = 0.35;
   
     const animate = () => {
-      // Certificates scroll LEFT
-      if (cert) {
-        c1 -= speedCert;
-        if (Math.abs(c1) >= cert.scrollWidth / 2) {
-          c1 = 0;
-        }
-        cert.style.transform = `translateX(${c1}px)`;
+      // ===== Certificates scroll LEFT =====
+      c1 -= speedCert;
+      if (Math.abs(c1) >= cert.scrollWidth / 2) {
+        c1 = 0;
+      }
+      cert.style.transform = `translateX(${c1}px)`;
+  
+      // ===== Testimonials scroll RIGHT (true infinite) =====
+      c2 -= speedTest; // IMPORTANT: still move left internally
+  
+      if (Math.abs(c2) >= test.scrollWidth / 2) {
+        c2 = 0;
       }
   
-      // Testimonials scroll RIGHT (correct infinite loop)
-      if (test) {
-        c2 += speedTest;
-  
-        if (c2 >= test.scrollWidth / 2) {
-          c2 = 0;
-        }
-  
-        test.style.transform = `translateX(${c2}px)`;
-      }
+      // Flip direction visually using scaleX
+      test.style.transform = `translateX(${c2}px) scaleX(-1)`;
   
       requestAnimationFrame(animate);
     };
@@ -100,8 +99,9 @@ export default function CredibilityPage() {
 
 
 
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-20 pb-10 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-10 pb-20 overflow-hidden">
 
       {/* HERO */}
       <div className="text-center mb-10">
@@ -146,7 +146,7 @@ export default function CredibilityPage() {
       </div>
 
       {/* TRUST STATEMENT */}
-      <div className="max-w-5xl mx-auto text-center mb-20">
+      <div className="max-w-5xl mx-auto text-center mb-15">
         <h2 className="text-4xl font-bold mb-3">Why Global Buyers Trust Us</h2>
         <p className="text-lg text-gray-600 leading-relaxed">
           We follow international export standards, strict quality control, certified packaging,
@@ -157,7 +157,7 @@ export default function CredibilityPage() {
 
       {/* TESTIMONIALS */}
       <div>
-        <h2 className="text-3xl font-bold text-center mb-6">What Our Clients Say</h2>
+        <h2 className="text-3xl font-bold text-center mb-8">What Our Clients Say</h2>
 
         <div className="relative overflow-hidden">
           <div className="flex gap-8 w-max" ref={testRef}>
