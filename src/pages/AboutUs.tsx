@@ -169,15 +169,17 @@ export default function AboutUs() {
             </div>
 
             {/* Founders */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 max-w-7xl mx-auto mb-20">
-              {founders.map((leader) => (
-                 <LeaderTile
-                   key={leader.name}
-                   leader={leader}
-                   onClick={setSelectedLeader}
-                   variant="founder"
-                 />
-               ))}
+            <div className="flex justify-center mb-20">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 max-w-3xl w-full">
+                 {founders.map((leader) => (
+                    <LeaderTile
+                      key={leader.name}
+                      leader={leader}
+                      onClick={setSelectedLeader}
+                      variant="founder"
+                    />
+                  ))}
+               </div>
             </div>
 
             {/* Team */}
@@ -260,7 +262,7 @@ function LeaderTile({
 
   // UK leaders
   const isUK =
-    leader.name === "Barath T S" || leader.name === "Bala Jeevini S";
+    leader.name === "Barath T S" || leader.name === "BalaJeevini S";
 
   // UAE leaders
   const isUAE =
