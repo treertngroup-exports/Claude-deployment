@@ -81,12 +81,14 @@ export default function CredibilityPage() {
         cert.style.transform = `translateX(${c1}px)`;
       }
   
-      // Testimonials scroll LEFT (same direction for perfect loop)
+      // Testimonials scroll RIGHT (correct infinite loop)
       if (test) {
-        c2 -= speedTest;
-        if (Math.abs(c2) >= test.scrollWidth / 2) {
+        c2 += speedTest;
+  
+        if (c2 >= test.scrollWidth / 2) {
           c2 = 0;
         }
+  
         test.style.transform = `translateX(${c2}px)`;
       }
   
@@ -97,13 +99,14 @@ export default function CredibilityPage() {
   }, []);
 
 
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-32 pb-24 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-20 pb-10 overflow-hidden">
 
       {/* HERO */}
-      <div className="text-center mb-20">
+      <div className="text-center mb-10">
         <h1 className="text-5xl md:text-6xl font-bold gradient-text mb-6">
-          Our Credibility
+          Credibility
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
           Certified. Trusted. Globally Compliant. Recognized by India’s top export authorities.
@@ -111,8 +114,8 @@ export default function CredibilityPage() {
       </div>
 
       {/* CERTIFICATES */}
-      <div className="mb-32">
-        <h2 className="text-3xl font-bold text-center mb-12">Our Certifications</h2>
+      <div className="mb-25">
+        <h2 className="text-3xl font-bold text-center mb-8">Certifications</h2>
 
         <div className="relative overflow-hidden">
           <div className="flex gap-10 w-max" ref={certRef}>
@@ -143,8 +146,8 @@ export default function CredibilityPage() {
       </div>
 
       {/* TRUST STATEMENT */}
-      <div className="max-w-5xl mx-auto text-center mb-32">
-        <h2 className="text-4xl font-bold mb-6">Why Global Buyers Trust Us</h2>
+      <div className="max-w-5xl mx-auto text-center mb-20">
+        <h2 className="text-4xl font-bold mb-3">Why Global Buyers Trust Us</h2>
         <p className="text-lg text-gray-600 leading-relaxed">
           We follow international export standards, strict quality control, certified packaging,
           regulatory compliance, and transparent documentation — ensuring zero-risk shipments and
@@ -154,7 +157,7 @@ export default function CredibilityPage() {
 
       {/* TESTIMONIALS */}
       <div>
-        <h2 className="text-3xl font-bold text-center mb-12">What Our Clients Say</h2>
+        <h2 className="text-3xl font-bold text-center mb-6">What Our Clients Say</h2>
 
         <div className="relative overflow-hidden">
           <div className="flex gap-8 w-max" ref={testRef}>
