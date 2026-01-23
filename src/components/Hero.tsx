@@ -40,9 +40,7 @@ const Hero = () => {
           promoting quality, sustainability, and farmer empowerment.
         </p>
 
-        <p
-
-        p className="text-lg sm:text-xl mb-12 max-w-2xl mx-auto text-white/80">
+        <p className="text-lg sm:text-xl mb-12 max-w-2xl mx-auto text-white/80">
           Bringing farm-fresh excellence to global markets.
         </p>
 
