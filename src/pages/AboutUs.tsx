@@ -250,7 +250,7 @@ function LeaderTile({
   onClick: (l: Leader) => void;
   variant: "founder" | "team";
 }) {
-  const imageHeight = variant === "founder" ? "h-[85%]" : "h-[97%]";
+  const imageHeight = variant === "founder" ? "h-[85%]" : "h-[85%]";
 
   // UK leaders
   const isUK =
