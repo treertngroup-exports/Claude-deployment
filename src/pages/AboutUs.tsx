@@ -250,7 +250,14 @@ function LeaderTile({
   onClick: (l: Leader) => void;
   variant: "founder" | "team";
 }) {
-  const imageHeight = variant === "founder" ? "h-[60%]" : "h-[97%]";
+  const isFounder = variant === "founder";
+
+  // Card size
+  const cardAspect = isFounder ? "aspect-[5/4]" : "aspect-[4/3]";
+  const cardPadding = isFounder ? "p-6" : "p-0";
+
+  // Image size
+  const imageHeight = isFounder ? "h-[65%]" : "h-[97%]";
 
   // UK leaders
   const isUK =
@@ -275,29 +282,30 @@ function LeaderTile({
   return (
     <button onClick={() => onClick(leader)} className="group text-left w-full">
       <div
-        className={`relative w-full aspect-[4/3] rounded-2xl overflow-hidden flex items-end justify-center ${leader.color}`}
+        className={`relative w-full ${cardAspect} ${leader.color} rounded-2xl overflow-hidden flex items-end justify-center transition-transform duration-500 group-hover:-translate-y-1`}
       >
-        {/* GIF LAYER (only for specific leaders) */}
+        {/* GIF Background */}
         {hoverGif && (
           <div
-            className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0"
+            className="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-700"
             style={{ backgroundImage: `url('${hoverGif}')` }}
           />
         )}
 
-        {/* Dark overlay for readability */}
+        {/* Dark overlay */}
         {hoverGif && (
-          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10" />
+          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
         )}
 
         {/* Person Image */}
         <img
           src={leader.image}
           alt={leader.name}
-          className={`${imageHeight} w-auto object-contain relative z-20 transition-transform duration-500 group-hover:scale-105`}
+          className={`${imageHeight} w-auto object-contain relative z-10 transition-transform duration-500 group-hover:scale-105`}
         />
       </div>
 
+      {/* Text */}
       <div className="mt-4">
         <h3 className="text-lg font-semibold text-gray-900">{leader.name}</h3>
         <p className="text-sm text-gray-600 uppercase tracking-wide">
@@ -306,6 +314,8 @@ function LeaderTile({
       </div>
     </button>
   );
+}
+
 }
 
 
