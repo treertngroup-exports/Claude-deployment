@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail } from "lucide-react";
 
@@ -13,16 +13,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 60);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const handleNavClick = (href: string) => {
     setIsOpen(false);
@@ -40,31 +31,32 @@ export default function Navbar() {
     }
   };
 
-  const isOnHero = !isScrolled;
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 bg-transparent py-5">
+    <header className="fixed top-0 left-0 right-0 z-[9999] bg-transparent py-4 overflow-visible">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
+        <div className="flex items-center justify-between overflow-visible">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
+          {/* LOGO - FORCED BIG */}
+          <Link to="/" className="flex items-center gap-4 overflow-visible">
             <img
               src="/logo.png"
               alt="TREERT Logo"
-              className="h-20 md:h-24 lg:h-28 w-auto object-contain scale-[1.1] origin-left transition-transform duration-300 group-hover:scale-[1.15]"
+              style={{
+                height: "140px",   // <<< BIG SIZE HERE
+                width: "auto",
+                objectFit: "contain",
+              }}
             />
 
             <div className="hidden sm:block leading-tight">
-              <h1 className="font-display text-xl md:text-2xl font-bold tracking-wide text-white">
+              <h1 className="font-display text-2xl md:text-3xl font-bold tracking-wide text-white">
                 TREERT
               </h1>
-              <p className="text-[10px] tracking-widest uppercase text-white/80">
+              <p className="text-xs tracking-widest uppercase text-white/80">
                 Exports & Imports
               </p>
             </div>
           </Link>
-
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
@@ -73,12 +65,10 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`relative text-sm font-medium transition-colors duration-300 animated-underline ${
-                    isOnHero
-                      ? "text-white hover:text-primary-200"
-                      : location.pathname === link.href
-                      ? "text-primary-700"
-                      : "text-gray-700 hover:text-primary-700"
+                  className={`relative text-sm font-medium transition-colors duration-300 ${
+                    location.pathname === link.href
+                      ? "text-primary-200"
+                      : "text-white hover:text-primary-200"
                   }`}
                 >
                   {link.name}
@@ -91,11 +81,7 @@ export default function Navbar() {
                     e.preventDefault();
                     handleNavClick(link.href);
                   }}
-                  className={`relative text-sm font-medium transition-colors duration-300 animated-underline ${
-                    isOnHero
-                      ? "text-white hover:text-primary-200"
-                      : "text-gray-700 hover:text-primary-700"
-                  }`}
+                  className="relative text-sm font-medium text-white hover:text-primary-200 transition-colors duration-300"
                 >
                   {link.name}
                 </a>
@@ -108,22 +94,14 @@ export default function Navbar() {
             <div className="text-right">
               <a
                 href="tel:+918438906166"
-                className={`flex items-center gap-2 text-sm font-semibold transition-colors ${
-                  isOnHero
-                    ? "text-white hover:text-primary-200"
-                    : "text-primary-800 hover:text-primary-600"
-                }`}
+                className="flex items-center gap-2 text-sm font-semibold text-white hover:text-primary-200 transition-colors"
               >
                 <Phone className="w-4 h-4" />
                 +91 84389 06166
               </a>
               <a
                 href="mailto:treertngroup@gmail.com"
-                className={`text-xs transition-colors ${
-                  isOnHero
-                    ? "text-primary-100 hover:text-white"
-                    : "text-gray-500 hover:text-primary-600"
-                }`}
+                className="text-xs text-white/80 hover:text-white transition-colors"
               >
                 treertngroup@gmail.com
               </a>
@@ -144,23 +122,13 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden p-2 rounded-lg transition-colors ${
-              isOnHero ? "hover:bg-white/20" : "hover:bg-gray-100"
-            }`}
+            className="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
             aria-label="Toggle menu"
           >
             {isOpen ? (
-              <X
-                className={`w-6 h-6 ${
-                  isOnHero ? "text-white" : "text-gray-700"
-                }`}
-              />
+              <X className="w-6 h-6 text-white" />
             ) : (
-              <Menu
-                className={`w-6 h-6 ${
-                  isOnHero ? "text-white" : "text-gray-700"
-                }`}
-              />
+              <Menu className="w-6 h-6 text-white" />
             )}
           </button>
         </div>
