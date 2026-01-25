@@ -49,14 +49,25 @@ export default function Navbar() {
               }}
             />
 
-            <div className="hidden sm:block leading-tight bg-white/80 backdrop-blur-md px-4 py-2 rounded-xl shadow-md">
-              <h1 className="font-display text-2xl md:text-3xl font-bold tracking-wide text-gray-900">
+            <div className="hidden sm:block leading-tight">
+              <h1
+                className="font-display text-3xl md:text-4xl font-bold tracking-wide text-white"
+                style={{
+                  textShadow: "0 2px 10px rgba(0,0,0,0.35)",
+                }}
+              >
                 TREERT
               </h1>
-              <p className="text-xs tracking-widest uppercase text-gray-700">
-                Exports & Imports
+              <p
+                className="text-xs tracking-[0.3em] uppercase text-white/90"
+                style={{
+                  textShadow: "0 2px 8px rgba(0,0,0,0.4)",
+                }}
+              >
+                EXPORTS & IMPORTS
               </p>
             </div>
+
           </Link>
 
           {/* DESKTOP NAV */}
