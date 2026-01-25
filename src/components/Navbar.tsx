@@ -54,7 +54,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="relative bg-white rounded-lg p-2">
+           <div className="relative bg-white rounded-xl p-2 shadow-md">
               <img
                 src="/logo.png"
                 alt="TREERT Logo"
