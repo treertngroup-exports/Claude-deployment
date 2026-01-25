@@ -45,7 +45,7 @@ export default function Navbar() {
                 height: "140px",   // <<< BIG SIZE HERE
                 width: "auto",
                 objectFit: "contain",
-                borderRadius: "25px",   // 👈 round corners
+                borderRadius: "999px",   // 👈 round corners
 
               }}
             />
