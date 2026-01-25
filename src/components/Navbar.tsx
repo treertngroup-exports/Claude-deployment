@@ -49,11 +49,11 @@ export default function Navbar() {
               }}
             />
 
-            <div className="hidden sm:block leading-tight">
-              <h1 className="font-display text-2xl md:text-3xl font-bold tracking-wide text-white">
+            <div className="hidden sm:block leading-tight bg-white/80 backdrop-blur-md px-3 py-2 rounded-xl shadow-md">
+              <h1 className="font-display text-2xl md:text-3xl font-bold tracking-wide text-gray-900">
                 TREERT
               </h1>
-              <p className="text-xs tracking-widest uppercase text-white/100">
+              <p className="text-xs tracking-widest uppercase text-gray-700">
                 Exports & Imports
               </p>
             </div>
