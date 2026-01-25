@@ -49,7 +49,7 @@ export default function Navbar() {
               }}
             />
 
-            <div className="hidden sm:block leading-tight bg-white/80 backdrop-blur-md px-3 py-2 rounded-xl shadow-md">
+            <div className="hidden sm:block leading-tight bg-white/80 backdrop-blur-md px-4 py-2 rounded-xl shadow-md">
               <h1 className="font-display text-2xl md:text-3xl font-bold tracking-wide text-gray-900">
                 TREERT
               </h1>
