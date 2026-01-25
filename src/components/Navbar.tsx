@@ -52,9 +52,9 @@ export default function Navbar() {
             <img
               src="/logo.png"
               alt="TREERT Logo"
-              className="h-12 md:h-14 w-auto object-contain scale-[1.3] origin-left transition-transform duration-300 group-hover:scale-[1.4]"
+              className="h-20 md:h-24 lg:h-28 w-auto object-contain scale-[1.1] origin-left transition-transform duration-300 group-hover:scale-[1.15]"
             />
-          
+
             <div className="hidden sm:block leading-tight">
               <h1 className="font-display text-xl md:text-2xl font-bold tracking-wide text-white">
                 TREERT
