@@ -49,31 +49,22 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-           <div className="relative bg-white rounded-xl p-2 shadow-md">
-              <img
-                <img
-                  src="/logo.png"
-                  alt="TREERT Logo"
-                  className="h-12 md:h-14 w-auto object-contain scale-[1.3] origin-left transition-transform duration-300 group-hover:scale-[1.4]"
-              />
-            </div>
+            <img
+              src="/logo.png"
+              alt="TREERT Logo"
+              className="h-12 md:h-14 w-auto object-contain scale-[1.3] origin-left transition-transform duration-300 group-hover:scale-[1.4]"
+            />
+          
             <div className="hidden sm:block leading-tight">
-              <h1
-                className={`font-display text-xl md:text-2xl font-bold tracking-wide ${
-                  isOnHero ? "text-white" : "text-primary-950"
-                }`}
-              >
+              <h1 className="font-display text-xl md:text-2xl font-bold tracking-wide text-white">
                 TREERT
               </h1>
-              <p
-                className={`text-[10px] tracking-widest uppercase ${
-                  isOnHero ? "text-primary-100" : "text-gray-500"
-                }`}
-              >
+              <p className="text-[10px] tracking-widest uppercase text-white/80">
                 Exports & Imports
               </p>
             </div>
           </Link>
+
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
