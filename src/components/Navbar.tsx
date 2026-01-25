@@ -51,9 +51,10 @@ export default function Navbar() {
           <Link to="/" className="flex items-center gap-3 group">
            <div className="relative bg-white rounded-xl p-2 shadow-md">
               <img
-                src="/logo.png"
-                alt="TREERT Logo"
-                className="h-10 md:h-12 w-auto transition-transform duration-300 group-hover:scale-105"
+                <img
+                  src="/logo.png"
+                  alt="TREERT Logo"
+                  className="h-12 md:h-14 w-auto object-contain scale-[1.3] origin-left transition-transform duration-300 group-hover:scale-[1.4]"
               />
             </div>
             <div className="hidden sm:block leading-tight">
