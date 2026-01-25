@@ -43,13 +43,7 @@ export default function Navbar() {
   const isOnHero = !isScrolled;
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 ${
-        isOnHero
-          ? "bg-transparent py-5"
-          : "bg-white/90 backdrop-blur-lg shadow-soft py-3"
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 bg-transparent py-5">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
