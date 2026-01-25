@@ -32,21 +32,20 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[9999] bg-transparent py-4 overflow-visible">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
-        <div className="flex items-center justify-between overflow-visible">
+    <header className="fixed top-0 left-0 right-0 z-[9999] bg-transparent py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between">
 
-          {/* LOGO - FORCED BIG */}
-          <Link to="/" className="flex items-center gap-4 overflow-visible">
+          {/* LOGO */}
+          <Link to="/" className="flex items-center gap-4">
             <img
               src="/logo.png"
               alt="TREERT Logo"
               style={{
-                height: "140px",   // <<< BIG SIZE HERE
+                height: "120px",
                 width: "auto",
                 objectFit: "contain",
-                borderRadius: "999px",   // 👈 round corners
-
+                borderRadius: "24px",
               }}
             />
 
@@ -60,17 +59,17 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+          {/* DESKTOP NAV */}
+          <nav className="hidden lg:flex items-center gap-2 bg-white/80 backdrop-blur-md p-2 rounded-full shadow-lg">
             {navLinks.map((link) =>
               link.href.startsWith("/") ? (
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`relative text-sm font-medium transition-colors duration-300 ${
+                  className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
                     location.pathname === link.href
-                      ? "text-primary-200"
-                      : "text-white hover:text-primary-200"
+                      ? "bg-primary-900 text-white"
+                      : "text-gray-800 hover:bg-primary-100"
                   }`}
                 >
                   {link.name}
@@ -83,7 +82,7 @@ export default function Navbar() {
                     e.preventDefault();
                     handleNavClick(link.href);
                   }}
-                  className="relative text-sm font-medium text-white hover:text-primary-200 transition-colors duration-300"
+                  className="px-4 py-2 rounded-full text-sm font-semibold text-gray-800 hover:bg-primary-100 transition-all duration-300"
                 >
                   {link.name}
                 </a>
@@ -91,7 +90,7 @@ export default function Navbar() {
             )}
           </nav>
 
-          {/* Contact Info & CTA */}
+          {/* RIGHT SIDE */}
           <div className="hidden lg:flex items-center gap-6">
             <div className="text-right">
               <a
@@ -109,6 +108,7 @@ export default function Navbar() {
               </a>
             </div>
 
+            {/* CTA */}
             <a
               href="#contact"
               onClick={(e) => {
@@ -121,11 +121,10 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* MOBILE BUTTON */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
-            aria-label="Toggle menu"
           >
             {isOpen ? (
               <X className="w-6 h-6 text-white" />
@@ -135,7 +134,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* MOBILE MENU */}
         <div
           className={`lg:hidden overflow-hidden transition-all duration-500 ${
             isOpen ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"
