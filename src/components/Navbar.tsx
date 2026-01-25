@@ -53,7 +53,7 @@ export default function Navbar() {
               <h1 className="font-display text-2xl md:text-3xl font-bold tracking-wide text-white">
                 TREERT
               </h1>
-              <p className="text-xs tracking-widest uppercase text-white/80">
+              <p className="text-xs tracking-widest uppercase text-white/100">
                 Exports & Imports
               </p>
             </div>
