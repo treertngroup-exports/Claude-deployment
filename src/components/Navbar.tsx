@@ -91,22 +91,24 @@ export default function Navbar() {
           </nav>
 
           {/* RIGHT SIDE */}
-          <div className="hidden lg:flex items-center gap-6">
-            <div className="text-right">
+            <div className="flex flex-col items-end gap-2">
               <a
                 href="tel:+918438906166"
-                className="flex items-center gap-2 text-sm font-semibold text-white hover:text-primary-200 transition-colors"
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-md text-sm font-semibold text-gray-900 hover:bg-white transition-all shadow-md"
               >
                 <Phone className="w-4 h-4" />
                 +91 84389 06166
               </a>
+            
               <a
                 href="mailto:treertngroup@gmail.com"
-                className="text-xs text-white/80 hover:text-white transition-colors"
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-md text-xs font-medium text-gray-700 hover:bg-white transition-all shadow-md"
               >
+                <Mail className="w-4 h-4" />
                 treertngroup@gmail.com
               </a>
             </div>
+
 
             {/* CTA */}
             <a
