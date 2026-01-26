@@ -1,141 +1,208 @@
-import { Linkedin, Instagram } from "lucide-react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, Twitter, ArrowRight } from 'lucide-react';
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
-  const location = useLocation();
-  const navigate = useNavigate();
+const quickLinks = [
+  { name: 'Home', href: '/' },
+  { name: 'About Us', href: '#founders' },
+  { name: 'Services', href: '#services' },
+  { name: 'Gallery', href: '/gallery' },
+  { name: 'Quality Policy', href: '#quality' },
+  { name: 'Contact', href: '#contact' },
+];
 
-  const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/#services", label: "Services" },
-    { href: "/gallery", label: "Gallery" },
-    { href: "/#quality", label: "Quality Policy" },
-    { href: "/#leadership", label: "Leadership" },
-    { href: "/contact", label: "Contact" }, // ✅ REAL PAGE
-  ];
+const products = [
+  'Fresh Fruits',
+  'Fresh Vegetables',
+  'Spices & Herbs',
+  'Value Added Products',
+  'Organic Produce',
+  'Seasonal Items',
+];
 
-  const socialLinks = [
-    {
-      icon: <Linkedin size={20} />,
-      href: "https://www.linkedin.com/in/treert-export-b3689a383",
-      label: "LinkedIn",
-    },
-    {
-      icon: <Instagram size={20} />,
-      href: "https://www.instagram.com/treertngroup",
-      label: "Instagram",
-    },
-  ];
+const socialLinks = [
+  { icon: Facebook, href: '#', label: 'Facebook' },
+  { icon: Instagram, href: '#', label: 'Instagram' },
+  { icon: Linkedin, href: '#', label: 'LinkedIn' },
+  { icon: Twitter, href: '#', label: 'Twitter' },
+];
 
-  const handleSmartNav = async (e: React.MouseEvent, href: string) => {
-    e.preventDefault();
-
-    if (href.startsWith("/#")) {
-      const id = href.replace("/#", "#");
-
-      // If not on home, go home first
-      if (location.pathname !== "/") {
-        navigate("/");
-
-        // Wait for home to render
-        setTimeout(() => {
-          const el = document.querySelector(id);
-          el?.scrollIntoView({ behavior: "smooth" });
-        }, 300);
-      } else {
-        const el = document.querySelector(id);
-        el?.scrollIntoView({ behavior: "smooth" });
+export default function Footer() {
+  const handleNavClick = (href: string) => {
+    if (href.startsWith('#')) {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
       }
-    } else {
-      navigate(href);
     }
   };
 
   return (
-    <footer className="relative bg-gradient-to-br from-green-800 to-green-900 text-white">
-      {/* Background */}
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage:
-            "url(https://images.pexels.com/photos/1300972/pexels-photo-1300972.jpeg?auto=compress&cs=tinysrgb&w=1920)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
-          {/* LOGO + ABOUT */}
-          <div>
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <span className="text-3xl font-extrabold tracking-wide">
-                TREERT
-              </span>
-              <span className="text-yellow-400 font-semibold">
-                Exports & Imports
-              </span>
-            </Link>
-
-            <p className="text-green-100 leading-relaxed">
-              Bringing farm-fresh excellence to global markets with
-              uncompromising quality, reliability, and service.
-            </p>
-          </div>
-
-          {/* LINKS */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <button
-                    onClick={(e) => handleSmartNav(e, link.href)}
-                    className="text-green-100 hover:text-yellow-400 transition-colors duration-300"
-                  >
-                    {link.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* CONTACT + SOCIAL */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Connect With Us</h4>
-
-            <div className="flex gap-4 mb-6">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white/10 p-3 rounded-full hover:bg-yellow-500 hover:text-gray-900 transition-all duration-300 transform hover:scale-110"
-                  aria-label={social.label}
-                >
-                  {social.icon}
-                </a>
-              ))}
+    <footer className="bg-gray-900 text-white relative overflow-hidden">
+      {/* Top CTA Section */}
+      <div className="bg-gradient-to-r from-primary-800 to-primary-900 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-2">
+                Ready to Source Premium Produce?
+              </h3>
+              <p className="text-primary-100">
+                Get in touch with us for quotes and inquiries.
+              </p>
             </div>
-
-            <p className="text-green-100 text-sm">
-              <strong>Phone:</strong> +91 84389 06166
-            </p>
-            <p className="text-green-100 text-sm mt-2">
-              <strong>Email:</strong> treertngroup@gmail.com
-            </p>
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick('#contact');
+              }}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-800 font-semibold rounded-full hover:bg-accent-100 transition-all duration-300 hover:-translate-y-1"
+            >
+              Contact Us
+              <ArrowRight className="w-5 h-5" />
+            </a>
           </div>
         </div>
+      </div>
 
-        {/* COPYRIGHT */}
-        <div className="border-t border-green-700 pt-6 text-center text-green-100 text-sm">
-          © {currentYear} Treert Exports & Imports. All rights reserved.
+      {/* Main Footer */}
+      <div className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {/* Brand */}
+            <div className="lg:col-span-1">
+              <Link to="/" className="flex items-center gap-3 mb-6">
+                <img
+                  src="/logo.png"
+                  alt="TREERT Logo"
+                  className="h-14 w-auto brightness-0 invert"
+                />
+                <div>
+                  <h4 className="font-display text-2xl font-bold text-white">TREERT</h4>
+                  <p className="text-xs text-gray-400 tracking-wider">EXPORTS & IMPORTS</p>
+                </div>
+              </Link>
+              <p className="text-gray-400 mb-6 leading-relaxed">
+                Bringing farm-fresh excellence to global markets since 2024. 
+                Committed to quality, sustainability, and farmer empowerment.
+              </p>
+              <div className="flex gap-3">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    className="w-10 h-10 bg-gray-800 hover:bg-primary-700 rounded-lg flex items-center justify-center transition-colors"
+                    aria-label={social.label}
+                  >
+                    <social.icon className="w-5 h-5 text-gray-400 hover:text-white" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h5 className="font-display text-lg font-bold text-white mb-6">Quick Links</h5>
+              <ul className="space-y-3">
+                {quickLinks.map((link) => (
+                  <li key={link.name}>
+                    {link.href.startsWith('/') ? (
+                      <Link
+                        to={link.href}
+                        className="text-gray-400 hover:text-white transition-colors"
+                      >
+                        {link.name}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleNavClick(link.href);
+                        }}
+                        className="text-gray-400 hover:text-white transition-colors"
+                      >
+                        {link.name}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Products */}
+            <div>
+              <h5 className="font-display text-lg font-bold text-white mb-6">Our Products</h5>
+              <ul className="space-y-3">
+                {products.map((product) => (
+                  <li key={product}>
+                    <a
+                      href="#services"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick('#services');
+                      }}
+                      className="text-gray-400 hover:text-white transition-colors"
+                    >
+                      {product}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact */}
+            <div>
+              <h5 className="font-display text-lg font-bold text-white mb-6">Contact Us</h5>
+              <ul className="space-y-4">
+                <li>
+                  <a
+                    href="tel:+919994498426"
+                    className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors"
+                  >
+                    <Phone className="w-5 h-5 text-primary-500" />
+                    +91 99944 98426
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="mailto:treertngroup@gmail.com"
+                    className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors"
+                  >
+                    <Mail className="w-5 h-5 text-primary-500" />
+                    treertngroup@gmail.com
+                  </a>
+                </li>
+                <li>
+                  <div className="flex items-start gap-3 text-gray-400">
+                    <MapPin className="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
+                    <span>Tamil Nadu, India</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="border-t border-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-gray-500 text-sm">
+              © {new Date().getFullYear()} TREERT Exports & Imports. All rights reserved.
+            </p>
+            <div className="flex gap-6">
+              <a href="#" className="text-gray-500 hover:text-white text-sm transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-gray-500 hover:text-white text-sm transition-colors">
+                Terms of Service
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}
